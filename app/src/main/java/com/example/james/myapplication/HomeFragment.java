@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +24,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 public class HomeFragment extends Fragment
 {
@@ -30,6 +37,7 @@ public class HomeFragment extends Fragment
     private ArrayList<String> shoearraypass = null;
     private ArrayAdapter<Shoe> adap = null;
     private ImageAdapter imageViewing = null;
+    private RecyclerView recycled = null;
 
     public HomeFragment()
     {
@@ -62,10 +70,12 @@ public class HomeFragment extends Fragment
         });
         //////////////////////////////////////////////////////////////////
         */
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_home2, container, false);
         if (v != null)
         {
         }
+
+
 
         //////////////////////////////////////////////////////////////////////////
         //var thisView = inflater.inflate(R.layout.product_browse, container, false);
@@ -111,11 +121,21 @@ public class HomeFragment extends Fragment
 
                 Toast.makeText(getContext(),"Zeta: " + shoearraypass.toString(),Toast.LENGTH_SHORT).show();
 
-                ArrayAdapter<Shoe> adap = new ArrayAdapter(getActivity(),
+                ArrayAdapter<String> adap = new ArrayAdapter(getActivity(),
                         android.R.layout.simple_list_item_1, shoearraypass);
 
-                ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
-                mListView.setAdapter(adap);
+                //ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
+                GridView mListView = (GridView) getActivity().findViewById(R.id.gridglide);
+
+                /*mListView.setAdapter(adap);
+
+*/
+
+                //Initialize ImageView
+
+                MyAdapter myadapter=new MyAdapter(getActivity(),shoearraypass);
+                mListView.setAdapter(myadapter);
+
             }
 
             @Override
