@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment
     private ImageAdapter mImageAdapter = null;
     private ArrayList<String> shoearraypass = null;
     private ArrayAdapter<Shoe> adap = null;
+    private ImageAdapter imageViewing = null;
 
     public HomeFragment()
     {
@@ -99,10 +100,12 @@ public class HomeFragment extends Fragment
             public void onDataChange(DataSnapshot dataSnapshot) {
                 shoearraypass = new ArrayList<String>();
                 String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getKey();
+                //String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren();
                 for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren())
-                    //for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getChildren())
+                //for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren())
+                //for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getChildren())
                 {
-                    shoearraypass.add("" + snaparray.getValue());
+                    shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
                     //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
                 }
 
