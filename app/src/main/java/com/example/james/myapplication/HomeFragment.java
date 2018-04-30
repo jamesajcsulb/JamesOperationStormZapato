@@ -4,20 +4,30 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment
 {
+    private GridView gridView = null;
+    private ArrayList<Shoe> mShoeList = null;
+    private ImageAdapter mImageAdapter = null;
+
     public HomeFragment()
     {
     }
@@ -53,6 +63,86 @@ public class HomeFragment extends Fragment
         if (v != null)
         {
         }
+
+        //////////////////////////////////////////////////////////////////////////
+        //var thisView = inflater.inflate(R.layout.product_browse, container, false);
+
+        //fetch Buy Now function
+        ////FirebaseManager().fetch(FirebaseManager().buynow_ref, {
+                ////mShoeList = it;
+                //parse mShoeList data into ImageAdapter
+                ////mImageAdapter = ImageAdapter(getContext(), mShoeList);
+
+        ////gridView = v.findViewById(R.id.product_browse);// .findViewById<View>(R.id.product_browse) as GridView
+        //gridView!!.adapter = mImageAdapter
+        //optional
+        //gridView!!.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id -> Toast.makeText(activity, "" + position, Toast.LENGTH_SHORT).show() }
+        //gridView!!.onItemClickListener = AdapterView.OnItemClickListener {
+        //parent, view, position, id ->
+                //Toast.makeText(activity, "" + mShoeList!![position].name.toString(), Toast.LENGTH_SHORT).show()
+        //SegueManager().passDatatoProductDetail(this@HomeFragment.context!!, mShoeList!![position])
+    ////}
+       //// });
+        //////////////////////////////////////////////////////////////////////////
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("shoes");
+        //child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("L9FNpPzi2FouktspF3G")
+        //child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("L9FNpPzi2FouktspF3G")
+
+        //myRef.setValue("Detail for item triggered");
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            /*
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                //Toast.makeText(getContext(),"Value is: " + value,Toast.LENGTH_SHORT).show();
+                //Log.d(TAG, "Value is: " + value);
+            }*/
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //String Readyforarraytransmit = "";
+                //String code = dataSnapshot.child("shoes").getValue(String.class);
+                //String family = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getValue(String.class);
+                //String father = dataSnapshot.child("-L9FNpPzi2FouktspF3G").getValue(String.class);
+                //String mother = dataSnapshot.child("motherName").getValue(String.class);
+                String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getKey();
+                //Toast.makeText(getContext(),"Zeta: " + ds,Toast.LENGTH_SHORT).show();
+                //ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getKey();
+                //Toast.makeText(getContext(),"Zeta: " + ds,Toast.LENGTH_SHORT).show();
+                for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getChildren())
+                {
+                    Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
+                }
+                //Toast.makeText(getContext(),"Zeta: " + ds,Toast.LENGTH_SHORT).show();
+
+
+
+                ////for (DataSnapshot ds : dataSnapshot.child("shoes").getChildren()) {
+                ////    Log.d("TAG", ds.getValue(String.class));
+                ////    System.out.println(ds.getValue(String.class));
+                    //mShoeList.add(new Shoe(childSnapshot));
+                ////}
+                //for (DataSnapshot childSnapshot: dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getChildren()) {
+                    //System.out.println(childSnapshot.getValue(String.class));
+                    //mShoeList.add(new Shoe(childSnapshot));
+                    //Readyforarraytransmit = Readyforarraytransmit + " TTT " + childSnapshot.getValue(String.class);
+                    //Log.d("hello",childSnapshot.getValue(String.class));
+                //}
+                //Toast.makeText(getContext(),"Readyforarraytransmit" + mShoeList.toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG, "Failed to read value.", error.toException());
+                //Toast.makeText(getContext(),"error commander: " + error.toException(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        //////////////////////////////////////////////////////////////////////////
 
         ArrayList<String> alist = new ArrayList<String>();
         alist.add("jamesOS");
