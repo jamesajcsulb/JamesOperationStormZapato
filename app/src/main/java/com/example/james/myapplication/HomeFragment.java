@@ -27,6 +27,8 @@ public class HomeFragment extends Fragment
     private GridView gridView = null;
     private ArrayList<Shoe> mShoeList = null;
     private ImageAdapter mImageAdapter = null;
+    private ArrayList<String> shoearraypass = null;
+    private ArrayAdapter<Shoe> adap = null;
 
     public HomeFragment()
     {
@@ -94,44 +96,23 @@ public class HomeFragment extends Fragment
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            /*
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                //Toast.makeText(getContext(),"Value is: " + value,Toast.LENGTH_SHORT).show();
-                //Log.d(TAG, "Value is: " + value);
-            }*/
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //String Readyforarraytransmit = "";
-                //String code = dataSnapshot.child("shoes").getValue(String.class);
-                //String family = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getValue(String.class);
-                //String father = dataSnapshot.child("-L9FNpPzi2FouktspF3G").getValue(String.class);
-                //String mother = dataSnapshot.child("motherName").getValue(String.class);
+                shoearraypass = new ArrayList<String>();
                 String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getKey();
-                //Toast.makeText(getContext(),"Zeta: " + ds,Toast.LENGTH_SHORT).show();
-                //ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getKey();
-                //Toast.makeText(getContext(),"Zeta: " + ds,Toast.LENGTH_SHORT).show();
-                for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getChildren())
+                for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren())
+                    //for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getChildren())
                 {
-                    Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
+                    shoearraypass.add("" + snaparray.getValue());
+                    //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
                 }
-                //Toast.makeText(getContext(),"Zeta: " + ds,Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(getContext(),"Zeta: " + shoearraypass.toString(),Toast.LENGTH_SHORT).show();
 
+                ArrayAdapter<Shoe> adap = new ArrayAdapter(getActivity(),
+                        android.R.layout.simple_list_item_1, shoearraypass);
 
-                ////for (DataSnapshot ds : dataSnapshot.child("shoes").getChildren()) {
-                ////    Log.d("TAG", ds.getValue(String.class));
-                ////    System.out.println(ds.getValue(String.class));
-                    //mShoeList.add(new Shoe(childSnapshot));
-                ////}
-                //for (DataSnapshot childSnapshot: dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").child("-L9FNpPzi2FouktspF3G").getChildren()) {
-                    //System.out.println(childSnapshot.getValue(String.class));
-                    //mShoeList.add(new Shoe(childSnapshot));
-                    //Readyforarraytransmit = Readyforarraytransmit + " TTT " + childSnapshot.getValue(String.class);
-                    //Log.d("hello",childSnapshot.getValue(String.class));
-                //}
-                //Toast.makeText(getContext(),"Readyforarraytransmit" + mShoeList.toString(),Toast.LENGTH_SHORT).show();
+                ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
+                mListView.setAdapter(adap);
             }
 
             @Override
@@ -159,12 +140,20 @@ public class HomeFragment extends Fragment
         alist.add("Linux");
         alist.add("OS/2");
 
-        ArrayAdapter<String> adapterr = new ArrayAdapter(getActivity(),
+        //ArrayAdapter<String> adapterr = new ArrayAdapter(getActivity(),
+        //        android.R.layout.simple_list_item_1, alist);
+
+        ///////shoearraypass
+        //ArrayList<Shoe> shoelist = new ArrayList<Shoe>();
+        //shoelist.addAll(shoearraypass);
+        ArrayAdapter<Shoe> adapterr = new ArrayAdapter(getActivity(),
                 android.R.layout.simple_list_item_1, alist);
 
-        ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
-        mListView.setAdapter(adapterr);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        //ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
+        //mListView.setAdapter(adapterr);
+        //mListView.setAdapter(adap);
+        /*mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -184,7 +173,7 @@ public class HomeFragment extends Fragment
                 ft.replace(R.id.fragment_container, fragment);
                 ft.commit();
             }
-        });
+        });*/
 
         return v;
     }
