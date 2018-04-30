@@ -30,12 +30,6 @@ public class HomeFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState)
     {
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello, World!");
-
 /*        ////////////////////////////////////////////////////
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -84,6 +78,14 @@ public class HomeFragment extends Fragment
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                //////////////////////////////////////////////////////////////////////////
+                // Write a message to the database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
+
+                myRef.setValue("Detail for item " + id + " triggered");
+                //////////////////////////////////////////////////////////////////////////
+
                 Fragment fragment = new HomeItemDetailsFragment();
                 Bundle arguments = new Bundle();
                 arguments.putString( "welcome" , "parent: " + parent.toString() + "\n view: " + view.toString() + "\n position: " + position + "\n id: " + id);
@@ -99,7 +101,6 @@ public class HomeFragment extends Fragment
 
     private void performTransition()
     {
-
         Fragment fragment = new HomeItemDetailsFragment();
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
