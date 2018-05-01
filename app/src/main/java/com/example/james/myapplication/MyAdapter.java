@@ -11,10 +11,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-/**
- * Created by Administrator on 12-06-2017.
- */
-
 public class MyAdapter extends BaseAdapter {
     Context context;
     ArrayList arrayList;

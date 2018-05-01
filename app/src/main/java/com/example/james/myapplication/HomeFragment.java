@@ -54,6 +54,7 @@ public class HomeFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState)
     {
+        //container.removeAllViews();
 /*        ////////////////////////////////////////////////////
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -122,7 +123,7 @@ public class HomeFragment extends Fragment
                     //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
                 }
 
-                Toast.makeText(getContext(),"Zeta: " + shoearraypass.toString(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(),"Zeta: " + shoearraypass.toString(),Toast.LENGTH_SHORT).show();
 
                 ArrayAdapter<String> adap = new ArrayAdapter(getActivity(),
                         android.R.layout.simple_list_item_1, shoearraypass);
@@ -161,9 +162,10 @@ public class HomeFragment extends Fragment
                 RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.rvNumbers);
                 int numberOfColumns = 3;
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
-                adapter = new MyRecyclerViewAdapter(getContext(), arrayshoeconv);
+                adapter = new MyRecyclerViewAdapter(getContext(), arrayshoeconv, getContext());
                 //adapter.setClickListener(this);
                 recyclerView.setAdapter(adapter);
+                //recyclerView.addOnItemTouchListener();
             }
 
             @Override

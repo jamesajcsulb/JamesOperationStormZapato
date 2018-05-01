@@ -1,5 +1,6 @@
 package com.example.james.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -22,8 +23,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+
                     loadInitialFragment();
+                    //mTextMessage.setText(R.string.title_home);
+
+                    //Intent sellIntent = new Intent(getApplicationContext(), SellActivity.class);
+                    //sellIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //startActivity(sellIntent);
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_dashboard);
@@ -78,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
 
         loadInitialFragment();
+
+        //getIntent().setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);// Intent.FLAG_ACTIVITY_CLEAR_STACK);
     }
 
     private void loadInitialFragment()
