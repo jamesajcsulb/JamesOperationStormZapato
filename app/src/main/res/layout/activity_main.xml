@@ -7,10 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvNumbers"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
 
     <GridView
         android:id="@+id/gridglide"
@@ -47,6 +44,11 @@
         android:text=""
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvNumbers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
