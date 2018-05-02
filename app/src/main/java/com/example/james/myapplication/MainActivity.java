@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
+import com.example.james.myapplication.search.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_dashboard:
                     //mTextMessage.setText(R.string.title_dashboard);
 
-                    Fragment initialFragment = ProfileFragment.newInstance();
+                    Fragment initialFragment = SearchFragment.newInstance();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
