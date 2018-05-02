@@ -6,23 +6,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:padding="5dp"
-    android:layout_width="100dp"
-    android:layout_height="100dp">
+    android:layout_width="150dp"
+    android:layout_height="150dp">
 
-    <ImageView
-        android:id="@+id/recyclerlistitemimageview"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        app:srcCompat="@android:color/holo_orange_dark" />
-<!--
-    <TextView
-        android:id="@+id/info_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/holo_orange_dark"
-        android:gravity="center" />
-        -->
+        android:layout_weight="1">
+
+
+
+        <ImageView
+            android:id="@+id/recyclerlistitemimageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:srcCompat="@android:color/holo_orange_dark" />
+
+        <ImageView
+            android:id="@+id/round_price"
+            android:layout_width="54dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:srcCompat="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:text="SHOE PRICE" />
+    </RelativeLayout>
+
+    <!--
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center" />
+            -->
 
 </LinearLayout>
