@@ -19,6 +19,11 @@ import java.net.URL
 import kotlinx.android.synthetic.main.create_account.*
 
 class CreateAccountActivity : AppCompatActivity() {
+    /*override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.create_account)
+    }*/
+
     var isloading: Boolean? = false
     var tokenIdExtract: String = ""
     var bulkToken: String = ""
@@ -73,6 +78,7 @@ class CreateAccountActivity : AppCompatActivity() {
                 someTask().execute()
             }
         }
+
     }
 
     // Inner class for handling HTTPS POST to server app
@@ -131,4 +137,5 @@ class CreateAccountActivity : AppCompatActivity() {
             return ""
         }
     }
+
 }
