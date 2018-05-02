@@ -2,11 +2,14 @@ package com.example.james.myapplication;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,6 +17,7 @@ import android.widget.Toast;
 public class HomeItemDetailsFragment extends Fragment
 {
     private MyRecyclerViewAdapter adapter;
+    private Button btn;
 
     public HomeItemDetailsFragment()
     {
@@ -40,8 +44,24 @@ public class HomeItemDetailsFragment extends Fragment
         mListView.setAdapter(null);
 
 
-        //this.adapter
+        final Button button = (Button) v.findViewById(R.id.purchase_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                performTransition();
+
+            }
+        });
 
         return v;
+    }
+
+    private void performTransition()
+    {
+        Fragment fragment = new PurchaseStepOneFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

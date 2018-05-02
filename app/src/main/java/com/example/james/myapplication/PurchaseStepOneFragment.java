@@ -33,13 +33,13 @@ public class PurchaseStepOneFragment extends Fragment
         if (v != null)
         {
         }
+//
+        //Bundle arguments = getArguments();
+        //String desired_string = arguments.getString("welcome");
+        //Toast.makeText(getContext(),"bundlereceived: " + desired_string,Toast.LENGTH_SHORT).show();
 
-        Bundle arguments = getArguments();
-        String desired_string = arguments.getString("welcome");
-        Toast.makeText(getContext(),"bundlereceived: " + desired_string,Toast.LENGTH_SHORT).show();
-
-        ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
-        mListView.setAdapter(null);
+        //ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
+        //mListView.setAdapter(null);
 /*
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.rvNumbers);
         int numberOfColumns = 2;
