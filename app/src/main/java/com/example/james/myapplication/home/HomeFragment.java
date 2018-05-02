@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
-import com.example.james.myapplication.ImageAdapter;
+import com.example.james.myapplication.models.ImageAdapter;
 import com.example.james.myapplication.models.MyAdapter;
 import com.example.james.myapplication.models.MyRecyclerViewAdapter;
 import com.example.james.myapplication.R;

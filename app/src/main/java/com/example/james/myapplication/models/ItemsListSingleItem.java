@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.models;
 
 public class ItemsListSingleItem {
     private String title,thumbnailURL;
