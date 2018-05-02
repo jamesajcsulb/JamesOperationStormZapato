@@ -27,7 +27,7 @@ class CreateAccountActivity : AppCompatActivity() {
     var isloading: Boolean? = false
     var tokenIdExtract: String = ""
     var bulkToken: String = ""
-    /*//var fba : FirebaseUser? = FirebaseAuth.getInstance().getCurrentUser()*/
+    var fba : FirebaseUser? = FirebaseAuth.getInstance().getCurrentUser()
     var db : DatabaseReference? = FirebaseDatabase.getInstance().reference
     var stripetestvar: String = ""
 
@@ -36,7 +36,7 @@ class CreateAccountActivity : AppCompatActivity() {
         setContentView(R.layout.create_account)
 
         // Read data from firebase for user on this account for stripe charge
-        val stripetestvarfirebasecustom = db!!.child("users").child("")//.child(/*fba!!.uid*/)
+        val stripetestvarfirebasecustom = db!!.child("users").child(fba!!.uid)
                 .addListenerForSingleValueEvent( object: ValueEventListener {
 
                     override fun onDataChange(dataSnapshot: DataSnapshot) {

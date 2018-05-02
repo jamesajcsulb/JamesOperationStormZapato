@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.james.myapplication.activities.Login;
+
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -84,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
 
         loadInitialFragment();
+
+        //Intent intent = new Intent(this, Login.class);
+        //startActivity(intent);
 
         //getIntent().setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);// Intent.FLAG_ACTIVITY_CLEAR_STACK);
     }
