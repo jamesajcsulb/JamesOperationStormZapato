@@ -1,22 +1,23 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.favorite;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
-public class ProfileFragment extends Fragment
-{
-    public ProfileFragment()
+import com.example.james.myapplication.R;
+
+public class FavoriteFragment extends Fragment{
+
+    public FavoriteFragment()
     {
     }
 
-    public static ProfileFragment newInstance()
+    public static FavoriteFragment newInstance()
     {
-        return new ProfileFragment();
+        return new FavoriteFragment();
     }
 
     @Override
@@ -24,7 +25,7 @@ public class ProfileFragment extends Fragment
     {
 
         //container.removeAllViews();
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_favorite, container, false);
         if (v != null)
         {
         }
@@ -34,4 +35,5 @@ public class ProfileFragment extends Fragment
 
         return v;
     }
+
 }

@@ -1,6 +1,5 @@
 package com.example.james.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.james.myapplication.activities.Login;
-
+import com.example.james.myapplication.add.PostFragment;
+import com.example.james.myapplication.favorite.FavoriteFragment;
+import com.example.james.myapplication.home.HomeFragment;
+import com.example.james.myapplication.profile.ProfileFragment;
+import com.example.james.myapplication.search.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_dashboard:
                     //mTextMessage.setText(R.string.title_dashboard);
 
-                    Fragment initialFragment = ProfileFragment.newInstance();
+                    Fragment initialFragment = SearchFragment.newInstance();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     //mTextMessage.setText(R.string.title_notifications);
 
-                    initialFragment = ProfileFragment.newInstance();
+                    initialFragment = PostFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications2:
                     //mTextMessage.setText(R.string.title_notifications);
 
-                    initialFragment = ProfileFragment.newInstance();
+                    initialFragment = FavoriteFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();

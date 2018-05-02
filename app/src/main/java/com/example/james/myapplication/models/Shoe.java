@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.models;
 
 import com.google.firebase.database.DataSnapshot;
 //import com.zapato.zapato.Network.FirebaseManager;
