@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.james.myapplication.add.PostFragment;
+import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     //mTextMessage.setText(R.string.title_notifications);
 
-                    initialFragment = PostFragment.newInstance();
+                    initialFragment = new ShareFragment();//.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
