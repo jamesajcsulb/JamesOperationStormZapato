@@ -160,7 +160,7 @@ public class HomeFragment extends Fragment
                 //adapter = new MyRecyclerViewAdapter(getContext(), data);
 
                 RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.rvNumbers);
-                int numberOfColumns = 3;
+                int numberOfColumns = 2;
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
                 adapter = new MyRecyclerViewAdapter(getContext(), arrayshoeconv, getContext(), getActivity(), new HomeFragment() );
                 //adapter.setClickListener(this);
