@@ -1,97 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="true"
-    android:background="@android:color/white">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="117dp"
-        android:layout_height="119dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:fillViewport="false">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="203dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText5"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:text="YeezyLord92"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="200dp"
-        android:layout_height="19dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:text="Rating: 5290"
-        android:textAlignment="textEnd"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="204dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="none"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        android:textAlignment="viewStart"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <android.support.design.widget.TabLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        android:layout_height="wrap_content">
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Left" />
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Center" />
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Right" />
-    </android.support.design.widget.TabLayout>
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="102dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_add_black_32dp" />
 
-</android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="114dp"
+                    android:layout_height="wrap_content"
+                    android:text="YeezyLord" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+
+
+        <!--<Button-->
+            <!--android:id="@+id/button"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="KNOW MORE" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="ssdfsdfsdfsdfdsfsdf"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="ScrollView can hold only one direct child. This means that, if you have complex layout with more view controls, you must enclose them inside another standard layout like LinearLayout, TableLayout or RelativeLayout.-->
+<!--You can specify layout_height and layout_width to adjust height and width of screen.-->
+<!--Scrollview is ideal for screens where scrolling is required, but it is an overhead when scroll view is used to render a larger list of data. Android provides specialized adapter views like ListView, GridView and Recycler View (Introduced in Android Lollipop) are recommended for long lists.-->
+<!--You should never use a ScrollView with a ListView or GridView, because they both takes care of their own vertical scrolling.-->
+<!--ScrollView only supports vertical scrolling. Use HorizontalScrollView for horizontal scrolling.-->
+<!--The android:fillViewport property defines whether the scrollview should stretch its content to fill the viewport. You can set the same property by calling setFillViewport(boolean) method.sdfdsfsdfsdfsdfsdfsdfdsfsdfsdfsdfsd"-->
+            <!--android:textAppearance="?android:attr/textAppearanceSmall" />-->
+    <!--</LinearLayout>-->
+</ScrollView>
