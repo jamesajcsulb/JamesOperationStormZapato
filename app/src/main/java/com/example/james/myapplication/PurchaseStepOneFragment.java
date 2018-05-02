@@ -11,23 +11,25 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-public class HomeItemDetailsFragment extends Fragment
+public class PurchaseStepOneFragment extends Fragment
 {
+
+
     private MyRecyclerViewAdapter adapter;
 
-    public HomeItemDetailsFragment()
+    public PurchaseStepOneFragment()
     {
     }
 
-    public static HomeItemDetailsFragment newInstance()
+    public static PurchaseStepOneFragment newInstance()
     {
-        return new HomeItemDetailsFragment();
+        return new PurchaseStepOneFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.fragment_details_item_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_details_purchase_step_one, container, false);
         if (v != null)
         {
         }
@@ -38,10 +40,14 @@ public class HomeItemDetailsFragment extends Fragment
 
         ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
         mListView.setAdapter(null);
-
-
-        //this.adapter
-
+/*
+        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.rvNumbers);
+        int numberOfColumns = 2;
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
+        adapter = new MyRecyclerViewAdapter(getContext(), null, getContext(), getActivity(), new HomeFragment() );
+        //adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+*/
         return v;
     }
 }
