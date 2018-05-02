@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.models;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,19 +10,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
 //import android.widget.TextView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.james.myapplication.MainActivity;
+import com.example.james.myapplication.R;
+import com.example.james.myapplication.home.HomeItemDetailsFragment;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static java.security.AccessController.getContext;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
@@ -37,7 +35,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private FragmentManager frasss;
 
     // data is passed into the constructor
-    MyRecyclerViewAdapter(Context context, String[] data, Context con, Activity a, Fragment fragm) {
+    public MyRecyclerViewAdapter(Context context, String[] data, Context con, Activity a, Fragment fragm) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.context = con;

@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.home;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,18 +6,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.james.myapplication.ImageAdapter;
+import com.example.james.myapplication.models.MyAdapter;
+import com.example.james.myapplication.models.MyRecyclerViewAdapter;
+import com.example.james.myapplication.R;
+import com.example.james.myapplication.models.Shoe;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,11 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 
 public class HomeFragment extends Fragment
 {
