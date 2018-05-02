@@ -162,9 +162,11 @@ public class HomeFragment extends Fragment
                 RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.rvNumbers);
                 int numberOfColumns = 3;
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
-                adapter = new MyRecyclerViewAdapter(getContext(), arrayshoeconv, getContext());
+                adapter = new MyRecyclerViewAdapter(getContext(), arrayshoeconv, getContext(), getActivity(), new HomeFragment() );
                 //adapter.setClickListener(this);
                 recyclerView.setAdapter(adapter);
+
+
                 //recyclerView.addOnItemTouchListener();
             }
 
@@ -227,6 +229,8 @@ public class HomeFragment extends Fragment
                 ft.commit();
             }
         });*/
+
+
 
         return v;
     }

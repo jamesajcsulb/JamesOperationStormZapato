@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
 public class HomeItemDetailsFragment extends Fragment
 {
     public HomeItemDetailsFragment()
