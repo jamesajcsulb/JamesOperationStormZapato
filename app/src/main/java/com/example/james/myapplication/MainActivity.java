@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     //startActivity(sellIntent);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    //mTextMessage.setText(R.string.title_dashboard);
 
                     Fragment initialFragment = ProfileFragment.newInstance();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    //mTextMessage.setText(R.string.title_notifications);
 
                     initialFragment = ProfileFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_notifications2:
-                    mTextMessage.setText(R.string.title_notifications);
+                    //mTextMessage.setText(R.string.title_notifications);
 
                     initialFragment = ProfileFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_notifications3:
-                    mTextMessage.setText(R.string.title_notifications);
+                    //mTextMessage.setText(R.string.title_notifications);
 
                     initialFragment = ProfileFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
