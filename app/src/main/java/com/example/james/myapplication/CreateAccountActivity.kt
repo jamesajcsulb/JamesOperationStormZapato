@@ -6,8 +6,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import android.support.v7.app.AppCompatActivity
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.stripe.android.model.Card
 import com.stripe.android.Stripe
