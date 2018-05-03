@@ -40,7 +40,14 @@ public class HomeItemDetailsFragment extends Fragment
 
         Bundle arguments = getArguments();
         String desired_string = arguments.getString("welcome");
-        Toast.makeText(getContext(),"bundlereceived: " + desired_string,Toast.LENGTH_SHORT).show();
+        String desired_string2 = arguments.getString("itemId");
+        String desired_string3 = arguments.getString("itemPicture");
+        String desired_string4 = arguments.getString("itemDescription");
+        Toast.makeText(getContext(),"bundlereceived: \n\n"
+                + desired_string + " \n\n" + desired_string2
+                        + " \n\n" + desired_string3 + " \n\n" + desired_string4
+                ,Toast.LENGTH_SHORT).show();
+
 
         ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
         mListView.setAdapter(null);
