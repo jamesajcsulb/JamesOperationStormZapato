@@ -34,4 +34,5 @@ class User {
         this.email = dataSnapshot.child("email").value.toString()
     }
 
+
 }

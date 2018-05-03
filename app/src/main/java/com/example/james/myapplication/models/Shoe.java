@@ -54,5 +54,17 @@ public class Shoe implements Serializable {
         this.price = Double.valueOf(String.valueOf(snapshot.child("price").getValue()));
     }
 
+    public String getShoeImageUrl()
+    {
+        //String aaaa = this.shoeImageUrl = snapshot.child("shoeImageUrl").getValue().toString();
+        //this.shoeImageUrl = snapshot.child("shoeImageUrl").getValue().toString();
+        return shoeImageUrl;
+    }
+
+    public double getShoePrice()
+    {
+        return price;
+    }
+
 
 }

@@ -66,6 +66,10 @@ class FirebaseManager {
     var storageRef = FirebaseStorage.getInstance().getReference("ShoeImages")
 
 
+    fun getBuyNowRef(): DatabaseReference
+    {
+        return buynow_ref;
+    }
     // MARK - Return Current Logged in User
 
     fun CurrenUser(): FirebaseUser? {
