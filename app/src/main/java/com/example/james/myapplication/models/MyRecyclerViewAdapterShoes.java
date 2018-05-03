@@ -33,6 +33,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
     private Context context;
     private ImageView myImageView;
     private TextView myTextView;
+    private TextView myBrandTextView;
     public ImageView recyclerimageView;
     private Activity ac;
     private Fragment fra;
@@ -58,6 +59,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
         recyclerimageView=(ImageView)view.findViewById(R.id.recyclerlistitemimageview);
         myImageView=(ImageView)view.findViewById(R.id.recyclerlistitemimageview);
         myTextView=(TextView)view.findViewById(R.id.textView2);
+        myBrandTextView=(TextView)view.findViewById(R.id.brand);
 
         return new ViewHolder(view);
     }
@@ -95,6 +97,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
 
 
         myTextView.setText("" + arrayList.get(position).getShoePrice());
+        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
     }
 
     // total number of cells

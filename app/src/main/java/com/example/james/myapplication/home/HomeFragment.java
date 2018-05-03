@@ -66,12 +66,19 @@ public class HomeFragment extends Fragment
                 shoearraypass = new ArrayList<String>();
                 classshoe = new ArrayList<Shoe>();
                 String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getKey();
-                for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren())
-                {
-                    shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
-                    classshoe.add(new Shoe(snaparray));
-                    //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
+                for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
+                    //for() {
+                        shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
+                        classshoe.add(new Shoe(snaparray));
+                        //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
+                    //}
                 }
+                    //for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren())
+                //{
+                //    shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
+                //    classshoe.add(new Shoe(snaparray));
+                    //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
+                //}
 
                 //MyAdapter myadapter=new MyAdapter(getActivity(),shoearraypass);
                 String[] arrayshoeconv = shoearraypass.toArray(new String[0]);

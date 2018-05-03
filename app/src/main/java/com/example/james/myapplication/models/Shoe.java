@@ -66,5 +66,10 @@ public class Shoe implements Serializable {
         return price;
     }
 
+    public String getShoeBrand()
+    {
+        return brand;
+    }
+
 
 }

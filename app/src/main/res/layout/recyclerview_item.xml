@@ -15,7 +15,6 @@
         android:layout_weight="1">
 
 
-
         <ImageView
             android:id="@+id/recyclerlistitemimageview"
             android:layout_width="match_parent"
@@ -23,6 +22,15 @@
             android:layout_weight="1"
             android:gravity="center"
             app:srcCompat="@android:color/holo_orange_dark" />
+
+        <TextView
+            android:id="@+id/brand"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:text="SHOE PRICE" />
 
         <ImageView
             android:id="@+id/round_price"
@@ -32,7 +40,7 @@
             android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:gravity="center"
-            app:srcCompat="@android:color/holo_blue_dark" />
+            app:srcCompat="@layout/circle" />
 
         <TextView
             android:id="@+id/textView2"
@@ -42,6 +50,7 @@
             android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:text="SHOE PRICE" />
+
     </RelativeLayout>
 
     <!--
