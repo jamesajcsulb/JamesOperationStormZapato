@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.james.myapplication.R;
 
-
 /**
  * Created by f22labs on 07/03/17.
  */
@@ -27,7 +26,6 @@ public class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             ///////getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
-
         }
     }
 
@@ -39,16 +37,8 @@ public class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             ///////getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
-
         }
 
         getSupportActionBar().setTitle(title);
-
-
-
     }
-
-
-
-
 }

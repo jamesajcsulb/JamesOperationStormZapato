@@ -23,5 +23,4 @@ public class SellActivity extends AppCompatActivity {
 
         mTextMessage = (TextView) findViewById(R.id.message);
     }
-
 }

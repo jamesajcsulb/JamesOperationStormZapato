@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
@@ -21,62 +20,38 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private FragmentManager mFragmentManager;
 
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-
                 case R.id.navigation_home:
-
                     Fragment initialFragment = loadInitialFragment();
-                    //mTextMessage.setText(R.string.title_home);
-
-                    //Intent sellIntent = new Intent(getApplicationContext(), SellActivity.class);
-                    //sellIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //startActivity(sellIntent);
                     return true;
-
                 case R.id.navigation_dashboard:
-                    //mTextMessage.setText(R.string.title_dashboard);
-
                     initialFragment = SearchFragment.newInstance();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
-
                     return true;
-
                 case R.id.navigation_notifications:
-                    //mTextMessage.setText(R.string.title_notifications);
-
                     initialFragment = ShareFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
-
                     return true;
-
                 case R.id.navigation_notifications2:
-                    //mTextMessage.setText(R.string.title_notifications);
-
                     initialFragment = FavoriteFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
-
                     return true;
-
                 case R.id.navigation_notifications3:
-                    //mTextMessage.setText(R.string.title_notifications);
-
                     initialFragment = ProfileFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
-
                     return true;
             }
             return false;
@@ -95,11 +70,6 @@ public class MainActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
 
         loadInitialFragment();
-
-        //Intent intent = new Intent(this, Login.class);
-        //startActivity(intent);
-
-        //getIntent().setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);// Intent.FLAG_ACTIVITY_CLEAR_STACK);
     }
 
     private Fragment loadInitialFragment()
@@ -111,13 +81,10 @@ public class MainActivity extends AppCompatActivity {
         return initialFragment;
     }
 
-
-
     public void switchContent(int id, Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(id, fragment, fragment.toString());
         ft.addToBackStack(null);
         ft.commit();
     }
-
 }

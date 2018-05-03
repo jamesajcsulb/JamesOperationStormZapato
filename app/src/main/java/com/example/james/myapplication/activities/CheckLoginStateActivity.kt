@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.example.james.myapplication.Network.FirebaseManager
 import com.example.james.myapplication.R
 
-
 // MARK - MainActivity class simply check user persistent
 
 class CheckLoginStateActivity  : AppCompatActivity() {
@@ -25,9 +24,7 @@ class CheckLoginStateActivity  : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         oneTimeCode()
-
     }
-
 
     // MARK - One Time Code
 
@@ -63,5 +60,4 @@ class CheckLoginStateActivity  : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

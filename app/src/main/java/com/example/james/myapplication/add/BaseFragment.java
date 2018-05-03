@@ -13,7 +13,6 @@ public class BaseFragment extends Fragment {
 
     public static final String ARGS_INSTANCE = "com.f22labs.instalikefragmenttransaction";
 
-
     FragmentNavigation mFragmentNavigation;
 
     @Override
@@ -21,7 +20,6 @@ public class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -34,10 +32,4 @@ public class BaseFragment extends Fragment {
     public interface FragmentNavigation {
         void pushFragment(Fragment fragment);
     }
-
-
-
-
-
-
 }

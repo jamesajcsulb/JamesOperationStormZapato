@@ -19,10 +19,6 @@ import java.net.URL
 import kotlinx.android.synthetic.main.create_account.*
 
 class CreateAccountActivity : AppCompatActivity() {
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.create_account)
-    }*/
 
     var isloading: Boolean? = false
     var tokenIdExtract: String = ""
@@ -38,7 +34,6 @@ class CreateAccountActivity : AppCompatActivity() {
         // Read data from firebase for user on this account for stripe charge
         val stripetestvarfirebasecustom = db!!.child("users").child(fba!!.uid)
                 .addListenerForSingleValueEvent( object: ValueEventListener {
-
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         val children = dataSnapshot!!.child("stripecus")
                         stripetestvar = children.value.toString()
@@ -47,7 +42,6 @@ class CreateAccountActivity : AppCompatActivity() {
                     override fun onCancelled(error: DatabaseError) {
                         // This block neede to override object: ValueEventListener
                     }
-
                 })
 
         // Stripe card input widget
@@ -69,7 +63,6 @@ class CreateAccountActivity : AppCompatActivity() {
         // Add confirm purchase button listener
         val btn_click_me = findViewById(R.id.button3) as Button
         btn_click_me.setOnClickListener {
-
             // Toast to android user what action was taken by the user
             Toast.makeText(this@CreateAccountActivity, "Confirm purchase button clicked.", Toast.LENGTH_SHORT).show()
 
@@ -78,7 +71,6 @@ class CreateAccountActivity : AppCompatActivity() {
                 someTask().execute()
             }
         }
-
     }
 
     // Inner class for handling HTTPS POST to server app
@@ -111,8 +103,6 @@ class CreateAccountActivity : AppCompatActivity() {
                 connect.requestMethod = "POST"
                 connect.doOutput = true
 
-
-
                 val urlParameters = "loggedinuser=" + stripetestvar + "&message=" + tokenIdExtract + "&amountt=" + editText4.text + "&tokenbulkstring=" + bulkToken
 
                 connect.doOutput = true
@@ -137,5 +127,4 @@ class CreateAccountActivity : AppCompatActivity() {
             return ""
         }
     }
-
 }

@@ -10,15 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.example.james.myapplication.models.MyRecyclerViewAdapter;
+import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 import com.example.james.myapplication.PurchaseStepOneFragment;
 import com.example.james.myapplication.R;
 
-
 public class HomeItemDetailsFragment extends Fragment
 {
-    private MyRecyclerViewAdapter adapter;
+    private MyRecyclerViewAdapterShoes adapter;
     private Button btn;
 
     public HomeItemDetailsFragment()
@@ -34,9 +32,6 @@ public class HomeItemDetailsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_details_item_home, container, false);
-        if (v != null)
-        {
-        }
 
         Bundle arguments = getArguments();
         String desired_string = arguments.getString("welcome");
@@ -48,10 +43,8 @@ public class HomeItemDetailsFragment extends Fragment
                         + " \n\n" + desired_string3 + " \n\n" + desired_string4
                 ,Toast.LENGTH_SHORT).show();
 
-
         ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
         mListView.setAdapter(null);
-
 
         final Button button = (Button) v.findViewById(R.id.purchase_button);
         button.setOnClickListener(new View.OnClickListener() {

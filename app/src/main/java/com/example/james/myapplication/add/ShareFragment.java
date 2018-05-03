@@ -1,6 +1,5 @@
 package com.example.james.myapplication.add;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,14 +19,12 @@ import com.example.james.myapplication.R;
 
 import java.util.ArrayList;
 
-
 public class ShareFragment extends BaseFragment {
 
     public static ShareFragment newInstance()
     {
         return new ShareFragment();
     }
-
 
     String TAG = "ShareFragment";
 
@@ -39,8 +36,6 @@ public class ShareFragment extends BaseFragment {
     int pictureCount = 0;
     int stepCount = 0;
     MainActivity mainRef = new MainActivity();
-
-
 
     private ArrayList<ImageView> shoe_photos;
 //    private ImageAdapter mImageAdapter;
@@ -60,8 +55,6 @@ public class ShareFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_share, container, false);
         view.setBackgroundColor(Color.WHITE);
 //        ButterKnife.bind(this, view);
-
-
 
         photo1= view.findViewById(R.id.imageView1);
         photo2= view.findViewById(R.id.imageView2);
@@ -145,6 +138,4 @@ public class ShareFragment extends BaseFragment {
             }
         }
     }
-
-
 }
