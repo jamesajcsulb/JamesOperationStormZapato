@@ -1,30 +1,33 @@
 package com.example.james.myapplication.add;
 
-import android.app.Activity;
-//import android.app.Fragment;
 
-import android.support.v4.app.Fragment;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.TextInputEditText;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.james.myapplication.R;
+import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.R;
 
 import java.util.ArrayList;
 
-//import butterknife.ButterKnife;
 
+public class ShareFragment extends BaseFragment {
 
-public class ShareFragment extends Fragment{
+    public static ShareFragment newInstance()
+    {
+        return new ShareFragment();
+    }
+
 
     String TAG = "ShareFragment";
 
@@ -33,8 +36,10 @@ public class ShareFragment extends Fragment{
     private ImageView photo2;
     private ImageView photo3;
     private ImageView photo4;
-    private TextInputEditText titleText;
     int pictureCount = 0;
+    int stepCount = 0;
+    MainActivity mainRef = new MainActivity();
+
 
 
     private ArrayList<ImageView> shoe_photos;
@@ -52,28 +57,43 @@ public class ShareFragment extends Fragment{
 
         // Inflate the layout for this fragment
 
-        //View view = inflater.inflate(R.layout.fragment_share_1, container, false);
-        //ButterKnife.bind(this, view);
-        View view = inflater.inflate(R.layout.fragment_post, container, false);
-
-        //getActivity().findViewById(view);
+        View view = inflater.inflate(R.layout.fragment_share, container, false);
+        view.setBackgroundColor(Color.WHITE);
+//        ButterKnife.bind(this, view);
 
 
 
-        titleText = view.findViewById(R.id.edit_title);
         photo1= view.findViewById(R.id.imageView1);
         photo2= view.findViewById(R.id.imageView2);
         photo3= view.findViewById(R.id.imageView3);
-//        photo4= view.findViewById(R.id.imageView4);
-        // TODO : Fix thumbnail rotation issue when pictures taken
+        photo4= view.findViewById(R.id.imageView4);
         // TODO : Make ImageViews of taken pictures deletable when clicked
         // TODO : Save full-size taken pictures into Zapato DB, then access them from Product Detail page
-        pictureButtonListen(view);
+        setButtonListeners(view, inflater, container);
 
         return view;
     }
 
-    public void pictureButtonListen(View view){
+    public void setButtonListeners(View view, LayoutInflater inflater, ViewGroup container){
+
+        view.findViewById(R.id.next_button1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"go to next",Toast.LENGTH_SHORT).show();
+//                changeView(view);
+//              ButterKnife.bind(this, view);
+            }
+        });
+
+        view.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO : Return to new_post step 1
+                //new ShareFragment();
+//              mainRef.getRootFragment(2);
+            }
+        });
+
         view.findViewById(R.id.takephoto_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +101,15 @@ public class ShareFragment extends Fragment{
             }
         });
     }
+
+//    public void changeView(View view){
+//        ViewGroup parent = (ViewGroup)view.getParent();
+//        int index = parent.indexOfChild(view);
+//        parent.removeView(view);
+//        view = getLayoutInflater().inflate(R.layout.fragment_share_2, parent, false);
+//        parent.addView(view, index);
+//
+//    }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -104,13 +133,13 @@ public class ShareFragment extends Fragment{
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             switch (pictureCount) {
                 case 1: photo1.setImageBitmap(imageBitmap); photo1.setRotation(90);
-                break;
+                    break;
                 case 2: photo2.setImageBitmap(imageBitmap); photo2.setRotation(90);
-                break;
+                    break;
                 case 3: photo3.setImageBitmap(imageBitmap); photo3.setRotation(90);
                     break;
-//                case 4: photo4.setImageBitmap(imageBitmap); photo4.setRotation(90);
-//                    break;
+                case 4: photo4.setImageBitmap(imageBitmap); photo4.setRotation(90);
+                    break;
                 default:
                     break;
             }
