@@ -92,7 +92,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
             arguments.putString( "itemId" , "" + getAdapterPosition());
             arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
             arguments.putString( "itemDescription" , "" + mShoe.get(getAdapterPosition()).getShoePrice()
-                    + mShoe.get(getAdapterPosition()).getShoeBrand());
+                    + " " + mShoe.get(getAdapterPosition()).getShoeBrand());
             fragment.setArguments(arguments);
             final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
             ft.replace(R.id.fragment_container, fragment);

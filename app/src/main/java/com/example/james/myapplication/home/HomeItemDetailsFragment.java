@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,10 +26,9 @@ public class HomeItemDetailsFragment extends Fragment
     private MyRecyclerViewAdapterShoes adapter;
     private Button btn;
     private ImageView myImageView;
+    private TextView mTextView;
 
-    public HomeItemDetailsFragment()
-    {
-    }
+    public HomeItemDetailsFragment(){}
 
     public static HomeItemDetailsFragment newInstance()
     {
@@ -50,12 +50,18 @@ public class HomeItemDetailsFragment extends Fragment
         //                + " \n\n" + desired_string3 + " \n\n" + desired_string4
         //        ,Toast.LENGTH_SHORT).show();
 
-        ////////////////////////////////////////
+        myImageView=(ImageView)v.findViewById(R.id.imageView);
+        Glide.with(myImageView.getContext())
+                .load(""+arguments.getString("itemPicture"))
+                .into(myImageView);
 
-        ////////////////////////////////////////
+        //ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
+        //mListView.setAdapter(null);
 
-        ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
-        mListView.setAdapter(null);
+        // Set completDeatilsText
+
+        //mTextView = (TextView) getActivity().findViewById(R.id.completeDetailsText);
+        //mTextView.setText("" + desired_string3 + desired_string4);
 
         final Button button = (Button) v.findViewById(R.id.purchase_button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -65,22 +71,28 @@ public class HomeItemDetailsFragment extends Fragment
             }
         });
 
-        ////////////////////////////////////////////
-        //View view = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+        /*
+        LinearLayoutManager layoutManager
+            = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
-        //recyclerimageView=(ImageView)v.findViewById(R.id.recyclerlistitemimageview);
-        myImageView=(ImageView)v.findViewById(R.id.imageView);
-        //myTextView=(TextView)v.findViewById(R.id.textView2);
-        //myBrandTextView=(TextView)v.findViewById(R.id.brand);
-        //
-        Glide.with(myImageView.getContext())
-                .load(""+arguments.getString("itemPicture"))
-                .into(myImageView);
-        //myTextView.setText("" + arrayList.get(position).getShoePrice());
-        //myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
-        ///////////////////////////////////////////
-
+        RecyclerView myList = (RecyclerView) findViewById(R.id.my_recycler_view);
+        myList.setLayoutManager(layoutManager);
+         */
         return v;
+    }
+
+    //@Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+
+        Bundle arguments = getArguments();
+        String desired_string = arguments.getString("welcome");
+        String desired_string2 = arguments.getString("itemId");
+        String desired_string3 = arguments.getString("itemPicture");
+        String desired_string4 = arguments.getString("itemDescription");
+
+        mTextView = (TextView) getActivity().findViewById(R.id.completeDetailsText);
+        mTextView.setText("Item ID:" + desired_string2 + " \nDescription: " + desired_string4);
     }
 
     private void performTransition()

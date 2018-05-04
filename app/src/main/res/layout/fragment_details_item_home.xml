@@ -11,49 +11,27 @@
         android:layout_height="188dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:srcCompat="@android:color/darker_gray" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-193dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Price" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="101dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Description" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="193dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Shoe Name" />
 
     <Button
         android:id="@+id/purchase_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="55dp"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:background="@drawable/addtocartsnapshot" />
+
+    <TextView
+        android:id="@+id/completeDetailsText"
+        android:layout_width="223dp"
+        android:layout_height="83dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="61dp"
-        android:layout_marginStart="136dp"
-        android:text="Add to cart" />
+        android:layout_marginBottom="135dp"
+        android:layout_marginStart="44dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
 </RelativeLayout>
