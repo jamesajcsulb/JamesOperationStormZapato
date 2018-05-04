@@ -90,21 +90,18 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         loadInitialFragment();
 
         ///////////////////////////////
-        tts = new TextToSpeech(this, this);
-
-        btnSpeak = (Button) findViewById(R.id.btnSpeak);
-
-        txtText = (EditText) findViewById(R.id.txtText);
-
+        //tts = new TextToSpeech(this, this);
+        ////btnSpeak = (Button) findViewById(R.id.btnSpeak);
+       /// txtText = (EditText) findViewById(R.id.txtText);
         // button on click event
-        btnSpeak.setOnClickListener(new View.OnClickListener() {
+        //btnSpeak.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View arg0) {
-                speakOut();
-            }
+            //@Override
+            //public void onClick(View arg0) {
+            //    speakOut();
+            //}
 
-        });
+        //});
     //}
     ///////////////////
     }
