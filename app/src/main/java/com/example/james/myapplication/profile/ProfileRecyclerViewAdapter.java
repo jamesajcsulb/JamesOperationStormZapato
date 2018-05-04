@@ -1,4 +1,4 @@
-package com.example.james.myapplication.models;
+package com.example.james.myapplication.profile;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,14 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.home.HomeItemDetailsFragment;
-import java.util.ArrayList;
-import android.widget.Toast;
+import com.example.james.myapplication.models.Shoe;
 
-public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerViewAdapterShoes.ViewHolder> {
+import java.util.ArrayList;
+
+public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecyclerViewAdapter.ViewHolder> {
 
     private String[] mData = new String[0];
     private ArrayList<Shoe> mShoe = new ArrayList<Shoe>();
@@ -35,7 +37,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
     private FragmentManager frasss;
 
     // data is passed into the constructor
-    public MyRecyclerViewAdapterShoes(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
+    public ProfileRecyclerViewAdapter(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
         this.mInflater = LayoutInflater.from(context);
         //this.mData = data;
         this.context = con;

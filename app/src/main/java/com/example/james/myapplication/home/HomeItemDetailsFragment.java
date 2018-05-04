@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 import com.example.james.myapplication.PurchaseStepOneFragment;
 import com.example.james.myapplication.R;
+import com.example.james.myapplication.profile.ProfileFragment;
 
 public class HomeItemDetailsFragment extends Fragment
 {
@@ -27,6 +28,13 @@ public class HomeItemDetailsFragment extends Fragment
     private Button btn;
     private ImageView myImageView;
     private TextView mTextView;
+
+    public static HomeItemDetailsFragment newInstance(String param1, String param2) {
+        HomeItemDetailsFragment fragment = new HomeItemDetailsFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public HomeItemDetailsFragment(){}
 

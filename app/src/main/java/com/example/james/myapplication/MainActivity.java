@@ -49,27 +49,27 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     return true;
                 case R.id.navigation_dashboard:
                     //initialFragment = SearchFragment.newInstance();
-                    initialFragment = new fragment_speech();
+                    Fragment initialFragment0 = new fragment_speech();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, initialFragment);
+                    fragmentTransaction.replace(R.id.fragment_container, initialFragment0);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_notifications:
-                    initialFragment = new ShareFragment();
+                    Fragment initialFragment2 = new ShareFragment();
                     fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, initialFragment);
+                    fragmentTransaction.replace(R.id.fragment_container, initialFragment2);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_notifications2:
-                    initialFragment = FavoriteFragment.newInstance();
+                    Fragment initialFragment3 = FavoriteFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, initialFragment);
+                    fragmentTransaction.replace(R.id.fragment_container, initialFragment3);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_notifications3:
-                    initialFragment = ProfileFragment.newInstance();
+                    Fragment initialFragment4 = ProfileFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, initialFragment);
+                    fragmentTransaction.replace(R.id.fragment_container, initialFragment4);
                     fragmentTransaction.commit();
                     return true;
             }
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         mFragmentManager = getSupportFragmentManager();
 
-        loadInitialFragment();
+        //loadInitialFragment();
 
         ///////////////////////////////
         //tts = new TextToSpeech(this, this);

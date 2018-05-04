@@ -15,6 +15,7 @@ import com.example.james.myapplication.models.ImageAdapter;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 import com.example.james.myapplication.models.Shoe;
+import com.example.james.myapplication.profile.ProfileFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +35,11 @@ public class HomeFragment extends Fragment
     private RecyclerView recycled = null;
     private MyRecyclerViewAdapterShoes adaptershoe;
 
-    public HomeFragment()
-    {
+    public static HomeFragment newInstance(String param1, String param2) {
+        HomeFragment fragment = new HomeFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     public static HomeFragment newInstance()
@@ -59,13 +63,13 @@ public class HomeFragment extends Fragment
                 String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getKey();
                 for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
                     //for() {
-                        shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
-                        classshoe.add(new Shoe(snaparray));
-                        //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
+                    shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
+                    classshoe.add(new Shoe(snaparray));
+                    //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
                     //}
                 }
 
-                RecyclerView recyclerView2 = (RecyclerView) getActivity().findViewById(R.id.rvNumbers);
+                RecyclerView recyclerView2 = (RecyclerView) getActivity().findViewById(R.id.recycler_view);
                 int numberOfColumns2 = 2;
                 recyclerView2.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns2));
                 adaptershoe = new MyRecyclerViewAdapterShoes(getContext(), classshoe, getContext(), getActivity(), new HomeFragment() );
@@ -78,15 +82,5 @@ public class HomeFragment extends Fragment
         });
 
         return v;
-    }
-
-    private void performTransition()
-    {
-        Fragment fragment = new HomeItemDetailsFragment();
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
     }
 }
