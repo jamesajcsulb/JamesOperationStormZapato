@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_notifications:
-                    initialFragment = ShareFragment.newInstance();
+                    initialFragment = new ShareFragment();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();

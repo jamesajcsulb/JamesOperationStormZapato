@@ -6,17 +6,18 @@
     android:clickable="true"
     android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/btnSpeak"
+    <Button
+        android:id="@+id/btnSpeak2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="152dp"
         android:clickable="true"
         android:gravity="center"
         android:padding="16dp"
         android:text="Tap to Open Mic"
+        android:textColor="@android:color/black"
         android:textSize="22sp"
         android:textStyle="normal" />
 
@@ -26,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
         android:textSize="26sp"
         android:textStyle="normal" />
 
