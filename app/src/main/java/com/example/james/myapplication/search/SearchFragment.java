@@ -36,11 +36,11 @@ public class SearchFragment extends Fragment
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users");
-        myRef.child("21fGOBPcK8ZffFD1NV3OgV8ofLk1").child("").addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.child("21fGOBPcK8ZffFD1NV3OgV8ofLk1").child("name").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    Toast.makeText(getContext(),"Agustin Barajas" + dataSnapshot.getKey(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"" + dataSnapshot.getValue(),Toast.LENGTH_LONG).show();
                 } else {
                 }
             }
