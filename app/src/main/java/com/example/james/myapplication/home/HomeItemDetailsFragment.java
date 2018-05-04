@@ -4,12 +4,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 import com.example.james.myapplication.PurchaseStepOneFragment;
 import com.example.james.myapplication.R;
@@ -18,6 +24,7 @@ public class HomeItemDetailsFragment extends Fragment
 {
     private MyRecyclerViewAdapterShoes adapter;
     private Button btn;
+    private ImageView myImageView;
 
     public HomeItemDetailsFragment()
     {
@@ -57,6 +64,21 @@ public class HomeItemDetailsFragment extends Fragment
 
             }
         });
+
+        ////////////////////////////////////////////
+        //View view = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+
+        //recyclerimageView=(ImageView)v.findViewById(R.id.recyclerlistitemimageview);
+        myImageView=(ImageView)v.findViewById(R.id.imageView);
+        //myTextView=(TextView)v.findViewById(R.id.textView2);
+        //myBrandTextView=(TextView)v.findViewById(R.id.brand);
+        //
+        Glide.with(myImageView.getContext())
+                .load(""+arguments.getString("itemPicture"))
+                .into(myImageView);
+        //myTextView.setText("" + arrayList.get(position).getShoePrice());
+        //myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
+        ///////////////////////////////////////////
 
         return v;
     }
