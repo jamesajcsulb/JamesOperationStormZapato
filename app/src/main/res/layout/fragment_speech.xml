@@ -1,0 +1,33 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/btnSpeak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="164dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Tap to Open Mic"
+        android:textSize="22sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/voiceInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:textSize="26sp"
+        android:textStyle="normal" />
+
+</RelativeLayout>

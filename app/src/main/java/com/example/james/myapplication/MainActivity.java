@@ -22,6 +22,7 @@ import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
 import com.example.james.myapplication.search.SearchFragment;
+import com.example.james.myapplication.search.fragment_speech;
 
 import org.w3c.dom.Text;
 
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     Fragment initialFragment = loadInitialFragment();
                     return true;
                 case R.id.navigation_dashboard:
-                    initialFragment = SearchFragment.newInstance();
+                    //initialFragment = SearchFragment.newInstance();
+                    initialFragment = new fragment_speech();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment);
                     fragmentTransaction.commit();
