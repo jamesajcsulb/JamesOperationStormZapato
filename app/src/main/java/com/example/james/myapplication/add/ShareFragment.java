@@ -6,15 +6,16 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,15 +25,23 @@ import com.example.james.myapplication.R;
 
 public class ShareFragment extends Fragment {
 
+    public ShareFragment()
+    {
+    }
+    public static ShareFragment newInstance()
+    {
+        return new ShareFragment();
+    }
+
     String TAG = "ShareFragment";
 
-    private GridView thumbnail_grid;
+    EditText editTitle;
     private ImageView photo1;
     private ImageView photo2;
     private ImageView photo3;
     private ImageView photo4;
+    Button takePicButton;
     int pictureCount = 0;
-    TextInputEditText textIn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,9 +58,9 @@ public class ShareFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_share1, container, false);
         //ButterKnife.bind(this, view);
 
-
-        textIn=view.findViewById(R.id.edit_title);
-        photo1= view.findViewById(R.id.imageView1);
+        editTitle = view.findViewById(R.id.textInputLayout2);
+        takePicButton = view.findViewById(R.id.takephoto_button);
+        photo1= view.findViewById(R.id.imageView);
         photo2= view.findViewById(R.id.imageView2);
         photo3= view.findViewById(R.id.imageView3);
         photo4= view.findViewById(R.id.imageView4);
@@ -86,8 +95,21 @@ public class ShareFragment extends Fragment {
             }
         });
 
+        editTitle.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    Toast.makeText(getContext(), editTitle.getText(), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            }
+        });
 
-        view.findViewById(R.id.takephoto_button).setOnClickListener(new View.OnClickListener() {
+
+        takePicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dispatchTakePictureIntent();
@@ -95,30 +117,7 @@ public class ShareFragment extends Fragment {
         });
     }
 
-//    public void nextFragment(){
-//        FragmentManager fragmentManager = ((MainActivity)getContext()).getSupportFragmentManager();
-//
-//
-//        ///////////////////////////////////
-//        // TODO : ShareFragment2 is displaying at top of page and overlapping, NEEDS FIX
-//
-//        /*Fragment fragment = new ShareFragment2();
-//        FragmentTransaction ft = fragmentManager.beginTransaction();
-//        ft.remove(this);
-//        ft.add(R.id.content_frame,fragment);
-//        //ft.replace(R.id.fragment_share_1, fragment);
-//        ft.commit();
-//        */
-//    }
 
-//    public void changeView(View view){
-//        ViewGroup parent = (ViewGroup)view.getParent();
-//        int index = parent.indexOfChild(view);
-//        parent.removeView(view);
-//        view = getLayoutInflater().inflate(R.layout.fragment_share_2, parent, false);
-//        parent.addView(view, index);
-//
-//    }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
