@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.james.myapplication.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <Button
+        android:id="@+id/btnSpeak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/txtText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:visibility="invisible" />
+
+    <GridView
+        android:id="@+id/gridglide"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <ListView
+        android:id="@+id/staticListView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvNumbers"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvNumbers2"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container_old"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginBottom="32dp">
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="" />
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/white"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/black"
+        app:menu="@menu/navigation" />
+
+</android.support.design.widget.CoordinatorLayout>
