@@ -1,6 +1,5 @@
 package com.example.james.myapplication;
 
-import android.content.ActivityNotFoundException;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
@@ -11,23 +10,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-//import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
-import com.example.james.myapplication.search.SearchFragment;
 import com.example.james.myapplication.search.fragment_speech;
 
-import org.w3c.dom.Text;
-
 import java.util.Locale;
+
+//import com.example.james.myapplication.add.ShareFragment;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
@@ -47,26 +42,27 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 case R.id.navigation_home:
                     Fragment initialFragment = loadInitialFragment();
                     return true;
-                case R.id.navigation_dashboard:
+
+                case R.id.navigation_search:
                     //initialFragment = SearchFragment.newInstance();
                     Fragment initialFragment0 = new fragment_speech();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment0);
                     fragmentTransaction.commit();
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_share:
                     Fragment initialFragment2 = new ShareFragment();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment2);
                     fragmentTransaction.commit();
                     return true;
-                case R.id.navigation_notifications2:
+                case R.id.navigation_heart:
                     Fragment initialFragment3 = FavoriteFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment3);
                     fragmentTransaction.commit();
                     return true;
-                case R.id.navigation_notifications3:
+                case R.id.navigation_profile:
                     Fragment initialFragment4 = ProfileFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment4);
@@ -83,7 +79,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         setContentView(R.layout.activity_main);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_bar);
+        BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mFragmentManager = getSupportFragmentManager();

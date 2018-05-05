@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Zapato</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_dashboard2">Dashboard2</string>
-    <string name="title_notifications2">Notifications2</string>
+    <string name="title_search">Search</string>
+    <string name="title_share">Share</string>
+    <string name="title_heart">Favorites</string>
+    <string name="title_profile">My Profile</string>
     <string name="price">$150</string>
 </resources>
