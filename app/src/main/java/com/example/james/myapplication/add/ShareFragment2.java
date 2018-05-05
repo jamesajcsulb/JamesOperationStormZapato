@@ -34,6 +34,15 @@ public class ShareFragment2 extends Fragment {
         text_view =view.findViewById(R.id.textView);
         //seekbar(seek_bar, text_view);
 
+//       view.findViewById(R.id.cancel_button1).setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View view) {
+//             // TODO : Return to new_post step 1
+//             //new ShareFragment();
+////              mainRef.getRootFragment(2);
+//          }
+//       });
+
 
 
         return view;
@@ -50,7 +59,7 @@ public class ShareFragment2 extends Fragment {
 //      seek_bar = (SeekBar)view.findViewById(R.id.newpost_seekbar);
 //      text_view =(TextView)view.findViewById(R.id.textView);
 //      text_view.setText("Covered : " + seek_bar.getProgress() + " / " +seek_bar.getMax());
-
+       seek_bar.setMax(4);
         seek_bar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
 

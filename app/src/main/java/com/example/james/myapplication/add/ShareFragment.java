@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.FragmentManager;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,11 +19,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.james.myapplication.R;
-import com.example.james.myapplication.MainActivity;
-import com.example.james.myapplication.add.BaseFragment;
-import com.example.james.myapplication.home.HomeItemDetailsFragment;
-
-import java.util.ArrayList;
 
 
 
@@ -36,13 +32,7 @@ public class ShareFragment extends Fragment {
     private ImageView photo3;
     private ImageView photo4;
     int pictureCount = 0;
-    int stepCount = 0;
-    MainActivity mainRef = new MainActivity();
-
-
-
-    private ArrayList<ImageView> shoe_photos;
-//    private ImageAdapter mImageAdapter;
+    TextInputEditText textIn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,11 +46,11 @@ public class ShareFragment extends Fragment {
 
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_share, container, false);
+        View view = inflater.inflate(R.layout.fragment_share1, container, false);
         //ButterKnife.bind(this, view);
 
 
-
+        textIn=view.findViewById(R.id.edit_title);
         photo1= view.findViewById(R.id.imageView1);
         photo2= view.findViewById(R.id.imageView2);
         photo3= view.findViewById(R.id.imageView3);
@@ -88,7 +78,7 @@ public class ShareFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"go to next",Toast.LENGTH_SHORT).show();
-                nextFragment();
+//                nextFragment();
                 //changeView(view);
 //              ButterKnife.bind(this, view);
 
@@ -96,14 +86,6 @@ public class ShareFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO : Return to new_post step 1
-                //new ShareFragment();
-//              mainRef.getRootFragment(2);
-            }
-        });
 
         view.findViewById(R.id.takephoto_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,21 +95,21 @@ public class ShareFragment extends Fragment {
         });
     }
 
-    public void nextFragment(){
-        FragmentManager fragmentManager = ((MainActivity)getContext()).getSupportFragmentManager();
-
-
-        ///////////////////////////////////
-        // TODO : ShareFragment2 is displaying at top of page and overlapping, NEEDS FIX
-
-        /*Fragment fragment = new ShareFragment2();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.remove(this);
-        ft.add(R.id.content_frame,fragment);
-        //ft.replace(R.id.fragment_share_1, fragment);
-        ft.commit();
-        */
-    }
+//    public void nextFragment(){
+//        FragmentManager fragmentManager = ((MainActivity)getContext()).getSupportFragmentManager();
+//
+//
+//        ///////////////////////////////////
+//        // TODO : ShareFragment2 is displaying at top of page and overlapping, NEEDS FIX
+//
+//        /*Fragment fragment = new ShareFragment2();
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        ft.remove(this);
+//        ft.add(R.id.content_frame,fragment);
+//        //ft.replace(R.id.fragment_share_1, fragment);
+//        ft.commit();
+//        */
+//    }
 
 //    public void changeView(View view){
 //        ViewGroup parent = (ViewGroup)view.getParent();

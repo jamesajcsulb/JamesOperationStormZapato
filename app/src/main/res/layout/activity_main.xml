@@ -14,15 +14,14 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        app:itemBackground="@color/white"
         android:foreground="?attr/selectableItemBackground"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
-        app:menu="@menu/navigation" />
+        app:itemBackground="@color/white"
+        app:menu="@menu/navigation"
+        />
 
 </android.support.design.widget.CoordinatorLayout>
