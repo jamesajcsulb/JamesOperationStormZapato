@@ -8,8 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.james.myapplication.R;
+import com.example.james.myapplication.profile.ProfileFragment;
 
 public class FavoriteFragment extends Fragment{
+
+    public static FavoriteFragment newInstance(String param1, String param2) {
+        FavoriteFragment fragment = new FavoriteFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public FavoriteFragment()
     {
@@ -30,8 +38,8 @@ public class FavoriteFragment extends Fragment{
         {
         }
 
-        ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
-        mListView.setAdapter(null);
+        //ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
+        //mListView.setAdapter(null);
 
         return v;
     }
