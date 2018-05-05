@@ -29,7 +29,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
     private String[] mData = new String[0];
     private ArrayList<Shoe> mShoe = new ArrayList<Shoe>();
     private LayoutInflater mInflater;
-    //private ItemClickListener mClickListener;
+    private ItemClickListener mClickListener;
     private Context context;
     private ImageView myImageView;
     private TextView myTextView;
@@ -126,7 +126,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
             //itemView.setFocusable(true);
             //Toast.makeText(itemView.getContext(), "click", Toast.LENGTH_LONG).show();
             //itemView.setOnTouchListener(this);
-            //itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         public ViewHolder(Context contextq, View itemView) {
@@ -136,10 +136,12 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
             //ListView lv = (ListView) itemView.findViewById(R.id.imageButton);
             //lv.setOnItemClickedListener
         }
+
         @Override
         public void onClick(View view) {
-            Toast.makeText(itemView.getContext(), "click", Toast.LENGTH_LONG).show();
+            Toast.makeText(itemView.getContext(), "click" + getAdapterPosition(), Toast.LENGTH_LONG).show();
         }
+    }
 
         //@Override
         //public void onClick(View view) {
@@ -169,13 +171,13 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
         }
 
         // allows clicks events to be caught
-        //void setClickListener(ItemClickListener itemClickListener) {
-            //this.mClickListener = itemClickListener;
-        //}
+        void setClickListener(ItemClickListener itemClickListener) {
+            this.mClickListener = itemClickListener;
+        }
 
         //parent activity will implement this method to respond to click events
-        //public interface ItemClickListener {
+        public interface ItemClickListener {
             //void onItemClick(View view, int position);
-        //}
-    }
+        }
+
 }

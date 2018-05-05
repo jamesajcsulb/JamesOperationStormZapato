@@ -65,16 +65,16 @@ public class HomeFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_home2, container, false);
 
-        ivvv = (ImageView) v.findViewById(R.id.image_view_test);
-        ivvv.setClickable(true);
-        ivvv.setFocusable(true);
+        //ivvv = (ImageView) v.findViewById(R.id.image_view_test);
+        //ivvv.setClickable(true);
+        //ivvv.setFocusable(true);
         //rectest = (RecyclerView) v.findViewById(R.id.rec_test);
-        ivvv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "this", Toast.LENGTH_LONG).show();
-            }
-        });
+        //ivvv.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View v) {
+              //  Toast.makeText(getContext(), "this", Toast.LENGTH_LONG).show();
+            //}
+        //});
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
