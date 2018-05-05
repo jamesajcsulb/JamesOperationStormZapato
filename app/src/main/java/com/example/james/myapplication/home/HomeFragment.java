@@ -7,10 +7,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.james.myapplication.models.ImageAdapter;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
@@ -34,6 +41,12 @@ public class HomeFragment extends Fragment
     private ImageAdapter imageViewing = null;
     private RecyclerView recycled = null;
     private MyRecyclerViewAdapterShoes adaptershoe;
+    private Button button;
+    private ImageView ivvv;
+    private LinearLayout rvvvv;
+    private RecyclerView recview;
+    private RecyclerView rectest;
+    private ListView listTest;
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -51,6 +64,18 @@ public class HomeFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_home2, container, false);
+
+        //ivvv = (ImageView) v.findViewById(R.id.image_view_test);
+        //ivvv.setClickable(true);
+        //ivvv.setFocusable(true);
+        //rectest = (RecyclerView) v.findViewById(R.id.rec_test);
+        //ivvv.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View v) {
+              //  Toast.makeText(getContext(), "this", Toast.LENGTH_LONG).show();
+            //}
+        //});
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("shoes");
@@ -81,6 +106,25 @@ public class HomeFragment extends Fragment
             }
         });
 
+/*
+        recview = (RecyclerView) v.findViewById(R.id.linerec);
+        recview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    Toast.makeText(getContext(), "moveA", Toast.LENGTH_LONG).show();
+                }
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    Toast.makeText(getContext(), "downA", Toast.LENGTH_LONG).show();
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    Toast.makeText(getContext(), "upA", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+*/
         return v;
     }
 }

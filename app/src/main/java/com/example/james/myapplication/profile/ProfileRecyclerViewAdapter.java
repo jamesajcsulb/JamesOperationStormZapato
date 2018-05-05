@@ -49,11 +49,11 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
     // inflates the cell layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+        View view = mInflater.inflate(R.layout.profile_recyclerview_item, parent, false);
 
-        recyclerimageView=(ImageView)view.findViewById(R.id.round_price);
+        //recyclerimageView=(ImageView)view.findViewById(R.id.round_price);
         myImageView=(ImageView)view.findViewById(R.id.recyclerlistitemimageview);
-        myTextView=(TextView)view.findViewById(R.id.textView2);
+        //myTextView=(TextView)view.findViewById(R.id.textView2);
         myBrandTextView=(TextView)view.findViewById(R.id.brand);
 
         return new ViewHolder(view);
@@ -63,11 +63,11 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ArrayList<Shoe> arrayList = mShoe;
-        Glide.with(myImageView.getContext())
-                .load(""+arrayList.get(position).getShoeImageUrl())
-                .into(myImageView);
-        myTextView.setText("" + arrayList.get(position).getShoePrice());
-        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
+        //Glide.with(myImageView.getContext())
+        //        .load(""+arrayList.get(position).getShoeImageUrl())
+        //        .into(myImageView);
+        //myTextView.setText("prof" + arrayList.get(position).getShoePrice());
+        myBrandTextView.setText("prof" + arrayList.get(position).getShoeBrand());
     }
 
     // total number of cells
