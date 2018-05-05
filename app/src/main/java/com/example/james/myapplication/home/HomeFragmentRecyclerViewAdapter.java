@@ -2,8 +2,10 @@ package com.example.james.myapplication.home;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.models.Shoe;
 
@@ -135,7 +138,20 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(itemView.getContext(), "click" + getAdapterPosition(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(itemView.getContext(), "click" + getAdapterPosition(), Toast.LENGTH_LONG).show();
+
+            FragmentManager fragmentManagerssss = ((MainActivity)context).getSupportFragmentManager();
+
+            Fragment fragment = new HomeItemDetailsFragment();
+            Bundle arguments = new Bundle();
+            arguments.putString( "itemId" , "" + getAdapterPosition());
+            arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
+            arguments.putString( "itemDescription" , "" + mShoe.get(getAdapterPosition()).getShoePrice()
+                    + mShoe.get(getAdapterPosition()).getShoeBrand());
+            fragment.setArguments(arguments);
+            final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
+            ft.replace(R.id.fragment_container, fragment);
+            ft.commit();
         }
     }
 
