@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.home.HomeItemDetailsFragment;
@@ -21,7 +20,7 @@ import com.example.james.myapplication.models.Shoe;
 
 import java.util.ArrayList;
 
-public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecyclerViewAdapter.ViewHolder> {
+public class ProfileRecyclerDetailsViewAdapter extends RecyclerView.Adapter<ProfileRecyclerDetailsViewAdapter.ViewHolder> {
 
     private String[] mData = new String[0];
     private ArrayList<Shoe> mShoe = new ArrayList<Shoe>();
@@ -37,7 +36,7 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
     private FragmentManager frasss;
 
     // data is passed into the constructor
-    public ProfileRecyclerViewAdapter(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
+    public ProfileRecyclerDetailsViewAdapter(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
         this.mInflater = LayoutInflater.from(context);
         //this.mData = data;
         this.context = con;
@@ -49,7 +48,7 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
     // inflates the cell layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.profile_recyclerview_item, parent, false);
+        View view = mInflater.inflate(R.layout.profile_recyclerview_item_detail, parent, false);
 
         //recyclerimageView=(ImageView)view.findViewById(R.id.round_price);
         myImageView=(ImageView)view.findViewById(R.id.recyclerlistitemimageview);
