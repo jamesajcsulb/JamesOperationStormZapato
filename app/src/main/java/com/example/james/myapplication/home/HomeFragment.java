@@ -2,12 +2,9 @@ package com.example.james.myapplication.home;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,13 +13,12 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.james.myapplication.models.ImageAdapter;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
+import com.example.james.myapplication.home.HomeFragmentRecyclerViewAdapter;
 import com.example.james.myapplication.models.Shoe;
-import com.example.james.myapplication.profile.ProfileFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +36,7 @@ public class HomeFragment extends Fragment
     private ArrayAdapter<Shoe> adap = null;
     private ImageAdapter imageViewing = null;
     private RecyclerView recycled = null;
-    private MyRecyclerViewAdapterShoes adaptershoe;
+    private HomeFragmentRecyclerViewAdapter adaptershoe;
     private Button button;
     private ImageView ivvv;
     private LinearLayout rvvvv;
@@ -63,7 +59,7 @@ public class HomeFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.fragment_home2, container, false);
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         //ivvv = (ImageView) v.findViewById(R.id.image_view_test);
         //ivvv.setClickable(true);
@@ -97,7 +93,7 @@ public class HomeFragment extends Fragment
                 RecyclerView recyclerView2 = (RecyclerView) getActivity().findViewById(R.id.recycler_view);
                 int numberOfColumns2 = 2;
                 recyclerView2.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns2));
-                adaptershoe = new MyRecyclerViewAdapterShoes(getContext(), classshoe, getContext(), getActivity(), new HomeFragment() );
+                adaptershoe = new HomeFragmentRecyclerViewAdapter(getContext(), classshoe, getContext(), getActivity(), new HomeFragment() );
                 recyclerView2.setAdapter(adaptershoe);
             }
 
