@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         mFragmentManager = getSupportFragmentManager();
 
-        //loadInitialFragment();
+        loadInitialFragment();
 
         ///////////////////////////////
         //tts = new TextToSpeech(this, this);

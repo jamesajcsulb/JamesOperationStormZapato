@@ -7,10 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.james.myapplication.MainActivity;
@@ -24,7 +29,7 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
     private String[] mData = new String[0];
     private ArrayList<Shoe> mShoe = new ArrayList<Shoe>();
     private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    //private ItemClickListener mClickListener;
     private Context context;
     private ImageView myImageView;
     private TextView myTextView;
@@ -33,6 +38,11 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
     private Activity ac;
     private Fragment fra;
     private FragmentManager frasss;
+    private RecyclerView myRecView;
+    private LinearLayout myLinLay;
+    private ImageView mImageButton;
+    GestureDetector gestureDetector;
+
 
     // data is passed into the constructor
     public MyRecyclerViewAdapterShoes(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
@@ -49,23 +59,55 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.recyclerview_item, parent, false);
 
-        recyclerimageView=(ImageView)view.findViewById(R.id.round_price);
-        myImageView=(ImageView)view.findViewById(R.id.recyclerlistitemimageview);
-        myTextView=(TextView)view.findViewById(R.id.textView2);
-        myBrandTextView=(TextView)view.findViewById(R.id.brand);
+        myRecView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        return new ViewHolder(view);
+        //myLinLay = (LinearLayout) view.findViewById(R.id.recycler_linear_layout);
+
+        //myImageView = (ImageView) view.findViewById(R.id.recyclerlistitemimageview);
+
+        mImageButton = (ImageView) view.findViewById(R.id.imageButton);
+
+        //view.setClickable(true);
+        //view.setFocusable(true);
+
+
+
+
+
+        return new ViewHolder(mImageButton.getContext(), view);
     }
 
     // binds the data to the textview in each cell
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ArrayList<Shoe> arrayList = mShoe;
-        Glide.with(myImageView.getContext())
-                .load(""+arrayList.get(position).getShoeImageUrl())
-                .into(myImageView);
-        myTextView.setText("" + arrayList.get(position).getShoePrice());
-        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
+        Glide.with(mImageButton.getContext())
+                .load("" + arrayList.get(position).getShoeImageUrl())
+                .into(mImageButton);
+
+
+
+
+        //myLinLay.setClickable(true);
+        //myLinLay.setEnabled(true);
+
+        //mImageButton.setClickable(true);
+        //myImageView.setEnabled(true);
+
+        //myRecView.setClickable(true);
+        //myRecView.setEnabled(true);
+        //myImageView.setFocusableInTouchMode(true);
+        //myImageView.setClickable(true);
+
+
+
+        //Toast.makeText(context, "imagebefore", Toast.LENGTH_LONG).show();
+        /*myImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "image", Toast.LENGTH_LONG).show();
+            }
+        });*/
     }
 
     // total number of cells
@@ -79,58 +121,61 @@ public class MyRecyclerViewAdapterShoes extends RecyclerView.Adapter<MyRecyclerV
 
         ViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
+
+            //itemView.setClickable(true);
+            //itemView.setFocusable(true);
+            //Toast.makeText(itemView.getContext(), "click", Toast.LENGTH_LONG).show();
+            //itemView.setOnTouchListener(this);
+            //itemView.setOnClickListener(this);
         }
 
+        public ViewHolder(Context contextq, View itemView) {
+            super(itemView);
+            mImageButton = (ImageView) itemView.findViewById(R.id.imageButton);
+            mImageButton.setOnClickListener(this);
+            //ListView lv = (ListView) itemView.findViewById(R.id.imageButton);
+            //lv.setOnItemClickedListener
+        }
         @Override
         public void onClick(View view) {
+            Toast.makeText(itemView.getContext(), "click", Toast.LENGTH_LONG).show();
+        }
 
-            FragmentManager fragmentManagerssss = ((MainActivity)context).getSupportFragmentManager();
-
-            Fragment fragment = new HomeItemDetailsFragment();
-            Bundle arguments = new Bundle();
-            arguments.putString( "itemId" , "" + getAdapterPosition());
-            arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
-            arguments.putString( "itemDescription" , "" + mShoe.get(getAdapterPosition()).getShoePrice()
-                    + " " + mShoe.get(getAdapterPosition()).getShoeBrand());
-            fragment.setArguments(arguments);
-            final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
-            ft.replace(R.id.fragment_container, fragment);
-            ft.commit();
-
-            if (mClickListener != null) {
-                mClickListener.onItemClick(view, getAdapterPosition());
+        //@Override
+        //public void onClick(View view) {
+            //Toast.makeText(myImageView.getContext(), "hello", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "hello", Toast.LENGTH_LONG).show();
+            //Toast.makeText(view.getContext(), "hello", Toast.LENGTH_LONG).show();
+            /*boolean isMoving = false;
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_MOVE:
+                    Toast.makeText(myImageView.getContext(), "move", Toast.LENGTH_LONG).show();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    Toast.makeText(view.getContext(), "up", Toast.LENGTH_LONG).show();
+                    break;
+                case MotionEvent.ACTION_DOWN:
+                    Toast.makeText(view.getContext(), "down", Toast.LENGTH_LONG).show();
+                default:
+                    Toast.makeText(view.getContext(), "default", Toast.LENGTH_LONG).show();
+                    break;
             }
+            return true;*/
+        //}
+
+        // convenience method for getting data at click position
+        String getItem(int id) {
+            return mShoe.get(id).toString(); //mData[id];
         }
-    }
 
-    // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData[id];
-    }
+        // allows clicks events to be caught
+        //void setClickListener(ItemClickListener itemClickListener) {
+            //this.mClickListener = itemClickListener;
+        //}
 
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-    private void fragmentJump(int i) {
-        fra = new HomeItemDetailsFragment();
-        switchContent(R.id.fragment_container, fra);
-    }
-
-    public void switchContent(int id, Fragment fragment) {
-        if (context == null)
-            return;
-        if (context instanceof MainActivity) {
-            MainActivity mainActivity = (MainActivity) context;
-            Fragment frag = fragment;
-            mainActivity.switchContent(id, frag);
-        }
+        //parent activity will implement this method to respond to click events
+        //public interface ItemClickListener {
+            //void onItemClick(View view, int position);
+        //}
     }
 }

@@ -74,7 +74,7 @@ public class ProfileFragment extends Fragment
                 }
 
                 RecyclerView recyclerView2 = (RecyclerView) getActivity().findViewById(R.id.recycler_view);
-                int numberOfColumns2 = 2;
+                int numberOfColumns2 = 1;
                 recyclerView2.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns2));
                 adaptershoe = new ProfileRecyclerViewAdapter(getContext(), classshoe, getContext(), getActivity(), new HomeFragment() );
                 recyclerView2.setAdapter(adaptershoe);
