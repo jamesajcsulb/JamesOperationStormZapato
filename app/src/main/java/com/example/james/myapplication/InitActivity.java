@@ -14,6 +14,6 @@ public class InitActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
 
-        //
+        ////
     }
 }
