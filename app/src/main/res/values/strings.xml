@@ -6,4 +6,27 @@
     <string name="title_heart">Favorites</string>
     <string name="title_profile">My Profile</string>
     <string name="price">$150</string>
+
+    <string name="tab_text_1">Buy Now</string>
+    <string name="tab_text_2">Near Me</string>
+    <string name="tab_text_3">Trending</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="zapato">Zapato</string>
+    <string name="homebutton_desc">takes you to home page</string>
+    <string name="searchbutton_desc">takes you to search page</string>
+    <string name="camerabutton_desc">takes you to new post page</string>
+    <string name="heartbutton_desc">takes you to your likes/saved</string>
+    <string name="accountbutton_desc">takes you to my profile/edit/settings</string>
+    <string name="post_shoe">Post your shoe</string>
+    <string name="newpost_description">Provide a description of your product!</string>
+    <string name="pricing">Pricing</string>
+    <string name="title_share1">Title</string>
+    <string name="edit_title_string">Name, brand, etc</string>
+    <string name="imagestxt_share2">Images</string>
+    <string name="takepic_buttonstring">Take photo</string>
+    <string name="uploadpic_buttonstring">Add from library</string>
+    <string name="cancelbutton1">Cancel</string>
+    <string name="nextbutton1">Next ></string>
+    <string name="nextbutton2">Next ></string>
 </resources>
