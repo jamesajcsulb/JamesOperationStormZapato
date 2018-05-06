@@ -18,7 +18,7 @@ import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
-import com.example.james.myapplication.search.fragment_speech;
+import com.example.james.myapplication.search.SearchFragment;
 
 import java.util.Locale;
 
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     return true;
 
                 case R.id.navigation_search:
-                    //initialFragment = SearchFragment.newInstance();
-                    Fragment initialFragment0 = new fragment_speech();
+                    //initialFragment = SearchFragmentOther.newInstance();
+                    Fragment initialFragment0 = new SearchFragment();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment0);
                     fragmentTransaction.commit();

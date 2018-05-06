@@ -12,11 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.james.myapplication.MainActivity;
-import com.example.james.myapplication.PurchaseHistory.PurchaseHistoryFragmentDetails;
+import com.example.james.myapplication.Orders.OrdersFragment;
+import com.example.james.myapplication.PurchaseHistory.PurchaseHistoryFragment;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.home.HomeItemDetailsFragment;
+import com.example.james.myapplication.models.Shoe;
 
 import java.util.ArrayList;
 
@@ -86,9 +90,25 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         @Override
         public void onClick(View view) {
 
+            if(getAdapterPosition() == 0)
+            {
+                transitionToSelectedFragment(new OrdersFragment());
+            }
+            else if(getAdapterPosition() == 1)
+            {
+                transitionToSelectedFragment(new PurchaseHistoryFragment());
+            }
+
+            if (mClickListener != null) {
+                mClickListener.onItemClick(view, getAdapterPosition());
+            }
+        }
+
+        public void transitionToSelectedFragment(Fragment frg)
+        {
             FragmentManager fragmentManagerssss = ((MainActivity)context).getSupportFragmentManager();
 
-            Fragment fragment = new PurchaseHistoryFragmentDetails();
+            Fragment fragment = frg;//new ProfileFragmentDetails();
             Bundle arguments = new Bundle();
             arguments.putString( "itemId" , "" + getAdapterPosition());
             //arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
@@ -98,10 +118,6 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
             final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
             ft.replace(R.id.fragment_container, fragment);
             ft.commit();
-
-            if (mClickListener != null) {
-                mClickListener.onItemClick(view, getAdapterPosition());
-            }
         }
     }
 
