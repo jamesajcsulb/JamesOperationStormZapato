@@ -1,4 +1,4 @@
-package com.example.james.myapplication.profile;
+package com.example.james.myapplication.PurchaseHistory;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,19 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.james.myapplication.MainActivity;
-import com.example.james.myapplication.Orders.OrdersFragment;
-import com.example.james.myapplication.PurchaseHistory.PurchaseHistoryFragment;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.home.HomeItemDetailsFragment;
 import com.example.james.myapplication.models.Shoe;
 
 import java.util.ArrayList;
 
-public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecyclerViewAdapter.ViewHolder> {
+public class PurchaseHistoryRecyclerDetailsViewAdapter extends RecyclerView.Adapter<PurchaseHistoryRecyclerDetailsViewAdapter.ViewHolder> {
 
     private String[] mData = new String[0];
     private ArrayList<Shoe> mShoe = new ArrayList<Shoe>();
@@ -40,7 +36,7 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
     private FragmentManager frasss;
 
     // data is passed into the constructor
-    public ProfileRecyclerViewAdapter(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
+    public PurchaseHistoryRecyclerDetailsViewAdapter(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
         this.mInflater = LayoutInflater.from(context);
         //this.mData = data;
         this.context = con;
@@ -52,7 +48,7 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
     // inflates the cell layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.profile_recyclerview_item, parent, false);
+        View view = mInflater.inflate(R.layout.profile_recyclerview_item_detail, parent, false);
 
         //recyclerimageView=(ImageView)view.findViewById(R.id.round_price);
         myImageView=(ImageView)view.findViewById(R.id.recyclerlistitemimageview);
@@ -69,8 +65,8 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
         //Glide.with(myImageView.getContext())
         //        .load(""+arrayList.get(position).getShoeImageUrl())
         //        .into(myImageView);
-        //myTextView.setText("" + arrayList.get(position).getShoePrice());
-        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
+        //myTextView.setText("prof" + arrayList.get(position).getShoePrice());
+        myBrandTextView.setText("prof" + arrayList.get(position).getShoeBrand());
     }
 
     // total number of cells
@@ -90,25 +86,9 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
         @Override
         public void onClick(View view) {
 
-            if(getAdapterPosition() == 0)
-            {
-                transitionToSelectedFragment(new OrdersFragment());
-            }
-            else if(getAdapterPosition() == 1)
-            {
-                transitionToSelectedFragment(new PurchaseHistoryFragment());
-            }
-
-            if (mClickListener != null) {
-                mClickListener.onItemClick(view, getAdapterPosition());
-            }
-        }
-
-        public void transitionToSelectedFragment(Fragment frg)
-        {
             FragmentManager fragmentManagerssss = ((MainActivity)context).getSupportFragmentManager();
 
-            Fragment fragment = frg;//new ProfileFragmentDetails();
+            Fragment fragment = new PurchaseHistoryFragmentDetails();
             Bundle arguments = new Bundle();
             arguments.putString( "itemId" , "" + getAdapterPosition());
             arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
@@ -118,6 +98,10 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
             final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
             ft.replace(R.id.fragment_container, fragment);
             ft.commit();
+
+            if (mClickListener != null) {
+                mClickListener.onItemClick(view, getAdapterPosition());
+            }
         }
     }
 
