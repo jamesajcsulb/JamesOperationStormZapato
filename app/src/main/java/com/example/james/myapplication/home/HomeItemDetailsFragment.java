@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 import com.example.james.myapplication.R;
 
@@ -21,6 +22,11 @@ public class HomeItemDetailsFragment extends Fragment
     private Button btn;
     private ImageView myImageView;
     private TextView mTextView;
+    private String desired_string;
+    private String desired_string2;
+    private String desired_string3;
+    private String desired_string4;
+    private Button button;
 
     public static HomeItemDetailsFragment newInstance(String param1, String param2) {
         HomeItemDetailsFragment fragment = new HomeItemDetailsFragment();
@@ -42,63 +48,53 @@ public class HomeItemDetailsFragment extends Fragment
         View v = inflater.inflate(R.layout.fragment_details_item_home, container, false);
 
         Bundle arguments = getArguments();
-        String desired_string = arguments.getString("welcome");
-        String desired_string2 = arguments.getString("itemId");
-        String desired_string3 = arguments.getString("itemPicture");
-        String desired_string4 = arguments.getString("itemDescription");
-        //Toast.makeText(getContext(),"bundlereceived: \n\n"
-        //        + desired_string + " \n\n" + desired_string2
-        //                + " \n\n" + desired_string3 + " \n\n" + desired_string4
-        //        ,Toast.LENGTH_SHORT).show();
+        desired_string = arguments.getString("welcome");
+        desired_string2 = arguments.getString("itemId");
+        desired_string3 = arguments.getString("itemPicture");
+        desired_string4 = arguments.getString("itemDescription");
 
         myImageView=(ImageView)v.findViewById(R.id.imageView);
         Glide.with(myImageView.getContext())
                 .load(""+arguments.getString("itemPicture"))
                 .into(myImageView);
 
-        //ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
-        //mListView.setAdapter(null);
-
-        // Set completDeatilsText
-
-        //mTextView = (TextView) getActivity().findViewById(R.id.completeDetailsText);
-        //mTextView.setText("" + desired_string3 + desired_string4);
-
-        final Button button = (Button) v.findViewById(R.id.purchase_button);
+        button = (Button) v.findViewById(R.id.purchase_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 performTransition();
-
             }
         });
 
-        /*
-        LinearLayoutManager layoutManager
-            = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-        RecyclerView myList = (RecyclerView) findViewById(R.id.my_recycler_view);
-        myList.setLayoutManager(layoutManager);
-         */
         return v;
     }
 
     //@Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-
+/*
         Bundle arguments = getArguments();
-        String desired_string = arguments.getString("welcome");
-        String desired_string2 = arguments.getString("itemId");
-        String desired_string3 = arguments.getString("itemPicture");
-        String desired_string4 = arguments.getString("itemDescription");
+        desired_string = arguments.getString("welcome");
+        desired_string2 = arguments.getString("itemId");
+        desired_string3 = arguments.getString("itemPicture");
+        desired_string4 = arguments.getString("itemDescription");
 
         mTextView = (TextView) getActivity().findViewById(R.id.completeDetailsText);
         mTextView.setText("Item ID:" + desired_string2 + " \nDescription: " + desired_string4);
+    */
     }
 
     private void performTransition()
     {
         Fragment fragment = new PurchaseStepOneFragment();
+
+        // Bundle data to pass
+        Bundle arguments = new Bundle();
+        arguments.putString( "itemId1" , "" + desired_string2);
+        arguments.putString( "itemPicture2" , "" + desired_string3);
+        arguments.putString( "itemDescription3" , "" + desired_string4);
+        fragment.setArguments(arguments);
+
+        // Take off to next fragment
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);

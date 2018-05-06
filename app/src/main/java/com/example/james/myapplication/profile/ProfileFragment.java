@@ -61,9 +61,9 @@ public class ProfileFragment extends Fragment
         //container.removeAllViews();
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        ///////////////////
-        CropImage.activity()
-                .start(getContext(), this);
+        // Uncomment for crop feature
+        //CropImage.activity()
+        //        .start(getContext(), this);
         ////////////////////
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -100,7 +100,7 @@ public class ProfileFragment extends Fragment
 
         return v;
     }
-
+/*
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -111,5 +111,5 @@ public class ProfileFragment extends Fragment
                 Exception error = result.getError();
             }
         }
-    }
+    }*/
 }

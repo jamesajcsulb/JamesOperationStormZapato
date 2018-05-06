@@ -90,6 +90,9 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
         @Override
         public void onClick(View view) {
 
+            Toast.makeText(context, "", Toast.LENGTH_LONG).show();
+            Toast.makeText(view.getContext(), "", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "", Toast.LENGTH_LONG).show();
             if(getAdapterPosition() == 0)
             {
                 transitionToSelectedFragment(new OrdersFragment());

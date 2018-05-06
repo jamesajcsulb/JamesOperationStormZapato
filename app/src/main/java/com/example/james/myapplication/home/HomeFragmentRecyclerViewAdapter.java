@@ -111,7 +111,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
             Bundle arguments = new Bundle();
             arguments.putString( "itemId" , "" + getAdapterPosition());
             arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
-            arguments.putString( "itemDescription" , "" + mShoe.get(getAdapterPosition()).getShoePrice()
+            arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
                     + mShoe.get(getAdapterPosition()).getShoeBrand());
             fragment.setArguments(arguments);
             final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
