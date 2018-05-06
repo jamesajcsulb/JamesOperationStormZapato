@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         super.onDestroy();
     }
 
+    //#cfccbc
     @Override
     public void onInit(int status) {
         // TODO Auto-generated method stub
