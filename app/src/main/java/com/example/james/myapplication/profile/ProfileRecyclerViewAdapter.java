@@ -66,8 +66,8 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
         //Glide.with(myImageView.getContext())
         //        .load(""+arrayList.get(position).getShoeImageUrl())
         //        .into(myImageView);
-        //myTextView.setText("prof" + arrayList.get(position).getShoePrice());
-        myBrandTextView.setText("prof" + arrayList.get(position).getShoeBrand());
+        //myTextView.setText("" + arrayList.get(position).getShoePrice());
+        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
     }
 
     // total number of cells
