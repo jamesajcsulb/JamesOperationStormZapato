@@ -1,6 +1,8 @@
 package com.example.james.myapplication.profile;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -22,8 +24,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment
 {
@@ -55,6 +60,11 @@ public class ProfileFragment extends Fragment
 
         //container.removeAllViews();
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        ///////////////////
+        CropImage.activity()
+                .start(getContext(), this);
+        ////////////////////
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("shoes");
@@ -89,5 +99,17 @@ public class ProfileFragment extends Fragment
         //mListView.setAdapter(null);
 
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
     }
 }
