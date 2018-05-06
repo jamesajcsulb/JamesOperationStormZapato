@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             int result = tts.setLanguage(Locale.US);
 
             // tts.setPitch(5); // set pitch level
+            //
 
             // tts.setSpeechRate(2); // set speech speed rate
 
