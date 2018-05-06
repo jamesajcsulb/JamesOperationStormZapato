@@ -45,7 +45,7 @@ public class SearchFragmentOther extends Fragment
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(),"doesn't exist you are fucked xD",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"doesn't exist",Toast.LENGTH_LONG).show();
 
             }
         });
