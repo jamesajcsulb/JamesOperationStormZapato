@@ -48,7 +48,7 @@ android:layout_height="wrap_content">
             android:layout_height="@dimen/card_cover_height"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:scaleType="fitXY" />
+            android:scaleType="matrix" />
 
         <TextView
             android:id="@+id/title"
