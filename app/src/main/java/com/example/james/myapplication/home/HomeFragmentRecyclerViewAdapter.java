@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.models.Shoe;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFragmentRecyclerViewAdapter.ViewHolder> {
@@ -55,6 +58,8 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
 
         myRecView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mImageView = (ImageView) view.findViewById(R.id.imageButton);
+        myTextView = (TextView) view.findViewById(R.id.price);;
+        myBrandTextView = (TextView) view.findViewById(R.id.title);;
 
         return new ViewHolder(mImageView.getContext(), view);
     }
@@ -66,6 +71,16 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
         Glide.with(mImageView.getContext())
                 .load("" + arrayList.get(position).getShoeImageUrl())
                 .into(mImageView);
+
+        Double toBeTruncated = new Double(arrayList.get(position).getShoePrice());
+
+        Double truncatedDouble = BigDecimal.valueOf(toBeTruncated)
+                .setScale(3, RoundingMode.HALF_UP)
+                .doubleValue();
+        String formato = String.format("%.2f",arrayList.get(position).getShoePrice());
+
+        myTextView.setText("$" + formato);//arrayList.get(position).getShoePrice());
+        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
     }
 
     // total number of cells
