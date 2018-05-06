@@ -27,59 +27,56 @@ xmlns:card_view="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="wrap_content">
 
-<android.support.v7.widget.CardView
-    android:id="@+id/card_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/card_margin"
-    android:clickable="true"
-    android:elevation="3dp"
-    android:foreground="?attr/selectableItemBackground"
-    card_view:cardCornerRadius="@dimen/card_album_radius">
-
-
-
-
-        <com.example.james.myapplication.Model.SquareImageView
-            android:id="@+id/imageButton"
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="top|end"
-            android:background="@layout/circle"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/price"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:fontFamily="@font/roboto_light"
-            android:layout_marginRight="10dp"/>
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="#eee"
-            android:fontFamily="@font/roboto_light"
-            android:paddingBottom="8dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="8dp"
-            android:textColor="@android:color/black"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/card_margin"
+            android:clickable="true"
+            android:elevation="3dp"
+            android:foreground="?attr/selectableItemBackground"
+            card_view:cardCornerRadius="@dimen/card_album_radius">
 
 
+                <com.example.james.myapplication.Model.SquareImageView
+                    android:id="@+id/imageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/white" />
 
-</android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@layout/circle"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="center"
+                    android:text="@string/price"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#eee"
+                    android:fontFamily="@font/roboto_light"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@android:color/black" />
+
+
+        </android.support.v7.widget.CardView>
 
 </LinearLayout>
 
