@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 //import kotlinx.android.synthetic.main.activity_tab.*;
 //import kotlinx.android.synthetic.main.create_account.*;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.internal.FirebaseAppHelper;//. .getUid;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
@@ -62,6 +63,7 @@ public class PurchaseStepOneFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_details_purchase_step_one, container, false);
 
+
         // Get data for transaction
         Bundle arguments = getArguments();
         //desired_string = arguments.getString("itemId");
@@ -81,8 +83,13 @@ public class PurchaseStepOneFragment extends Fragment
                 Random rand = new Random();
                 purchaseConfirmation = rand.nextInt(10000000) + 1;
                 desired_string5 = "" + purchaseConfirmation;
+
+
+
+
                 FirebaseDatabase fba = FirebaseDatabase.getInstance();
-                DatabaseReference db = fba.getReference("users").child("DrmYuz6ApObAgBKGjlQM2JvER8t1").child("6buy_history");
+                //DatabaseReference db = fba.getReference("users").child("DrmYuz6ApObAgBKGjlQM2JvER8t1").child("6buy_history");
+                DatabaseReference db = fba.getReference("users").child("OS8hpHlgYRgTB73CAC4EC7badD82").child("6buy_history");
                 db.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
                 db.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
                 db.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);

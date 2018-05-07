@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("shoes");
+        final DatabaseReference myRef = database.getReference("users");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -85,14 +85,15 @@ public class HomeFragment extends Fragment
                 classshoe = new ArrayList<Shoe>();
                 //OS8hpHlgYRgTB73CAC4EC7badD82
                 //String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getKey();
-                for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
-                //for (DataSnapshot snaparray : dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").child("9sellinventory").child("shoes").child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
+                //for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
+                for (DataSnapshot snaparray : dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").child("9sellinventory").child("shoes").child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
                     //for() {
                     shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
                     classshoe.add(new Shoe(snaparray));
                     //Toast.makeText(getContext(),"Zeta: " + snaparray,Toast.LENGTH_SHORT).show();
                     //}
                 }
+                    myRef.removeEventListener(this);
 
                 RecyclerView recyclerView2 = (RecyclerView) getActivity().findViewById(R.id.recycler_view);
                 int numberOfColumns2 = 2;
