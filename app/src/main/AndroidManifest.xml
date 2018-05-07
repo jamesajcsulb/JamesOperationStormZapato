@@ -16,9 +16,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/zapato_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/zapato_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -34,6 +34,9 @@
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"
             >
+        </activity>
+        <activity
+            android:name=".StripeFunction">
         </activity>
         <activity
             android:name=".home.CreateAccountActivity">
