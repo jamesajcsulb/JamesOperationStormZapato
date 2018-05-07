@@ -13,6 +13,7 @@ import com.google.firebase.database.*
 import com.stripe.android.model.Card
 import com.stripe.android.Stripe
 import com.stripe.android.TokenCallback
+import com.stripe.android.model.Customer
 import com.stripe.android.model.Token
 import java.io.*
 import java.net.HttpURLConnection
@@ -31,6 +32,7 @@ class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_account)
+
 
         // Read data from firebase for user on this account for stripe charge
         val stripetestvarfirebasecustom = db!!.child("users").child(fba!!.uid)

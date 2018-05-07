@@ -18,6 +18,8 @@
 
 -keep class android.support.v7.widget.** { *; }
 
+-keep class com.stripe.** { *; }
+
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile

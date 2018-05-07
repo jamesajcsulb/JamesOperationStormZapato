@@ -24,7 +24,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
+
+import java.util.HashMap;
+
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Account;
+import com.stripe.model.Charge;
+import com.stripe.model.Customer;
+import com.stripe.net.RequestOptions;
 
 //import com.example.james.myapplication.add.ShareFragment;
 
@@ -92,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         loadInitialFragment();
         restoreAccountDatabaseStructure();
+        stripeCustomerRegistration();
 
         ///////////////////////////////
         //tts = new TextToSpeech(this, this);
@@ -176,6 +190,52 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
+    private void stripeCustomerRegistration()
+    {/*
+        //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+
+        Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+
+        List<String> expandList = new LinkedList<String>();
+        expandList.add("customer");
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("expand", expandList);
+
+        Charge.retrieve("ch_1CNDleKSGtsYu6vvNRHCoU1W", params, null);
+
+        Stripe.apiKey = "sk_test_...";
+
+        Map<String, Object> chargeMap = new HashMap<String, Object>();
+        chargeMap.put("amount", 100);
+        chargeMap.put("currency", "usd");
+        chargeMap.put("source", "tok_1234"); // obtained via Stripe.js
+
+        try {
+            Charge charge = Charge.create(chargeMap);
+            System.out.println(charge);
+        } catch (StripeException e) {
+            e.printStackTrace();
+        }
+*/
+
+/*
+        Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+
+        Map<String, Object> accountParams = new HashMap<String, Object>();
+        accountParams.put("type", "'custom'");
+        accountParams.put("country", "'US'");
+        accountParams.put("email", "'bob@example.com'");
+
+        try{
+            Account.create(accountParams);
+            System.out.println("hello stripe");
+        } catch (StripeException e) {
+            e.printStackTrace();
+            System.out.println("error stripe");
+        }*/
+    }
+
     private void restoreAccountDatabaseStructure()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -185,8 +245,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-
-
+        db.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
+        db.child("users").child(user.getUid()).child("name").setValue(user.getDisplayName());
         db.child("users").child(user.getUid()).child("0_0foodforthought").setValue("For privacy(customer satisfaction and civilized conduct of business) need to encrypt certain data of customers so that customer services don't look at their confidential data. Include code to decrypt only on user's agreement authorization signature or decrypt only with customer's phone");
         db.child("users").child(user.getUid()).child("0_1account_behavior").setValue("if: good(access granted)/bad(marked bad and access revoked after Zapato Admins' review. Need code to detect bad behavior and customer report code)");
         db.child("users").child(user.getUid()).child("1_0name").setValue("myvalue");
