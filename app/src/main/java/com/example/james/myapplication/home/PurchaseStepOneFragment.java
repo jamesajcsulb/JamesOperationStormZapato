@@ -99,7 +99,7 @@ public class PurchaseStepOneFragment extends Fragment
         });
 
         return v;
-    }
+    }//
 
     //@Override
     public void onActivityCreated(Bundle savedInstanceState){
