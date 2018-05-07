@@ -1,4 +1,14 @@
 {
+  "favorite" : {
+    "Y5H92rk3wvaN69s7aq16EDfOT5v1" : {
+      "-L9FNpQNGfgmu_h14Chr" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
+      "-L9FNpQUq63Waz3LsxXz" : "b22mhFiqHuVR9vwowQyQjD4720Q2"
+    },
+    "b22mhFiqHuVR9vwowQyQjD4720Q2" : {
+      "-L9FNpQNGfgmu_h14Chr" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
+      "-L9FNpQUq63Waz3LsxXz" : "b22mhFiqHuVR9vwowQyQjD4720Q2"
+    }
+  },
   "home" : {
     "buynow" : {
       "-L9FNpPzi2FouktspF3G" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
@@ -31,14 +41,68 @@
     "trending9" : "searchitem12",
     "whatsup_worldrehesth" : "hello_worldqwerq"
   },
+  "shoes" : {
+    "b22mhFiqHuVR9vwowQyQjD4720Q2" : {
+      "-L9FNpPzi2FouktspF3G" : {
+        "brand" : "Nike",
+        "gender" : "Unisex",
+        "name" : "Nike Aqua",
+        "price" : 130,
+        "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
+        "shoeColor" : "Red",
+        "shoeCondition" : "New",
+        "shoeID" : "-L9FNpPzi2FouktspF3G",
+        "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpPzi2FouktspF3G%2FNike%20Aqua?alt=media&token=ff018b81-9854-4bae-b8d3-6e2d1a91221c",
+        "shoeType" : "Running",
+        "size" : 9
+      },
+      "-L9FNpQF8cv3vcojRZcH" : {
+        "brand" : "Nike",
+        "gender" : "Unisex",
+        "name" : "Nike Black Bullet",
+        "price" : 120,
+        "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
+        "shoeColor" : "Red",
+        "shoeCondition" : "New",
+        "shoeID" : "-L9FNpQF8cv3vcojRZcH",
+        "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQF8cv3vcojRZcH%2FNike%20Black%20Bullet?alt=media&token=5f5a50b3-f1c7-4cf8-b005-c3242eb4e130",
+        "shoeType" : "Running",
+        "size" : 10.5
+      },
+      "-L9FNpQNGfgmu_h14Chr" : {
+        "brand" : "Nike",
+        "gender" : "Unisex",
+        "name" : "Nike Vapormax Wolf",
+        "price" : 100,
+        "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
+        "shoeColor" : "Red",
+        "shoeCondition" : "New",
+        "shoeID" : "-L9FNpQNGfgmu_h14Chr",
+        "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQNGfgmu_h14Chr%2FNike%20Vapormax%20Wolf?alt=media&token=88a4115d-5dbc-4e77-9028-d346ab72974e",
+        "shoeType" : "Running",
+        "size" : 9.5
+      },
+      "-L9FNpQUq63Waz3LsxXz" : {
+        "brand" : "Nike",
+        "gender" : "Unisex",
+        "name" : "Nike Wheatsport",
+        "price" : 140,
+        "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
+        "shoeColor" : "Red",
+        "shoeCondition" : "New",
+        "shoeID" : "-L9FNpQUq63Waz3LsxXz",
+        "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQUq63Waz3LsxXz%2FNike%20Wheatsport?alt=media&token=129c2a04-aadd-42c4-85a6-e617cdbbc9dd",
+        "shoeType" : "Running",
+        "size" : 11.5
+      }
+    }
+  },
   "users" : {
-    "IvW0qOrW2xbPGF9Vl88fUP6RPts1" : {
-      "000a-1235809758" : "test",
-      "000a-1438004174" : "test",
-      "000a-807175957" : "test",
-      "000a1799445225" : "test",
-      "000a265059677" : "test",
-      "000a352494940" : "test",
+    "21fGOBPcK8ZffFD1NV3OgV8ofLk1" : {
+      "email" : "agustincards14@gmail.com",
+      "name" : "Agustin Barajas"
+    },
+    "cTtrUOkBINTcLeLjA6eHf3X9aUF3" : {
       "0_0foodforthought" : "For privacy(customer satisfaction and civilized conduct of business) need to encrypt certain data of customers so that customer services don't look at their confidential data. Include code to decrypt only on user's agreement authorization signature or decrypt only with customer's phone",
       "0_1account_behavior" : "if: good(access granted)/bad(marked bad and access revoked after Zapato Admins' review. Need code to detect bad behavior and customer report code)",
       "1_0name" : "myvalue",
@@ -102,6 +166,12 @@
           "postalcode" : "90840",
           "state" : "CA"
         }
+      },
+      "6buy_history" : {
+        "buy1" : "item_bought",
+        "buy2" : "item_bought",
+        "buy3" : "item_bought",
+        "buy4" : "item_bought"
       },
       "7sell_history" : {
         "sell1" : "item_sold",
@@ -168,90 +238,66 @@
         }
       },
       "9sellinventory" : {
-        "shoes" : {
-          "b22mhFiqHuVR9vwowQyQjD4720Q2" : {
-            "-L9FNpPzi2FouktspF3G" : {
-              "brand" : "Sell History",
-              "gender" : "Unisex",
-              "name" : "Nike Aqua",
-              "price" : 130,
-              "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
-              "shoeColor" : "Red",
-              "shoeCondition" : "New",
-              "shoeID" : "-L9FNpPzi2FouktspF3G",
-              "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpPzi2FouktspF3G%2FNike%20Aqua?alt=media&token=ff018b81-9854-4bae-b8d3-6e2d1a91221c",
-              "shoeType" : "Running",
-              "size" : 9
+        "shoes": {
+          "b22mhFiqHuVR9vwowQyQjD4720Q2": {
+            "-L9FNpPzi2FouktspF3G": {
+              "brand": "Nike",
+              "gender": "Unisex",
+              "name": "Nike Aqua",
+              "price": 130,
+              "sellerID": "b22mhFiqHuVR9vwowQyQjD4720Q2",
+              "shoeColor": "Red",
+              "shoeCondition": "New",
+              "shoeID": "-L9FNpPzi2FouktspF3G",
+              "shoeImageUrl": "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpPzi2FouktspF3G%2FNike%20Aqua?alt=media&token=ff018b81-9854-4bae-b8d3-6e2d1a91221c",
+              "shoeType": "Running",
+              "size": 9
             },
-            "-L9FNpQF8cv3vcojRZcH" : {
-              "brand" : "Purchase History",
-              "gender" : "Unisex",
-              "name" : "Nike Black Bullet",
-              "price" : 120,
-              "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
-              "shoeColor" : "Red",
-              "shoeCondition" : "New",
-              "shoeID" : "-L9FNpQF8cv3vcojRZcH",
-              "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQF8cv3vcojRZcH%2FNike%20Black%20Bullet?alt=media&token=5f5a50b3-f1c7-4cf8-b005-c3242eb4e130",
-              "shoeType" : "Running",
-              "size" : 10.5
+            "-L9FNpQF8cv3vcojRZcH": {
+              "brand": "Nike",
+              "gender": "Unisex",
+              "name": "Nike Black Bullet",
+              "price": 120,
+              "sellerID": "b22mhFiqHuVR9vwowQyQjD4720Q2",
+              "shoeColor": "Red",
+              "shoeCondition": "New",
+              "shoeID": "-L9FNpQF8cv3vcojRZcH",
+              "shoeImageUrl": "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQF8cv3vcojRZcH%2FNike%20Black%20Bullet?alt=media&token=5f5a50b3-f1c7-4cf8-b005-c3242eb4e130",
+              "shoeType": "Running",
+              "size": 10.5
             },
-            "-L9FNpQNGfgmu_h14Chr" : {
-              "brand" : "Notifications",
-              "gender" : "Unisex",
-              "name" : "Nike Vapormax Wolf",
-              "price" : 100,
-              "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
-              "shoeColor" : "Red",
-              "shoeCondition" : "New",
-              "shoeID" : "-L9FNpQNGfgmu_h14Chr",
-              "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQNGfgmu_h14Chr%2FNike%20Vapormax%20Wolf?alt=media&token=88a4115d-5dbc-4e77-9028-d346ab72974e",
-              "shoeType" : "Running",
-              "size" : 9.5
+            "-L9FNpQNGfgmu_h14Chr": {
+              "brand": "Nike",
+              "gender": "Unisex",
+              "name": "Nike Vapormax Wolf",
+              "price": 100,
+              "sellerID": "b22mhFiqHuVR9vwowQyQjD4720Q2",
+              "shoeColor": "Red",
+              "shoeCondition": "New",
+              "shoeID": "-L9FNpQNGfgmu_h14Chr",
+              "shoeImageUrl": "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQNGfgmu_h14Chr%2FNike%20Vapormax%20Wolf?alt=media&token=88a4115d-5dbc-4e77-9028-d346ab72974e",
+              "shoeType": "Running",
+              "size": 9.5
             },
-            "-L9FNpQUq63Waz3Lasd" : {
-              "brand" : "Help",
-              "gender" : "Unisex",
-              "name" : "Nike Wheatsport",
-              "price" : 140,
-              "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
-              "shoeColor" : "Red",
-              "shoeCondition" : "New",
-              "shoeID" : "-L9FNpQUq63Waz3LsxXz",
-              "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQUq63Waz3LsxXz%2FNike%20Wheatsport?alt=media&token=129c2a04-aadd-42c4-85a6-e617cdbbc9dd",
-              "shoeType" : "Running",
-              "size" : 11.5
-            },
-            "-L9FNpQUq63Waz3LsxXz" : {
-              "brand" : "Settings",
-              "gender" : "Unisex",
-              "name" : "Nike Wheatsport",
-              "price" : 140,
-              "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
-              "shoeColor" : "Red",
-              "shoeCondition" : "New",
-              "shoeID" : "-L9FNpQUq63Waz3LsxXz",
-              "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQUq63Waz3LsxXz%2FNike%20Wheatsport?alt=media&token=129c2a04-aadd-42c4-85a6-e617cdbbc9dd",
-              "shoeType" : "Running",
-              "size" : 11.5
-            },
-            "-L9FNpQUq63Waz3czx" : {
-              "brand" : "Contact Us",
-              "gender" : "Unisex",
-              "name" : "Nike Wheatsport",
-              "price" : 140,
-              "sellerID" : "b22mhFiqHuVR9vwowQyQjD4720Q2",
-              "shoeColor" : "Red",
-              "shoeCondition" : "New",
-              "shoeID" : "-L9FNpQUq63Waz3LsxXz",
-              "shoeImageUrl" : "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQUq63Waz3LsxXz%2FNike%20Wheatsport?alt=media&token=129c2a04-aadd-42c4-85a6-e617cdbbc9dd",
-              "shoeType" : "Running",
-              "size" : 11.5
+            "-L9FNpQUq63Waz3LsxXz": {
+              "brand": "Nike",
+              "gender": "Unisex",
+              "name": "Nike Wheatsport",
+              "price": 140,
+              "sellerID": "b22mhFiqHuVR9vwowQyQjD4720Q2",
+              "shoeColor": "Red",
+              "shoeCondition": "New",
+              "shoeID": "-L9FNpQUq63Waz3LsxXz",
+              "shoeImageUrl": "https://firebasestorage.googleapis.com/v0/b/zapato-fde27.appspot.com/o/ShoeImages%2F-L9FNpQUq63Waz3LsxXz%2FNike%20Wheatsport?alt=media&token=129c2a04-aadd-42c4-85a6-e617cdbbc9dd",
+              "shoeType": "Running",
+              "size": 11.5
             }
           }
         }
       },
-      "stripecus" : "cus_CjLxFZqTKyumtg"
+      "email" : "jamesajfreedompop1@gmail.com",
+      "name" : "James Sandbox",
+      "stripe_customer_id" : "cus_CorYG89nAgcreW"
     }
   }
 }

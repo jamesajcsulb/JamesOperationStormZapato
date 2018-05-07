@@ -82,11 +82,15 @@ public class HomeFragment extends Fragment
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 shoearraypass = new ArrayList<String>();
-                classshoe = new ArrayList<Shoe>();for (DataSnapshot snaparray : dataSnapshot.getChildren()) {
-                    for(DataSnapshot snaparray2 : snaparray.child("9sellinventory").child("shoes").child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
-                        shoearraypass.add("" + snaparray2.child("shoeImageUrl").getValue());
-                        classshoe.add(new Shoe(snaparray2));
-                    }
+                classshoe = new ArrayList<Shoe>();
+                for (DataSnapshot snaparray : dataSnapshot.getChildren()) {
+                    //if(snaparray.getValue() != null)
+                    //{
+                        for(DataSnapshot snaparray2 : snaparray.child("9sellinventory").child("shoes").child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
+                            shoearraypass.add("" + snaparray2.child("shoeImageUrl").getValue());
+                            classshoe.add(new Shoe(snaparray2));
+                        }
+                   // }
                 }
                 myRef.removeEventListener(this);
 
