@@ -42,7 +42,7 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:hint="Edit title"
-                android:id="@+id/textInputLayout2"
+                android:id="@+id/edit_title"
                 android:inputType="text"
                 />
 

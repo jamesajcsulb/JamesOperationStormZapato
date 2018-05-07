@@ -55,13 +55,12 @@
                 >
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/edit_title"
+                    android:id="@+id/edit_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/newpost_description"
                     android:imeOptions="actionDone"
-                    android:inputType="textMultiLine|textImeMultiLine"
-                    android:singleLine="false"
+                    android:inputType="text"
                     android:textSize="18sp"
                     />
             </android.support.design.widget.TextInputLayout>
@@ -76,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/description_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/newpost_filterbutton"
+        app:layout_constraintBottom_toTopOf="@id/nextbutton_layout2"
         android:gravity="center">
 
         <TextView
@@ -178,31 +177,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/newpost_filterbutton"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_light"
-        android:gravity="center"
-        android:text="Add filters"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@id/nextbutton_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cond_layout_parent"/>
-
-    <TextView
-        android:id="@+id/text_seekprogress"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Seek text"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toTopOf="@id/nextbutton_layout2"
-        app:layout_constraintEnd_toStartOf="@id/newpost_filterbutton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cond_layout_parent"/>
 
     <LinearLayout
         android:id="@+id/nextbutton_layout2"
@@ -213,7 +187,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/newpost_filterbutton">
+        app:layout_constraintTop_toBottomOf="@id/cond_layout_parent">
 
         <!--<Button-->
             <!--android:id="@+id/backbutton1"-->
