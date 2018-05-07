@@ -1,5 +1,9 @@
 package com.example.james.myapplication;
 
+import android.app.Activity;
+import android.app.IntentService;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -25,8 +29,26 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+/*
+//import com.stripe.Stripe;
+import com.stripe.android.PaymentConfiguration;
+import com.stripe.android.exception.StripeException;
+import com.stripe.android.model.Card;
+//import com.stripe.model.Token;
+import com.stripe.android.model.Token;
+import com.stripe.android.TokenCallback;
+
+import com.stripe.android.Stripe;
+*/
+
+import com.stripe.android.Stripe;
+import com.stripe.android.TokenCallback;
+import com.stripe.android.model.Card;
+import com.stripe.android.model.Token;
 
 import java.util.Locale;
+
+import static java.security.AccessController.getContext;
 
 //import com.example.james.myapplication.add.ShareFragment;
 
@@ -39,6 +61,14 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private Button btnSpeak;
     private EditText txtText;
     String string = "";
+
+
+    private Boolean isloading = false;
+    private String tokenIdExtract = "";
+    private String bulkToken = "";
+    private FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
+    private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+    private String stripetestvar = "";
 //
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -94,8 +124,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         mFragmentManager = getSupportFragmentManager();
 
         loadInitialFragment();
-        restoreAccountDatabaseStructure();
-        stripeCustomerRegistration();
+        //stripetok2();
+        //restoreAccountDatabaseStructure();
+        //stripeCustomerRegistration();
 
         ///////////////////////////////
         //tts = new TextToSpeech(this, this);
@@ -180,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
+
     private void stripeCustomerRegistration()
     {/*
         //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
@@ -225,7 +257,69 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             System.out.println("error stripe");
         }*/
     }
+/*
+    private void stripetok()
+    {
 
+
+
+
+
+AsyncTask ast = new AsyncTask() {
+    @Override
+    protected Object doInBackground(Object[] objects) {
+
+        Log.d("ZZZZZZZZZZZZZZZZZZZZZZZ","HELLO00000000000000000000");
+        //////////////////////////////////
+
+
+        Log.d("kkkkkkkkkkkkkkkkkkkkkkk","HELLO00000000000000000000");
+
+
+
+         Stripe stripe = new Stripe(new IntentService("StripeKing") {
+            @Override
+            protected void onHandleIntent(Intent intent) {
+                Card card = new Card(
+                        "4242424242424242",
+                        01,
+                        2019,
+                        "123"
+                );
+
+                card.validateNumber();
+                card.validateCVC();
+
+                try {
+                    String errorMessage = null;
+                    Token token = null;
+                    token = stripe.createTokenSynchronous(card,
+                            PaymentConfiguration.getInstance().getPublishableKey());
+
+                    //Toast.makeText(, "tokgot", Toast.LENGTH_LONG).show();
+                    System.out.printf("yyyyyyyyyyyyyyy", "HELLO00000000000000000000000000000000000000000000000000OOOOO");
+
+                    StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
+                    stripeFunction.charge(token);
+
+                } catch (StripeException stripeEx) {
+                    //errorMessage = stripeEx.getLocalizedMessage();
+                    Log.d("eeeee","HELLO00000000000000000000");
+                }
+            }
+        });
+
+        Log.d("aaaaaaaaaaaaaaaaaaaaaa","HELLO00000000000000000000");
+
+
+
+        return null;
+    }
+}.execute();
+
+        Log.d("lllllllllllll","HELLO00000000000000000000");
+    }
+*/
     private void restoreAccountDatabaseStructure()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -237,15 +331,85 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             @Override
             protected Object doInBackground(Object[] objects) {
                 FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-                StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
+                //StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
 
-                string = stripeFunction.createAccount(user2.getEmail(),"");
+                //string = stripeFunction.createAccount(user2.getEmail(),"");
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
                 db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
+
+
+
+
+/*
+                //////////////////////////////////
+                Card card = new Card(
+                        "4242424242424242",
+                        01,
+                        2019,
+                        "123"
+                );
+
+                card.validateNumber();
+                card.validateCVC();
+
+                //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+
+// Token is created using Checkout or Elements!
+// Get the payment token ID submitted by the form:
+                //String token = request.getParameter("stripeToken");
+
+                //Card card = new Card("4242424242424242", 1, 2020, "111")
+                //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+                //Stripe.getApiBase = StripeFunction(getContext(), "");
+
+
+                //new Stripe(getContext()).setDefaultPublishableKey("YOUR_PUBLISHABLE_KEY");
+/////////////////////////////////////////////////
+                Stripe stripe = new Stripe(new IntentService("StripeKing") {
+                    @Override
+                    protected void onHandleIntent(Intent intent) {
+                    }
+                });
+
+                String errorMessage = null;
+                Token token = null;
+
+                try {
+                    token = stripe.createTokenSynchronous(card,
+                            PaymentConfiguration.getInstance().getPublishableKey());
+
+                    //Toast.makeText(getContext(), "tokgot", Toast.LENGTH_LONG).show();
+                    System.out.printf("HELLOOOOOO", token);
+
+                    stripeFunction.charge(token);
+
+                } catch (StripeException stripeEx) {
+                    errorMessage = stripeEx.getLocalizedMessage();
+                }
+/////////////////////////////////////////////////
+*/
+                //}//, "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
+                /*stripe.createToken(
+                        card,
+                        new TokenCallback() {
+                            public void onSuccess(Token token) {
+                                // Send token to your server
+                            }
+                            public void onError(Exception error) {
+                                // Show localized error message
+                                Toast.makeText(getContext(),
+                                        error.getLocalizedString(getContext()),
+                                        Toast.LENGTH_LONG
+                                ).show();
+                            }
+                        }
+                );*/
+                /////////////////////
+
 
 
                 return null;
