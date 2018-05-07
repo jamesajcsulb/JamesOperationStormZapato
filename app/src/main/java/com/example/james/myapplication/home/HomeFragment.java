@@ -71,6 +71,8 @@ public class HomeFragment extends Fragment
               //  Toast.makeText(getContext(), "this", Toast.LENGTH_LONG).show();
             //}
         //});
+        if (v != null)
+        {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -84,7 +86,7 @@ public class HomeFragment extends Fragment
                 //OS8hpHlgYRgTB73CAC4EC7badD82
                 //String ds = dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").getKey();
                 //for (DataSnapshot snaparray : dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").getChildren()) {
-                for (DataSnapshot snaparray : dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").child("9iteminventory").child("shoes").child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
+                for (DataSnapshot snaparray : dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").child("9sellinventory").child("shoes").child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
                     //for() {
                     shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
                     classshoe.add(new Shoe(snaparray));
@@ -103,6 +105,7 @@ public class HomeFragment extends Fragment
             public void onCancelled(DatabaseError error) {
             }
         });
+        }
 
 /*
         recview = (RecyclerView) v.findViewById(R.id.linerec);

@@ -1,7 +1,6 @@
 package com.example.james.myapplication.Model;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.james.myapplication.R;
+import com.example.james.myapplication.unused.Shoe;
 
 import java.util.ArrayList;
 

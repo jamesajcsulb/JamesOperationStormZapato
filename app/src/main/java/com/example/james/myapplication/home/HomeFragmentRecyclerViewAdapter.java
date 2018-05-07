@@ -107,15 +107,17 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
         public void onClick(View view) {
             FragmentManager fragmentManagerssss = ((MainActivity)context).getSupportFragmentManager();
 
-            Fragment fragment = new HomeItemDetailsFragment();
+            Fragment fragmentt = new HomeItemDetailsFragment();
             Bundle arguments = new Bundle();
             arguments.putString( "itemId" , "" + getAdapterPosition());
             arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
             arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
                     + mShoe.get(getAdapterPosition()).getShoeBrand());
-            fragment.setArguments(arguments);
-            final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
-            ft.replace(R.id.fragment_container, fragment);
+            fragmentt.setArguments(arguments);//final
+
+            FragmentTransaction ft = fragmentManagerssss.beginTransaction();
+            ft.addToBackStack(null);
+            ft.replace(R.id.fragment_container, fragmentt);
             ft.commit();
         }
     }

@@ -1,41 +1,17 @@
 package com.example.james.myapplication.Network
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.content.res.AssetManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
-import android.preference.PreferenceManager
-import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
-import android.widget.Toast
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 //import com.zapato.zapato.HomeView.Home
 //import com.zapato.zapato.MainActivity
 import com.example.james.myapplication.Model.User
-import android.support.design.widget.Snackbar
-import android.support.annotation.NonNull
-import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.auth.api.credentials.Credential
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.*
 import com.google.firebase.storage.FirebaseStorage
-import com.example.james.myapplication.activities.Login
-import com.example.james.myapplication.Model.Shoe
-import com.example.james.myapplication.R
-import com.google.firebase.storage.StorageReference
-import java.io.File
+import com.example.james.myapplication.unused.Shoe
 import com.google.firebase.storage.UploadTask
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.OnFailureListener
-import java.io.FileInputStream
-import java.io.IOException
 import java.io.InputStream
-import java.net.HttpURLConnection
 import java.util.ArrayList
 
 
