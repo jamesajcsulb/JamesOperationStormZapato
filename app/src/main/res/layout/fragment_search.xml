@@ -56,6 +56,17 @@
         android:layout_alignBottom="@+id/searchBox"
         android:layout_toEndOf="@+id/recycler_view"
         android:background="@drawable/ic_search_black_24dp" />
+
+    <TextView
+        android:id="@+id/searching"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/searchBox"
+        android:layout_alignBottom="@+id/searchBox"
+        android:layout_toEndOf="@+id/btnSpeak2"
+        android:text="SEARCHING"
+        android:textColor="@color/black"
+        android:visibility="invisible" />
 </RelativeLayout>
 
 

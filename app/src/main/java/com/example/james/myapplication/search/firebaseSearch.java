@@ -50,10 +50,12 @@ public class firebaseSearch extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
+                TextView searching = (TextView)findViewById(R.id.searching);
+                searching.setVisibility(view.VISIBLE);
+
                 String searchText = mSearchField.getText().toString();
 
                 firebaseShoeSearch(searchText);
-
             }
         });
     }
@@ -67,7 +69,7 @@ public class firebaseSearch extends AppCompatActivity
         FirebaseRecyclerAdapter<Shoe, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Shoe, UsersViewHolder>(
 
                 Shoe.class,
-                R.layout.list_layout,
+                R.layout.grid_item,
                 UsersViewHolder.class,
                 firebaseSearchQuery
 
@@ -75,7 +77,7 @@ public class firebaseSearch extends AppCompatActivity
             //@Override
             protected void populateViewHolder(UsersViewHolder viewHolder, Shoe model, int position)
             {
-                viewHolder.setDetails(getApplicationContext(), model.getName());
+                viewHolder.setDetails(getApplicationContext(), model.getName(), Double.toString(model.getShoePrice()), model.getShoeImageUrl());
             }
         };
 
@@ -93,14 +95,16 @@ public class firebaseSearch extends AppCompatActivity
             mView = itemView;
         }
 
-        public void setDetails(Context ctx, String shoeName){
+        public void setDetails(Context ctx, String shoeName, String shoePrice, String imageURL){
 
-            TextView shoe_name = (TextView) mView.findViewById(R.id.text);
-            //ImageView user_image = (ImageView) mView.findViewById(R.id.profile_image);
+            TextView shoe_name = (TextView) mView.findViewById(R.id.text);//changed from "text" to "name", don't know where text was from, name is from grid_item.xml
+            ImageView shoe_image = (ImageView) mView.findViewById(R.id.picture);
+            TextView shoe_price = (TextView) mView.findViewById(R.id.price);
 
             shoe_name.setText(shoeName);
+            shoe_price.setText("$" + shoePrice);
 
-            //Glide.with(ctx).load(userImage).into(user_image);
+            Glide.with(ctx).load(imageURL).into(shoe_image);
         }
     }
 }
