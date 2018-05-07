@@ -57,7 +57,7 @@ public class ShareFragment3 extends Fragment {
                Toast.makeText(getContext(),"Set your price!!",Toast.LENGTH_SHORT).show();
             }
             else{
-               extras.putInt("price",price);
+               extras.putString("price",Integer.toString(price));
                extras.putBoolean("firm",firmPrice);
                performTransition();
             }

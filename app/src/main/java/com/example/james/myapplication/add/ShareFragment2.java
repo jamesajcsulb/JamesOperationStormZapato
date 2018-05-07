@@ -69,7 +69,7 @@ public class ShareFragment2 extends Fragment {
             }
             else{
                extras.putString("description",description);
-               extras.putInt("condition", shoeCondition);
+               extras.putString("condition", Integer.toString(shoeCondition));
                performTransition();
             }
          }

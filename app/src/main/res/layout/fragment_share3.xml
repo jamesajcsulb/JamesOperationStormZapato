@@ -9,33 +9,34 @@
 
     <LinearLayout
         android:id="@+id/pricingLayout"
-        android:layout_width="300dp"
+        android:layout_width="298dp"
         android:layout_height="300dp"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/nextbutton_layout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/nextbutton_layout3">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/pricing_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pricing"
             android:layout_marginBottom="20dp"
-            android:textSize="40sp"
             android:fontFamily="@font/roboto_medium"
+            android:text="Pricing"
             android:textColor="@color/black"
+            android:textSize="40sp"
             />
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout3"
             android:layout_width="120dp"
             android:layout_height="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/white_background"
             android:gravity="start"
             app:hintEnabled="false"
-            android:background="@drawable/white_background"
-            android:layout_marginBottom="30dp"
             >
 
             <android.support.design.widget.TextInputEditText
@@ -53,21 +54,23 @@
             android:id="@+id/checkbox_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:gravity="center"
             >
+
             <TextView
                 android:id="@+id/firmText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Firm on price?"
                 android:fontFamily="@font/roboto_light"
-                android:textSize="25sp"
                 android:paddingEnd="10dp"
+                android:text="Firm on price?"
+                android:textSize="25sp"
                 />
 
             <CheckBox
+                android:id="@+id/checkbox"
                 style="@android:style/Widget.Material.Light.CompoundButton.CheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -148,8 +148,7 @@ public class ShareFragment extends Fragment {
      * this function runs when User clicks "Upload picture" button
      */
     private void dispatchUploadPicIntent() {
-        pictureCount++;
-        if (pictureCount>4) {
+        if (pictureCount==4) {
             getView().findViewById(R.id.takephoto_button).setClickable(false);
             Toast.makeText(getContext(), "Maximum picture upload reached!", Toast.LENGTH_SHORT).show();
             return;
@@ -167,8 +166,7 @@ public class ShareFragment extends Fragment {
      * this function runs when User clicks "Take picture" button
      */
     private void dispatchTakePictureIntent() {
-        pictureCount++;
-        if (pictureCount>4) {
+        if (pictureCount==4) {
             getView().findViewById(R.id.takephoto_button).setClickable(false);
             Toast.makeText(getContext(), "Maximum picture upload reached!", Toast.LENGTH_SHORT).show();
             return;
@@ -218,25 +216,26 @@ public class ShareFragment extends Fragment {
         else if (code==REQUEST_IMAGE_CAPTURE) {rotate=true;}
 
         switch (pictureCount) {
-            case 1: photo1.setImageBitmap(imageBitmap);
+            case 0: photo1.setImageBitmap(imageBitmap);
                     if (rotate) photo1.setRotation(90);
                 break;
 
-            case 2: photo2.setImageBitmap(imageBitmap);
+            case 1: photo2.setImageBitmap(imageBitmap);
                     if (rotate) photo2.setRotation(90);
                 break;
 
-            case 3: photo3.setImageBitmap(imageBitmap);
+            case 2: photo3.setImageBitmap(imageBitmap);
                     if (rotate) photo3.setRotation(90);
                 break;
 
-            case 4: photo4.setImageBitmap(imageBitmap);
+            case 3: photo4.setImageBitmap(imageBitmap);
                     if (rotate) photo4.setRotation(90);
                 break;
 
             default:
                 break;
         }
+        pictureCount++;
         extras.putParcelable("image "+pictureCount,imageBitmap);
 
     }
