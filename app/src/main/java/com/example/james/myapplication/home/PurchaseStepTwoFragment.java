@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.james.myapplication.R;
@@ -27,6 +28,7 @@ public class PurchaseStepTwoFragment extends Fragment
     private String desired_string4;
     private String desired_string5;
     private Button button;
+    private TextView textView;
 
     public static PurchaseStepTwoFragment newInstance(String param1, String param2) {
         PurchaseStepTwoFragment fragment = new PurchaseStepTwoFragment();
@@ -50,12 +52,15 @@ public class PurchaseStepTwoFragment extends Fragment
         // Get data for transaction
         Bundle arguments = getArguments();
         //desired_string = arguments.getString("itemId");
-        //desired_string2 = arguments.getString("itemId");
-        //desired_string3 = arguments.getString("itemImage");
-        //desired_string4 = arguments.getString("Brand");
+        desired_string2 = arguments.getString("itemId");
+        desired_string3 = arguments.getString("itemImage");
+        desired_string4 = arguments.getString("Brand");
         desired_string5 = arguments.getString("confId");
 
-        Toast.makeText(getContext(), "" + desired_string5, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "" + desired_string5, Toast.LENGTH_LONG).show();
+
+        textView = (TextView) v.findViewById(R.id.confirmationCodeHold);
+        textView.setText(desired_string5);
 
         // Transaction
         //button = (Button) v.findViewById(R.id.confirm_purchase);
