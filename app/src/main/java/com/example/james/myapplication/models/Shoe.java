@@ -24,6 +24,17 @@ public class Shoe implements Serializable {
     public String shoeID;       // each shoe has its own unique ID
     public String shoeImageUrl; //url to Firebase storage
 
+    //empty constructor
+    public Shoe()
+    {
+
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
     //constructor with basic shoe info input
     public Shoe(String shoeName, double shoeSize, double shoePrice){
         this.name = shoeName;

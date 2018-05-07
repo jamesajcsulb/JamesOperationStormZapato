@@ -17,13 +17,14 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.james.myapplication.R;
+import com.example.james.myapplication.models.Shoe;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     private AutoCompleteTextView mSearchField;
     private Button mSearchBtn;
 
@@ -55,68 +56,51 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
-    private void firebaseShoeSearch(String searchText) {
-
+    private void firebaseShoeSearch(String searchText)
+    {
         Toast.makeText(this, "Started Search", Toast.LENGTH_LONG).show();
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
+        
+        FirebaseRecyclerAdapter<Shoe, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Shoe, UsersViewHolder>(
 
-        FirebaseRecyclerAdapter<shoes, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
-
-                shoes.class,
+                Shoe.class,
                 R.layout.list_layout,
                 UsersViewHolder.class,
                 firebaseSearchQuery
 
         ) {
-            @Override
-            protected void populateViewHolder(UsersViewHolder viewHolder, Users model, int position) {
-
-
-                viewHolder.setDetails(getApplicationContext(), model.getName(), model.getStatus(), model.getImage());
-
+            //@Override
+            protected void populateViewHolder(UsersViewHolder viewHolder, Shoe model, int position)
+            {
+                viewHolder.setDetails(getApplicationContext(), model.getName());
             }
         };
 
         mResultList.setAdapter(firebaseRecyclerAdapter);
-
     }
-
 
     // View Holder Class
-
-    public static class UsersViewHolder extends RecyclerView.ViewHolder {
-
+    public static class UsersViewHolder extends RecyclerView.ViewHolder
+    {
         View mView;
 
-        public UsersViewHolder(View itemView) {
+        public UsersViewHolder(View itemView)
+        {
             super(itemView);
-
             mView = itemView;
-
         }
 
-        public void setDetails(Context ctx, String userName, String userStatus, String userImage){
+        public void setDetails(Context ctx, String shoeName){
 
-            TextView user_name = (TextView) mView.findViewById(R.id.name_text);
-            TextView user_status = (TextView) mView.findViewById(R.id.status_text);
-            ImageView user_image = (ImageView) mView.findViewById(R.id.profile_image);
+            TextView shoe_name = (TextView) mView.findViewById(R.id.text);
+            //ImageView user_image = (ImageView) mView.findViewById(R.id.profile_image);
 
+            shoe_name.setText(shoeName);
 
-            user_name.setText(userName);
-            user_status.setText(userStatus);
-
-            Glide.with(ctx).load(userImage).into(user_image);
-
-
+            //Glide.with(ctx).load(userImage).into(user_image);
         }
-
-
-
-
     }
-
 }
