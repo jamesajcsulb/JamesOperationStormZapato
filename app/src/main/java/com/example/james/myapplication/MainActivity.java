@@ -186,6 +186,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
 
+        db.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
+        db.child("users").child(user.getUid()).child("name").setValue(user.getDisplayName());
 
         db.child("users").child(user.getUid()).child("0_0foodforthought").setValue("For privacy(customer satisfaction and civilized conduct of business) need to encrypt certain data of customers so that customer services don't look at their confidential data. Include code to decrypt only on user's agreement authorization signature or decrypt only with customer's phone");
         db.child("users").child(user.getUid()).child("0_1account_behavior").setValue("if: good(access granted)/bad(marked bad and access revoked after Zapato Admins' review. Need code to detect bad behavior and customer report code)");
