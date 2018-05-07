@@ -36,6 +36,9 @@
             >
         </activity>
         <activity
+            android:name=".StripeFunction">
+        </activity>
+        <activity
             android:name=".home.CreateAccountActivity">
         </activity>
         <activity

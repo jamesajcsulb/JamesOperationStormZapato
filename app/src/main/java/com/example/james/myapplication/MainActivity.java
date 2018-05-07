@@ -34,7 +34,9 @@ import java.util.HashMap;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
+import com.stripe.model.Account;
 import com.stripe.model.Charge;
+import com.stripe.model.Customer;
 import com.stripe.net.RequestOptions;
 
 //import com.example.james.myapplication.add.ShareFragment;
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         loadInitialFragment();
         restoreAccountDatabaseStructure();
+        stripeCustomerRegistration();
 
         ///////////////////////////////
         //tts = new TextToSpeech(this, this);
@@ -188,8 +191,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
     private void stripeCustomerRegistration()
-    {
-        /*
+    {/*
+        //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+
         Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
 
         List<String> expandList = new LinkedList<String>();
@@ -200,18 +204,36 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         Charge.retrieve("ch_1CNDleKSGtsYu6vvNRHCoU1W", params, null);
 
+        Stripe.apiKey = "sk_test_...";
 
+        Map<String, Object> chargeMap = new HashMap<String, Object>();
+        chargeMap.put("amount", 100);
+        chargeMap.put("currency", "usd");
+        chargeMap.put("source", "tok_1234"); // obtained via Stripe.js
 
-        Customer.create();
+        try {
+            Charge charge = Charge.create(chargeMap);
+            System.out.println(charge);
+        } catch (StripeException e) {
+            e.printStackTrace();
+        }
+*/
 
+/*
         Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
 
-        Map<String, Object> customerParams = new HashMap<String, Object>();
-        customerParams.put("description", "Customer for emily.thompson@example.com");
-        customerParams.put("source", "tok_visa");
+        Map<String, Object> accountParams = new HashMap<String, Object>();
+        accountParams.put("type", "'custom'");
+        accountParams.put("country", "'US'");
+        accountParams.put("email", "'bob@example.com'");
 
-        Customer.create(customerParams);
-        */
+        try{
+            Account.create(accountParams);
+            System.out.println("hello stripe");
+        } catch (StripeException e) {
+            e.printStackTrace();
+            System.out.println("error stripe");
+        }*/
     }
 
     private void restoreAccountDatabaseStructure()
