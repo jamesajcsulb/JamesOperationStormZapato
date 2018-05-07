@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.unused;
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import android.support.v7.app.AppCompatActivity
+import com.example.james.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*

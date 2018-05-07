@@ -1,6 +1,5 @@
 package com.example.james.myapplication.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,26 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.example.james.myapplication.CreateAccountActivity;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 //import kotlinx.android.synthetic.main.activity_tab.*;
 //import kotlinx.android.synthetic.main.create_account.*;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.internal.FirebaseAppHelper;//. .getUid;
-import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.Random;
@@ -87,9 +75,13 @@ public class PurchaseStepOneFragment extends Fragment
 
 
 
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                //Toast.makeText(getContext(), "" + user.getUid(), Toast.LENGTH_LONG).show();
+
                 FirebaseDatabase fba = FirebaseDatabase.getInstance();
                 //DatabaseReference db = fba.getReference("users").child("DrmYuz6ApObAgBKGjlQM2JvER8t1").child("6buy_history");
-                DatabaseReference db = fba.getReference("users").child("OS8hpHlgYRgTB73CAC4EC7badD82").child("6buy_history");
+                //DatabaseReference db = fba.getReference("users").child("OS8hpHlgYRgTB73CAC4EC7badD82").child("6buy_history");
+                DatabaseReference db = fba.getReference("users").child(user.getUid()).child("6buy_history");
                 db.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
                 db.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
                 db.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
