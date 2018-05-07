@@ -85,7 +85,7 @@ public class StripeCool implements PaymentService {
         try {
             // Submit charge to credit card
             Charge charge = Charge.create(chargeParams);
-            System.out.println("WOW");
+            System.out.println("WOW");//
         } catch (CardException e) {
             // Transaction was declined
             //System.out.println("Status is: " + e.getCode());
