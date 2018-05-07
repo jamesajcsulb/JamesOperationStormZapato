@@ -15,23 +15,33 @@ import com.stripe.net.RequestOptions;
 
 public class StripeFunction extends Exception {
 
-    public StripeFunction()
+    public void StripeFunction()
     {
-        System.out.println("hello in");
+        //
+    }
+
+    public String createAccount(String desc, String descval)
+    {
         Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
 
         Map<String, Object> customerParams = new HashMap<String, Object>();
-        customerParams.put("description", "Customer for joshua.robinson@example.com");
-        customerParams.put("source", "tok_mastercard");
+        customerParams.put("description", desc);//"description", "Customer for joshua.robinson@example.com");
+        //customerParams.put("source", "tok_mastercard");
 
+        String string = new String();
         try {
-            Customer.create(customerParams);
-            System.out.println("hello create");
+            Customer s = Customer.create(customerParams);
+
+
+            string = s.getId();//getCreated().toString();// = Customer.retrieve();
+            //System.out.printf("zzz",s);
+
+
         } catch (StripeException e) {
             e.printStackTrace();
         }
 
-
+        return string;
     }
 
     public void hello()

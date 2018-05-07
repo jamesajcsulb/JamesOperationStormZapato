@@ -1,5 +1,6 @@
 package com.example.james.myapplication;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private TextToSpeech tts;
     private Button btnSpeak;
     private EditText txtText;
+    String string = "";
 //
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -241,9 +244,33 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Toast.makeText(getContext(), "" + user.getUid(), Toast.LENGTH_LONG).show();
 
+
+        // Stripe register account
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
+
+                string = stripeFunction.createAccount(user2.getEmail(),"");
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+                db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
+
+
+                return null;
+            }
+        };
+        asyncTask.execute();
+
         // Firebase record call as current google logged in user
         FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+        //db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
 
         db.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
         db.child("users").child(user.getUid()).child("name").setValue(user.getDisplayName());

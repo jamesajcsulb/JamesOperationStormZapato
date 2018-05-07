@@ -21,22 +21,7 @@ public class InitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Intent intent = new Intent(this, Login.class);
-        //Intent intent = new Intent(this, StripeFunction.class);
-        //startActivity(intent);
-
-
-        System.out.println("hello stripe");
-
-        AsyncTask asyncTask = new AsyncTask() {
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                StripeFunction stripeFunction = new StripeFunction();
-
-                return null;
-            }
-        };
-
-        asyncTask.execute();
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
     }
 }
