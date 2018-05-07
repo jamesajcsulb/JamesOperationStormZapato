@@ -7,7 +7,7 @@ import com.google.firebase.database.*
 import com.example.james.myapplication.Model.User
 import com.google.firebase.auth.*
 import com.google.firebase.storage.FirebaseStorage
-import com.example.james.myapplication.unused.Shoe
+import com.example.james.myapplication.models.Shoe
 import com.google.firebase.storage.UploadTask
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.OnFailureListener

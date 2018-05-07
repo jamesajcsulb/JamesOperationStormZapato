@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.james.myapplication.R;
-import com.example.james.myapplication.unused.Shoe;
+import com.example.james.myapplication.models.Shoe;
 
 import java.util.ArrayList;
 
