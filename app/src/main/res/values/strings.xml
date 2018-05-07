@@ -29,4 +29,5 @@
     <string name="cancelbutton1">Cancel</string>
     <string name="nextbutton1">Next ></string>
     <string name="nextbutton2">Next ></string>
+    <string name="backbutton1"><![CDATA[< Back]]></string>
 </resources>

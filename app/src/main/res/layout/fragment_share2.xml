@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:clickable="true"
-    android:focusable="true">
+>
 
     <LinearLayout
         android:id="@+id/description_layout"
@@ -209,43 +208,37 @@
         android:id="@+id/nextbutton_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/newpost_filterbutton">
 
-        <Button
-            android:id="@+id/cancel_button2"
-            style="@android:style/Widget.Material.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="100dp"
-            android:background="@color/white"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/cancelbutton1"
-            android:textAllCaps="false"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@id/nextbutton_layout"
-            app:layout_constraintEnd_toStartOf="@id/next_button1"
-            app:layout_constraintStart_toStartOf="@id/nextbutton_layout"
-            app:layout_constraintTop_toTopOf="@id/nextbutton_layout"
-            />
+        <!--<Button-->
+            <!--android:id="@+id/backbutton1"-->
+            <!--style="@android:style/Widget.Material.Button.Borderless"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="30dp"-->
+            <!--android:layout_marginEnd="90dp"-->
+            <!--android:fontFamily="@font/roboto_light"-->
+            <!--android:text="@string/backbutton1"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textSize="18sp"-->
+            <!--/>-->
 
         <Button
             android:id="@+id/next_button2"
             style="@android:style/Widget.Material.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="90dp"
             android:fontFamily="@font/roboto_light"
             android:text="@string/nextbutton1"
             android:textAllCaps="false"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@id/nextbutton_layout"
-            app:layout_constraintEnd_toEndOf="@id/nextbutton_layout"
-            app:layout_constraintStart_toEndOf="@id/cancel_button"
-            app:layout_constraintTop_toTopOf="@id/nextbutton_layout"/>
+            android:textSize="18sp"/>
 
     </LinearLayout>
 

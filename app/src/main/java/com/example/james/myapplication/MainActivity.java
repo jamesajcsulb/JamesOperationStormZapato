@@ -24,20 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-
-
-import java.util.HashMap;
-
-import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.Account;
-import com.stripe.model.Charge;
-import com.stripe.model.Customer;
-import com.stripe.net.RequestOptions;
 
 //import com.example.james.myapplication.add.ShareFragment;
 
