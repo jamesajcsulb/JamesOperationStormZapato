@@ -24,7 +24,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
+
+import java.util.HashMap;
+
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+import com.stripe.net.RequestOptions;
 
 //import com.example.james.myapplication.add.ShareFragment;
 
@@ -176,6 +187,33 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
+    private void stripeCustomerRegistration()
+    {
+        /*
+        Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+
+        List<String> expandList = new LinkedList<String>();
+        expandList.add("customer");
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("expand", expandList);
+
+        Charge.retrieve("ch_1CNDleKSGtsYu6vvNRHCoU1W", params, null);
+
+
+
+        Customer.create();
+
+        Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
+
+        Map<String, Object> customerParams = new HashMap<String, Object>();
+        customerParams.put("description", "Customer for emily.thompson@example.com");
+        customerParams.put("source", "tok_visa");
+
+        Customer.create(customerParams);
+        */
+    }
+
     private void restoreAccountDatabaseStructure()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -185,10 +223,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-
         db.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
         db.child("users").child(user.getUid()).child("name").setValue(user.getDisplayName());
-
         db.child("users").child(user.getUid()).child("0_0foodforthought").setValue("For privacy(customer satisfaction and civilized conduct of business) need to encrypt certain data of customers so that customer services don't look at their confidential data. Include code to decrypt only on user's agreement authorization signature or decrypt only with customer's phone");
         db.child("users").child(user.getUid()).child("0_1account_behavior").setValue("if: good(access granted)/bad(marked bad and access revoked after Zapato Admins' review. Need code to detect bad behavior and customer report code)");
         db.child("users").child(user.getUid()).child("1_0name").setValue("myvalue");
