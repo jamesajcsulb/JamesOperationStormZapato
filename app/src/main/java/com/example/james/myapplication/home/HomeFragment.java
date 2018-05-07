@@ -74,15 +74,17 @@ public class HomeFragment extends Fragment
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("shoes");
+        DatabaseReference myRef = database.getReference("users");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 shoearraypass = new ArrayList<String>();
                 classshoe = new ArrayList<Shoe>();
-                String ds = dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getKey();
-                for (DataSnapshot snaparray : dataSnapshot.child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
+                //OS8hpHlgYRgTB73CAC4EC7badD82
+                //String ds = dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").getKey();
+                //for (DataSnapshot snaparray : dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").getChildren()) {
+                for (DataSnapshot snaparray : dataSnapshot.child("OS8hpHlgYRgTB73CAC4EC7badD82").child("9iteminventory").child("shoes").child("b22mhFiqHuVR9vwowQyQjD4720Q2").getChildren()) {
                     //for() {
                     shoearraypass.add("" + snaparray.child("shoeImageUrl").getValue());
                     classshoe.add(new Shoe(snaparray));
