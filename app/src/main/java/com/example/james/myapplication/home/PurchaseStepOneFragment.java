@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.james.myapplication.R;
+import com.example.james.myapplication.stripe.StripeCool;
 import com.example.james.myapplication.unused.StripeFunction;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 
@@ -23,6 +24,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.stripe.android.Stripe;
+import com.stripe.android.TokenCallback;
+import com.stripe.android.model.Card;
+import com.stripe.android.model.Token;
+import com.stripe.model.Order;
 
 import java.util.Random;
 
@@ -37,6 +43,8 @@ public class PurchaseStepOneFragment extends Fragment
     private Button button;
     private int purchaseConfirmation;
     private StripeFunction stripeFunction;
+    private StripeCool sc;
+    private String tokenn;
 
     public static PurchaseStepOneFragment newInstance(String param1, String param2) {
         PurchaseStepOneFragment fragment = new PurchaseStepOneFragment();
@@ -115,6 +123,8 @@ public class PurchaseStepOneFragment extends Fragment
                                 //stripeFunction.charge(string);
 
                                 myRef.removeEventListener(this);
+
+                                chargeStripeAccount();
                             }
 
                             @Override
@@ -177,5 +187,28 @@ public class PurchaseStepOneFragment extends Fragment
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    public void chargeStripeAccount()
+    {
+        sc = new StripeCool();
+
+        Card card = new Card("4242424242424242", 01, 2019, "123");
+        Stripe stripe = new Stripe(getContext(), "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
+        stripe.createToken(card, new TokenCallback() {
+            public void onSuccess(Token token) {
+                tokenn = token.getId();
+                AsyncTask ast = new AsyncTask() {
+                    @Override
+                    protected Object doInBackground(Object[] objects) {
+                        StripeCool sc = new StripeCool();
+                        sc.chargeCreditCard(new Order(), tokenn);
+                        return null;
+                    }
+                }.execute();
+            }
+            public void onError(Exception error) {
+            }
+        });
     }
 }
