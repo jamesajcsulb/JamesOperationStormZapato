@@ -23,10 +23,12 @@ import java.util.ArrayList;
 public class ReviewFragment extends Fragment {
 
    Bundle extras;
-   TextView title, description, condition, price;
+   TextView title, description, condition_textview, price;
    private ImageView photo1,photo2,photo3,photo4;
    ArrayList<Bitmap> bitmaps;
    Button updateButton;
+   String[] conditions = {"Poor","Good","Very Good","Like New","Brand New"};
+   String condition;
 
 
    public ReviewFragment() {
@@ -58,7 +60,10 @@ public class ReviewFragment extends Fragment {
 
       price = view.findViewById(R.id.review_price);
 
-      condition = view.findViewById(R.id.review_condition);
+      condition_textview = view.findViewById(R.id.review_condition);
+      String condition_temp = extras.getString("condition");
+      int index = Integer.parseInt(condition_temp);
+      condition = conditions[index];
 
       updateButton.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -70,24 +75,34 @@ public class ReviewFragment extends Fragment {
       return view;
    }
 
+
+   /**
+    * Assign saved images to imageViews in ReviewFragment
+    * If taken with camera, need to rotate it 90degrees
+    * TODO: TRY CROPPING !!
+    */
    public void updateBitmap(){
       for (int i = 1; i < 5; i++) {
          Bitmap bmp = extras.getParcelable("image "+i);
          switch (i){
-            case 1: photo1.setImageBitmap(bmp); break;
-            case 2: photo2.setImageBitmap(bmp); break;
+            case 1: photo1.setImageBitmap(bmp); photo1.setRotation(90); break; // TODO: capture first two images from camera for sake of demo
+            case 2: photo2.setImageBitmap(bmp); photo1.setRotation(90); break;
             case 3: photo3.setImageBitmap(bmp); break;
             case 4: photo4.setImageBitmap(bmp); break;
             default: break;
          }
       }
    }
-
+   /**
+    * method will be changed to carry out pushing into Firebase.
+    * Will be called from "POST" button instead of "Update"
+    */
    public void update(){
       title.setText(extras.getString("title"));
-      description.setText(extras.getString("description"));
       price.setText(extras.getString("price"));
-      condition.setText(extras.getString("condition"));
+      condition_textview.setText(condition);
+      description.setText(extras.getString("description"));
+
       updateBitmap();
    }
 

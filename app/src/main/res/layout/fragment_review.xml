@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".add.ReviewFragment">
 
 
     <LinearLayout
+        android:id="@+id/review_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/review_header"
@@ -25,96 +29,141 @@
             android:layout_height="wrap_content"
             android:text="Review"
             android:textColor="@color/black"
-            android:textSize="45sp"
+            android:textSize="40sp"
             />
+
+        <HorizontalScrollView
+            android:id="@+id/image_scroller"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/image_grid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                app:layout_constraintBottom_toBottomOf="@id/images_layout"
+                app:layout_constraintEnd_toEndOf="@id/images_layout"
+                app:layout_constraintStart_toStartOf="@id/images_layout"
+                app:layout_constraintTop_toBottomOf="@id/takephoto_button">
+
+                <com.example.james.myapplication.Model.SquareImageView
+                    android:id="@+id/revImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/darkGray"
+                    app:srcCompat="@drawable/empty_image_icon"
+                    />
+
+                <com.example.james.myapplication.Model.SquareImageView
+                    android:id="@+id/revImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/empty_image_icon"
+
+                    />
+
+                <com.example.james.myapplication.Model.SquareImageView
+                    android:id="@+id/revImage3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/empty_image_icon"
+
+                    />
+
+                <com.example.james.myapplication.Model.SquareImageView
+                    android:id="@+id/revImage4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/empty_image_icon"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <TextView
             android:id="@+id/review_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TITLE:"/>
+            android:fontFamily="@font/roboto_medium_italic"
+            android:gravity="center"
+            android:text="Title: "
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/price_cond_layout"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/review_price"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="Price: "
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text=" | "
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/review_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="Condition:"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/review_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DESCRIPTION:"/>
-
-        <TextView
-            android:id="@+id/review_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PRICE:"/>
-
-        <TextView
-            android:id="@+id/review_condition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CONDITION:"
-            android:layout_marginBottom="10dp"/>
-
-        <LinearLayout
-            android:id="@+id/image_grid"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="@font/roboto_light"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:paddingTop="10dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toBottomOf="@id/images_layout"
-            app:layout_constraintEnd_toEndOf="@id/images_layout"
-            app:layout_constraintStart_toStartOf="@id/images_layout"
-            app:layout_constraintTop_toBottomOf="@id/takephoto_button"
-            >
-
-            <ImageView
-                android:id="@+id/revImage1"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/darkGray"
-                app:srcCompat="@drawable/empty_image_icon"
-                />
-
-            <ImageView
-                android:id="@+id/revImage2"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/empty_image_icon"
-
-                />
-
-            <ImageView
-                android:id="@+id/revImage3"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/empty_image_icon"
-
-                />
-
-            <ImageView
-                android:id="@+id/revImage4"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/empty_image_icon"
-                />
-        </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="update"
-            android:textSize="20sp"
-            android:id="@+id/updateButton"/>
-
+            android:text="Description:"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
 
     </LinearLayout>
+
+    <!--This button will be changed to "POST"-->
+    <Button
+        android:id="@+id/updateButton"
+        style="@android:style/Widget.Material.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="update"
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_medium"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/review_layout"/>
 
 </android.support.constraint.ConstraintLayout>
