@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.stripe;
 
 import android.util.Log;
 
@@ -19,7 +19,6 @@ import com.stripe.Stripe;
 import com.stripe.model.Charge;
 import com.stripe.model.Customer;
 import com.stripe.model.Order;
-import com.stripe.model.Token;
 
 
 public class StripeCool implements PaymentService {

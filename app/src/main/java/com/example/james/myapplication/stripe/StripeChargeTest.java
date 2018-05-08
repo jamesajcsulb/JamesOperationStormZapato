@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.stripe;
 
 import android.app.Activity;
 import android.app.IntentService;

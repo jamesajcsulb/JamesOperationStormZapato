@@ -16,12 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.james.myapplication.StripeCool;
-import com.example.james.myapplication.StripeFunction;
+import com.example.james.myapplication.stripe.StripeCool;
 import com.example.james.myapplication.models.ImageAdapter;
 import com.example.james.myapplication.R;
-import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
-import com.example.james.myapplication.home.HomeFragmentRecyclerViewAdapter;
 import com.example.james.myapplication.models.Shoe;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,8 +37,6 @@ import com.stripe.model.Order;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.security.AccessController.getContext;
 
 public class HomeFragment extends Fragment
 {

@@ -1,4 +1,4 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.stripe;
 
 import com.example.james.myapplication.Model.User;
 import com.stripe.model.Order;
