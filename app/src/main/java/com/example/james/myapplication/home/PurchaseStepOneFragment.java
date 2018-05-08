@@ -5,21 +5,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.james.myapplication.R;
-import com.example.james.myapplication.StripeFunction;
+import com.example.james.myapplication.stripe.StripeFunction;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 
 //import kotlinx.android.synthetic.main.activity_tab.*;
 //import kotlinx.android.synthetic.main.create_account.*;
-import com.example.james.myapplication.models.Shoe;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class PurchaseStepOneFragment extends Fragment

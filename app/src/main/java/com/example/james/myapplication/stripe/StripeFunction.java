@@ -1,18 +1,12 @@
-package com.example.james.myapplication;
+package com.example.james.myapplication.stripe;
 
-import android.app.Activity;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.example.james.myapplication.Model.User;
 import com.stripe.Stripe;
-import com.stripe.android.TokenCallback;
 import com.stripe.exception.APIConnectionException;
 import com.stripe.exception.AuthenticationException;
 import com.stripe.exception.CardException;
@@ -22,21 +16,13 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.model.Customer;
 import com.stripe.model.Order;
-import com.stripe.model.Token;
 //import com.stripe.android.model.Token;
 
 
-import com.stripe.net.RequestOptions;
-
-import com.stripe.android.model.Card;
 //import com.stripe.android.Stripe;
 //import com.stripe.android.TokenCallback;
 //import com.stripe.android.model.Customer;
 //import com.stripe.android.model.Token;
-
-import com.stripe.net.RequestOptions;
-
-import com.stripe.android.model.Card;
 
 /*
 import android.os.AsyncTask;
@@ -58,7 +44,6 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 */
-import static java.security.AccessController.getContext;
 
 public class StripeFunction extends Exception implements PaymentService {
 

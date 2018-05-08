@@ -1,4 +1,4 @@
-package com.example.james.myapplication.home;
+package com.example.james.myapplication.stripe;
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -13,7 +13,6 @@ import com.google.firebase.database.*
 import com.stripe.android.model.Card
 import com.stripe.android.Stripe
 import com.stripe.android.TokenCallback
-import com.stripe.android.model.Customer
 import com.stripe.android.model.Token
 import java.io.*
 import java.net.HttpURLConnection
