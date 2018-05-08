@@ -37,7 +37,7 @@
             >
         </activity>
         <activity
-            android:name=".stripe.StripeFunction">
+            android:name=".unused.StripeFunction">
         </activity>
         <activity
             android:name=".stripe.CreateAccountActivity">

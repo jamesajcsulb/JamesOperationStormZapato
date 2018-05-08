@@ -1,10 +1,5 @@
 package com.example.james.myapplication;
 
-import android.app.Activity;
-import android.app.IntentService;
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
@@ -15,73 +10,69 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
 import com.example.james.myapplication.search.SearchFragment;
+import com.example.james.myapplication.unused.StripeFunction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-/*
-//import com.stripe.Stripe;
-import com.stripe.android.PaymentConfiguration;
-import com.stripe.android.exception.StripeException;
-import com.stripe.android.model.Card;
-//import com.stripe.model.Token;
-import com.stripe.android.model.Token;
-import com.stripe.android.TokenCallback;
-
-import com.stripe.android.Stripe;
-*/
-
-import com.stripe.android.Stripe;
-import com.stripe.android.TokenCallback;
-import com.stripe.android.model.Card;
-import com.stripe.android.model.Token;
-
 import java.util.Locale;
 
+/*
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Account;
+import java.util.HashMap;
+import java.util.Map;
+import android.app.Activity;
+import android.app.IntentService;
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.stripe.model.Token;
+import com.stripe.model.Account;
+import com.stripe.android.PaymentConfiguration;
+import com.stripe.android.model.Card;
+import com.stripe.android.Stripe;
+import com.stripe.android.exception.StripeException;
+import com.stripe.android.TokenCallback;
+import com.stripe.android.exception.StripeException;
+import com.stripe.android.model.Card;
+import com.stripe.android.model.Token;
+import com.stripe.android.TokenCallback;
 import static java.security.AccessController.getContext;
-
-//import com.example.james.myapplication.add.ShareFragment;
+import com.example.james.myapplication.add.ShareFragment;
+*/
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
-
     private TextView mTextMessage;
     private FragmentManager mFragmentManager;
-//
     private TextToSpeech tts;
     private Button btnSpeak;
     private EditText txtText;
-    String string = "";
-
-
+    private String string = "";
     private Boolean isloading = false;
     private String tokenIdExtract = "";
     private String bulkToken = "";
     private FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
     private String stripetestvar = "";
-//
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     Fragment initialFragment = loadInitialFragment();
                     return true;
-
                 case R.id.navigation_search:
-                    //initialFragment = SearchFragmentOther.newInstance();
                     Fragment initialFragment0 = new SearchFragment();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment0);
@@ -124,25 +115,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         mFragmentManager = getSupportFragmentManager();
 
         loadInitialFragment();
-        //stripetok2();
-        //restoreAccountDatabaseStructure();
+        restoreAccountDatabaseStructure();
         //stripeCustomerRegistration();
-
-        ///////////////////////////////
-        //tts = new TextToSpeech(this, this);
-        ////btnSpeak = (Button) findViewById(R.id.btnSpeak);
-       /// txtText = (EditText) findViewById(R.id.txtText);
-        // button on click event
-        //btnSpeak.setOnClickListener(new View.OnClickListener() {
-
-            //@Override
-            //public void onClick(View arg0) {
-            //    speakOut();
-            //}
-
-        //});
-    //}
-    ///////////////////
     }
 
     private Fragment loadInitialFragment()
@@ -161,272 +135,13 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         ft.commit();
     }
 
-
-
-
-
-//////////////////////
-    @Override
-    public void onDestroy() {
-        // Don't forget to shutdown!
-        if (tts != null) {
-            tts.stop();
-            tts.shutdown();
-        }
-        super.onDestroy();
-    }
-
-    //#cfccbc
-    @Override
-    public void onInit(int status) {
-        // TODO Auto-generated method stub
-
-        if (status == TextToSpeech.SUCCESS) {
-
-            int result = tts.setLanguage(Locale.US);
-
-            // tts.setPitch(5); // set pitch level
-            //
-
-            // tts.setSpeechRate(2); // set speech speed rate
-
-            if (result == TextToSpeech.LANG_MISSING_DATA
-                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS", "Language is not supported");
-            } else {
-                btnSpeak.setEnabled(true);
-                speakOut();
-            }
-
-        } else {
-            Log.e("TTS", "Initilization Failed");
-        }
-
-    }
-
-    private void speakOut() {
-
-        String text = txtText.getText().toString();
-
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-    }
-
-
-    private void stripeCustomerRegistration()
-    {/*
-        //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
-
-        Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
-
-        List<String> expandList = new LinkedList<String>();
-        expandList.add("customer");
-
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("expand", expandList);
-
-        Charge.retrieve("ch_1CNDleKSGtsYu6vvNRHCoU1W", params, null);
-
-        Stripe.apiKey = "sk_test_...";
-
-        Map<String, Object> chargeMap = new HashMap<String, Object>();
-        chargeMap.put("amount", 100);
-        chargeMap.put("currency", "usd");
-        chargeMap.put("source", "tok_1234"); // obtained via Stripe.js
-
-        try {
-            Charge charge = Charge.create(chargeMap);
-            System.out.println(charge);
-        } catch (StripeException e) {
-            e.printStackTrace();
-        }
-*/
-
-/*
-        Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
-
-        Map<String, Object> accountParams = new HashMap<String, Object>();
-        accountParams.put("type", "'custom'");
-        accountParams.put("country", "'US'");
-        accountParams.put("email", "'bob@example.com'");
-
-        try{
-            Account.create(accountParams);
-            System.out.println("hello stripe");
-        } catch (StripeException e) {
-            e.printStackTrace();
-            System.out.println("error stripe");
-        }*/
-    }
-/*
-    private void stripetok()
-    {
-
-
-
-
-
-AsyncTask ast = new AsyncTask() {
-    @Override
-    protected Object doInBackground(Object[] objects) {
-
-        Log.d("ZZZZZZZZZZZZZZZZZZZZZZZ","HELLO00000000000000000000");
-        //////////////////////////////////
-
-
-        Log.d("kkkkkkkkkkkkkkkkkkkkkkk","HELLO00000000000000000000");
-
-
-
-         Stripe stripe = new Stripe(new IntentService("StripeKing") {
-            @Override
-            protected void onHandleIntent(Intent intent) {
-                Card card = new Card(
-                        "4242424242424242",
-                        01,
-                        2019,
-                        "123"
-                );
-
-                card.validateNumber();
-                card.validateCVC();
-
-                try {
-                    String errorMessage = null;
-                    Token token = null;
-                    token = stripe.createTokenSynchronous(card,
-                            PaymentConfiguration.getInstance().getPublishableKey());
-
-                    //Toast.makeText(, "tokgot", Toast.LENGTH_LONG).show();
-                    System.out.printf("yyyyyyyyyyyyyyy", "HELLO00000000000000000000000000000000000000000000000000OOOOO");
-
-                    StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
-                    stripeFunction.charge(token);
-
-                } catch (StripeException stripeEx) {
-                    //errorMessage = stripeEx.getLocalizedMessage();
-                    Log.d("eeeee","HELLO00000000000000000000");
-                }
-            }
-        });
-
-        Log.d("aaaaaaaaaaaaaaaaaaaaaa","HELLO00000000000000000000");
-
-
-
-        return null;
-    }
-}.execute();
-
-        Log.d("lllllllllllll","HELLO00000000000000000000");
-    }
-*/
     private void restoreAccountDatabaseStructure()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //Toast.makeText(getContext(), "" + user.getUid(), Toast.LENGTH_LONG).show();
-
-
-        // Stripe register account
-        AsyncTask asyncTask = new AsyncTask() {
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-                //StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
-
-                //string = stripeFunction.createAccount(user2.getEmail(),"");
-
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
-                DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-
-                db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
-
-
-
-
-/*
-                //////////////////////////////////
-                Card card = new Card(
-                        "4242424242424242",
-                        01,
-                        2019,
-                        "123"
-                );
-
-                card.validateNumber();
-                card.validateCVC();
-
-                //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
-
-// Token is created using Checkout or Elements!
-// Get the payment token ID submitted by the form:
-                //String token = request.getParameter("stripeToken");
-
-                //Card card = new Card("4242424242424242", 1, 2020, "111")
-                //Stripe.apiKey = "sk_test_1uDfdDN5u2hgBegUb5kbD6qr";
-                //Stripe.getApiBase = StripeFunction(getContext(), "");
-
-
-                //new Stripe(getContext()).setDefaultPublishableKey("YOUR_PUBLISHABLE_KEY");
-/////////////////////////////////////////////////
-                Stripe stripe = new Stripe(new IntentService("StripeKing") {
-                    @Override
-                    protected void onHandleIntent(Intent intent) {
-                    }
-                });
-
-                String errorMessage = null;
-                Token token = null;
-
-                try {
-                    token = stripe.createTokenSynchronous(card,
-                            PaymentConfiguration.getInstance().getPublishableKey());
-
-                    //Toast.makeText(getContext(), "tokgot", Toast.LENGTH_LONG).show();
-                    System.out.printf("HELLOOOOOO", token);
-
-                    stripeFunction.charge(token);
-
-                } catch (StripeException stripeEx) {
-                    errorMessage = stripeEx.getLocalizedMessage();
-                }
-/////////////////////////////////////////////////
-*/
-                //}//, "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
-                /*stripe.createToken(
-                        card,
-                        new TokenCallback() {
-                            public void onSuccess(Token token) {
-                                // Send token to your server
-                            }
-                            public void onError(Exception error) {
-                                // Show localized error message
-                                Toast.makeText(getContext(),
-                                        error.getLocalizedString(getContext()),
-                                        Toast.LENGTH_LONG
-                                ).show();
-                            }
-                        }
-                );*/
-                /////////////////////
-
-
-
-                return null;
-            }
-        };
-        asyncTask.execute();
-
-        // Firebase record call as current google logged in user
-        FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-        //db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
+        //stripeCustomerRegistration(user.getEmail());
 
-        db.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
-        db.child("users").child(user.getUid()).child("name").setValue(user.getDisplayName());
-        db.child("users").child(user.getUid()).child("0_0foodforthought").setValue("For privacy(customer satisfaction and civilized conduct of business) need to encrypt certain data of customers so that customer services don't look at their confidential data. Include code to decrypt only on user's agreement authorization signature or decrypt only with customer's phone");
-        db.child("users").child(user.getUid()).child("0_1account_behavior").setValue("if: good(access granted)/bad(marked bad and access revoked after Zapato Admins' review. Need code to detect bad behavior and customer report code)");
         db.child("users").child(user.getUid()).child("1_0name").setValue("myvalue");
         db.child("users").child(user.getUid()).child("1_1birthday").setValue("myvalue");
         db.child("users").child(user.getUid()).child("1_2gender").setValue("myvalue");
@@ -517,7 +232,53 @@ AsyncTask ast = new AsyncTask() {
         db.child("users").child(user.getUid()).child("8conversation").child("2chattype-probablyFirebaseCloudMessagingbutforconceptputtingplaceholderhere").child("toreceipient2").child("sent2").setValue("s");
         db.child("users").child(user.getUid()).child("8conversation").child("2chattype-probablyFirebaseCloudMessagingbutforconceptputtingplaceholderhere").child("toreceipient3").child("received3").setValue("r");
         db.child("users").child(user.getUid()).child("8conversation").child("2chattype-probablyFirebaseCloudMessagingbutforconceptputtingplaceholderhere").child("toreceipient3").child("sent3").setValue("s");
-        //val key = ref.push().key
-        //ref.child(key).setValue("uniquetest")
+    }
+
+    private void speechTest()
+    {
+        tts = new TextToSpeech(this, this);
+        btnSpeak = (Button) findViewById(R.id.btnSpeak);
+        txtText = (EditText) findViewById(R.id.txtText);
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                speakOut();
+            }
+        });
+    }
+
+    private void speakOut() {
+        String text = txtText.getText().toString();
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    @Override
+    public void onDestroy() {
+        // Don't forget to shutdown!
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+
+            int result = tts.setLanguage(Locale.US);
+            tts.setSpeechRate(2); // set speech speed rate
+
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "Language is not supported");
+            } else {
+                btnSpeak.setEnabled(true);
+                speakOut();
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed");
+        }
     }
 }

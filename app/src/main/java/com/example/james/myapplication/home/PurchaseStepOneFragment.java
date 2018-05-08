@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.james.myapplication.R;
-import com.example.james.myapplication.stripe.StripeFunction;
+import com.example.james.myapplication.unused.StripeFunction;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 
 //import kotlinx.android.synthetic.main.activity_tab.*;
