@@ -19,38 +19,11 @@ import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
 import com.example.james.myapplication.search.SearchFragment;
-import com.example.james.myapplication.unused.StripeFunction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.Locale;
-
-/*
-import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.Account;
-import java.util.HashMap;
-import java.util.Map;
-import android.app.Activity;
-import android.app.IntentService;
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.stripe.model.Token;
-import com.stripe.model.Account;
-import com.stripe.android.PaymentConfiguration;
-import com.stripe.android.model.Card;
-import com.stripe.android.Stripe;
-import com.stripe.android.exception.StripeException;
-import com.stripe.android.TokenCallback;
-import com.stripe.android.exception.StripeException;
-import com.stripe.android.model.Card;
-import com.stripe.android.model.Token;
-import com.stripe.android.TokenCallback;
-import static java.security.AccessController.getContext;
-import com.example.james.myapplication.add.ShareFragment;
-*/
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
     private TextView mTextMessage;
@@ -116,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         loadInitialFragment();
         restoreAccountDatabaseStructure();
-        //stripeCustomerRegistration();
     }
 
     private Fragment loadInitialFragment()
@@ -139,9 +111,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-
-        //stripeCustomerRegistration(user.getEmail());
-
         db.child("users").child(user.getUid()).child("1_0name").setValue("myvalue");
         db.child("users").child(user.getUid()).child("1_1birthday").setValue("myvalue");
         db.child("users").child(user.getUid()).child("1_2gender").setValue("myvalue");
