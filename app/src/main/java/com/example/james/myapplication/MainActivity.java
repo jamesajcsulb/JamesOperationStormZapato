@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.example.james.myapplication.add.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
@@ -43,27 +45,32 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    setTitle("Zapato");
                     Fragment initialFragment = loadInitialFragment();
                     return true;
                 case R.id.navigation_search:
+                    setTitle("Discover");
                     Fragment initialFragment0 = new SearchFragment();
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment0);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_share:
+                    setTitle("Post your shoe");
                     Fragment initialFragment2 = new ShareFragment();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment2);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_heart:
+                    setTitle("My Favorites");
                     Fragment initialFragment3 = FavoriteFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment3);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_profile:
+                    setTitle("My Profile");
                     Fragment initialFragment4 = ProfileFragment.newInstance();
                     fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, initialFragment4);

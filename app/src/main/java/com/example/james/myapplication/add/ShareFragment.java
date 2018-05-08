@@ -2,6 +2,8 @@
 package com.example.james.myapplication.add;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,9 +19,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.james.myapplication.Model.SquareImageView;
 import com.example.james.myapplication.R;
 
 import java.io.FileNotFoundException;
@@ -40,16 +42,15 @@ public class ShareFragment extends Fragment {
     String TAG = "ShareFragment";
 
     EditText editTitle;
-    private ImageView photo1;
-    private ImageView photo2;
-    private ImageView photo3;
-    private ImageView photo4;
+    private SquareImageView photo1;
+    private SquareImageView photo2;
+    private SquareImageView photo3;
+    private SquareImageView photo4;
     ArrayList<Bitmap> bitmaps;
     Button takePicButton;
     Button uploadPicButton;
     int pictureCount = 0;
-
-
+    DialogInterface.OnClickListener dialogClickListener;
     String title; // Shoe title
     Bundle extras = new Bundle();
 
@@ -140,6 +141,74 @@ public class ShareFragment extends Fragment {
                 dispatchUploadPicIntent();
             }
         });
+
+        photo1.setOnClickListener(new View.OnClickListener() {
+//            AlertDialog.Builder builder;
+            @Override
+            public void onClick(View view) {
+                deleteImage(photo1);
+//                builder = new AlertDialog.Builder(getContext());
+//                builder.setMessage("Delete your picture? ").setPositiveButton("Yes", dialogClickListener)
+//                        .setNegativeButton("No", dialogClickListener).show();
+            }
+        });
+        photo2.setOnClickListener(new View.OnClickListener() {
+//            AlertDialog.Builder builder;
+            @Override
+            public void onClick(View view) {
+                deleteImage(photo2);
+//                builder = new AlertDialog.Builder(getContext());
+//                builder.setMessage("Delete your picture? ").setPositiveButton("Yes", dialogClickListener)
+//                        .setNegativeButton("No", dialogClickListener).show();
+            }
+        });
+        photo3.setOnClickListener(new View.OnClickListener() {
+//            AlertDialog.Builder builder;
+            @Override
+            public void onClick(View view) {
+                deleteImage(photo3);
+//                builder = new AlertDialog.Builder(getContext());
+//                builder.setMessage("Delete your picture? ").setPositiveButton("Yes", dialogClickListener)
+//                        .setNegativeButton("No", dialogClickListener).show();
+            }
+        });
+        photo4.setOnClickListener(new View.OnClickListener() {
+//            AlertDialog.Builder builder;
+            @Override
+            public void onClick(View view) {
+                deleteImage(photo4);
+//                builder = new AlertDialog.Builder(getContext());
+//                builder.setMessage("Delete your picture? ").setPositiveButton("Yes", dialogClickListener)
+//                        .setNegativeButton("No", dialogClickListener).show();
+            }
+        });
+
+    }
+
+    public void deleteImage(final SquareImageView image){
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Delete your picture? ").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
+        dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        pictureCount--;
+                        image.setImageResource(R.drawable.empty_image_icon);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+
     }
 
     // TODO: Crop picture from gallery

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/image_thumbnail">
+
+    <com.example.james.myapplication.Model.SquareImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/imageview_thumb"
+        />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/trash_icon"
+        app:layout_constraintEnd_toEndOf="@id/imageview_thumb"/>
+
+
+
+</android.support.constraint.ConstraintLayout>

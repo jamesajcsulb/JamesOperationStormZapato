@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.james.myapplication.Model.SquareImageView;
 import com.example.james.myapplication.R;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ReviewFragment extends Fragment {
 
    Bundle extras;
    TextView title, description, condition_textview, price;
-   private ImageView photo1,photo2,photo3,photo4;
+   private SquareImageView photo1,photo2,photo3,photo4;
    ArrayList<Bitmap> bitmaps;
    Button updateButton;
    String[] conditions = {"Poor","Good","Very Good","Like New","Brand New"};
@@ -60,6 +60,10 @@ public class ReviewFragment extends Fragment {
 
       price = view.findViewById(R.id.review_price);
 
+      // TODO: Add $ sign to price.
+      // TODO: Reformat switch logic for pictures taken with camera vs from gallery
+      // TODO: Add final POST button and push to Firebase using correct user reference
+      // TODO: Get User name and key for access to Firebase (ask Adrian, James)
       condition_textview = view.findViewById(R.id.review_condition);
       String condition_temp = extras.getString("condition");
       int index = Integer.parseInt(condition_temp);
@@ -85,8 +89,10 @@ public class ReviewFragment extends Fragment {
       for (int i = 1; i < 5; i++) {
          Bitmap bmp = extras.getParcelable("image "+i);
          switch (i){
-            case 1: photo1.setImageBitmap(bmp); photo1.setRotation(90); break; // TODO: capture first two images from camera for sake of demo
-            case 2: photo2.setImageBitmap(bmp); photo1.setRotation(90); break;
+            case 1: photo1.setImageBitmap(bmp); //photo1.setRotation(90);
+                break; //TODO: capture first two images from camera for sake of demo
+            case 2: photo2.setImageBitmap(bmp); //photo1.setRotation(90);
+               break;
             case 3: photo3.setImageBitmap(bmp); break;
             case 4: photo4.setImageBitmap(bmp); break;
             default: break;

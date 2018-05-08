@@ -106,7 +106,7 @@
 
         <LinearLayout
             android:id="@+id/image_grid"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
@@ -122,36 +122,36 @@
             app:layout_constraintTop_toBottomOf="@id/takephoto_button"
             >
 
-            <ImageView
+            <com.example.james.myapplication.Model.SquareImageView
                 android:id="@+id/imageView"
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/darkGray"
                 app:srcCompat="@drawable/empty_image_icon"
                 />
 
-            <ImageView
+            <com.example.james.myapplication.Model.SquareImageView
                 android:id="@+id/imageView2"
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/empty_image_icon"
 
                 />
 
-            <ImageView
+            <com.example.james.myapplication.Model.SquareImageView
                 android:id="@+id/imageView3"
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/empty_image_icon"
 
                 />
 
-            <ImageView
+            <com.example.james.myapplication.Model.SquareImageView
                 android:id="@+id/imageView4"
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 app:srcCompat="@drawable/empty_image_icon"
                 />
