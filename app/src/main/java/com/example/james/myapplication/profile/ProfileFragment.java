@@ -2,8 +2,10 @@ package com.example.james.myapplication.profile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.home.HomeFragment;
@@ -26,9 +31,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
+import static com.example.james.myapplication.add.ShareFragment.GET_FROM_GALLERY;
 
 public class ProfileFragment extends Fragment
 {
@@ -98,7 +106,35 @@ public class ProfileFragment extends Fragment
         //ListView mListView = (ListView) getActivity().findViewById(R.id.staticListView);
         //mListView.setAdapter(null);
 
+        ImageButton prof = (ImageButton) v.findViewById(R.id.profilePic);
+        prof.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
+            }
+        });
+
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            ImageButton prof = (ImageButton) getActivity().findViewById(R.id.profilePic);
+            prof.setImageURI(selectedImage);
+        }
     }
 /*
     @Override
