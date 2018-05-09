@@ -113,6 +113,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
             arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
             arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
                     + mShoe.get(getAdapterPosition()).getShoeBrand());
+            arguments.putString( "itemSeller" , "" + mShoe.get(getAdapterPosition()).getSellerId());
             fragmentt.setArguments(arguments);//final
 
             FragmentTransaction ft = fragmentManagerssss.beginTransaction();

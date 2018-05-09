@@ -67,4 +67,8 @@ public class Shoe implements Serializable {
     {
         return name;
     }
+    public String getSellerId()
+    {
+        return sellerID;
+    }
 }

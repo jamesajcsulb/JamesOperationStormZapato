@@ -16,22 +16,39 @@
         <com.stripe.android.view.CardInputWidget
             android:id="@+id/card_input_widget"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="87dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
+        <!--
+        <com.stripe.android.view.CardMultilineWidget
+            android:id="@+id/card_multiline_widget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="67dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/card_input_widget"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:shouldShowPostalCode="true" />
+            -->
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="281dp"
-            android:layout_height="392dp"
+            android:layout_height="178dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="8dp"
@@ -64,7 +81,7 @@
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.565" />
+            app:layout_constraintVertical_bias="0.803" />
 
         <Button
             android:id="@+id/confirm_purchase"

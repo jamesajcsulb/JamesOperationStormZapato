@@ -26,6 +26,7 @@ public class HomeItemDetailsFragment extends Fragment
     private String desired_string2;
     private String desired_string3;
     private String desired_string4;
+    private String desired_string5;
     private Button button;
 
     public static HomeItemDetailsFragment newInstance(String param1, String param2) {
@@ -52,10 +53,11 @@ public class HomeItemDetailsFragment extends Fragment
         desired_string2 = arguments.getString("itemId");
         desired_string3 = arguments.getString("itemPicture");
         desired_string4 = arguments.getString("itemDescription");
+        desired_string5 = arguments.getString("itemDescription");
 
         myImageView=(ImageView)v.findViewById(R.id.imageView);
         Glide.with(myImageView.getContext())
-                .load(""+arguments.getString("itemPicture"))
+                .load(""+arguments.getString("itemSeller"))
                 .into(myImageView);
 
         button = (Button) v.findViewById(R.id.purchase_button);
@@ -92,6 +94,7 @@ public class HomeItemDetailsFragment extends Fragment
         arguments.putString( "itemId1" , "" + desired_string2);
         arguments.putString( "itemPicture2" , "" + desired_string3);
         arguments.putString( "itemDescription3" , "" + desired_string4);
+        arguments.putString( "itemSeller4" , "" + desired_string5);
         fragment.setArguments(arguments);
 
         // Take off to next fragment

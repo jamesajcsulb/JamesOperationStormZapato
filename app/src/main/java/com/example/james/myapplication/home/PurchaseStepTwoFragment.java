@@ -27,6 +27,7 @@ public class PurchaseStepTwoFragment extends Fragment
     private String desired_string3;
     private String desired_string4;
     private String desired_string5;
+    private String desired_string6;
     private Button button;
     private TextView textView;
 
@@ -56,6 +57,7 @@ public class PurchaseStepTwoFragment extends Fragment
         desired_string3 = arguments.getString("itemImage");
         desired_string4 = arguments.getString("Brand");
         desired_string5 = arguments.getString("confId");
+        desired_string6 = arguments.getString("seller");
 
         //Toast.makeText(getContext(), "" + desired_string5, Toast.LENGTH_LONG).show();
 

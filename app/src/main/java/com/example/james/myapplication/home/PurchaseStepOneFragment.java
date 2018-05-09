@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.stripe.StripeCool;
@@ -31,9 +32,13 @@ import com.stripe.android.exception.StripeException;
 import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
 import com.stripe.android.view.CardInputWidget;
+import com.stripe.android.view.CardMultilineWidget;
 import com.stripe.model.Charge;
 import com.stripe.model.Customer;
 import com.stripe.model.Order;
+
+
+import org.xml.sax.ErrorHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,15 +52,19 @@ public class PurchaseStepOneFragment extends Fragment
     private String desired_string3;
     private String desired_string4;
     private String desired_string5;
+    private String desired_string6;
     private Button button;
     private int purchaseConfirmation;
     private StripeFunction stripeFunction;
     private StripeCool sc;
     private String tokenn;
     private CardInputWidget mCardInputWidget;
+    private CardMultilineWidget mCardMultilineWidget;
     //com.stripe.exception.StripeException;
     private StripeException mStripeExeption;
     private Card cardToSave;
+    //private Card mCardMultilineWidget;
+    ErrorHandler eh;
 
     public static PurchaseStepOneFragment newInstance(String param1, String param2) {
         PurchaseStepOneFragment fragment = new PurchaseStepOneFragment();
@@ -82,6 +91,47 @@ public class PurchaseStepOneFragment extends Fragment
         mCardInputWidget = (CardInputWidget) v.findViewById(R.id.card_input_widget);
 
 
+
+        //mCardMultilineWidget = (CardMultilineWidget) v.findViewById(R.id.card_multiline_widget);
+
+
+/*
+        Card cardToSave = mCardMultilineWidget.getCard();
+        if (cardToSave == null) {
+            mErrorDialogHandler.showError("Invalid Card Data");
+            return;
+        }
+
+        Card cardToSave = mCardMultilineWidget.getCard();
+
+        stripe.createToken(
+                card,
+                new TokenCallback() {
+                    public void onSuccess(Token token) {
+                        // Send token to your own web service
+                        MyServer.chargeToken(token);
+                    }
+                    public void onError(Exception error) {
+                        Toast.makeText(getContext(),
+                                error.getLocalizedMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+
+        if (cardToSave == null) {
+            mErrorDialogHandler.showError("Invalid Card Data");
+            return;
+        }
+
+        Stripe stripe
+        new Stripe(v.getContext()).setDefaultPublishableKey("YOUR_PUBLISHABLE_KEY");
+        stripe.createToken(
+                new Card("4242424242424242", 12, 2013, "123"),
+                tokenCallback
+        );
+*/
+
         // Get data for transaction
         Bundle arguments = getArguments();
         //desired_string = arguments.getString("itemId");
@@ -89,6 +139,7 @@ public class PurchaseStepOneFragment extends Fragment
         desired_string3 = arguments.getString("itemPicture2");
         desired_string4 = arguments.getString("itemDescription3");
         desired_string5 = arguments.getString("itemDescription3");
+        desired_string6 = arguments.getString("itemSeller4");
 
         //Toast.makeText(getContext(), "" + desired_string4, Toast.LENGTH_LONG).show();
 
@@ -97,75 +148,49 @@ public class PurchaseStepOneFragment extends Fragment
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //FirebaseAppHelper fah = new FirebaseAppHelper();
-                Random rand = new Random();
-                purchaseConfirmation = rand.nextInt(10000000) + 1;
-                desired_string5 = "" + purchaseConfirmation;
-
-
-
-
 
 
                 AsyncTask asyncTask = new AsyncTask() {
                     @Override
                     protected Object doInBackground(Object[] objects) {
-/*
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        //Toast.makeText(getContext(), "" + user.getUid(), Toast.LENGTH_LONG).show();
-
-                        FirebaseDatabase fba = FirebaseDatabase.getInstance();
-                        //DatabaseReference db = fba.getReference("users").child("DrmYuz6ApObAgBKGjlQM2JvER8t1").child("6buy_history");
-                        //DatabaseReference db = fba.getReference("users").child("OS8hpHlgYRgTB73CAC4EC7badD82").child("6buy_history");
-                        DatabaseReference db = fba.getReference("users").child(user.getUid()).child("6buy_history");
-                        db.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
-                        db.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
-                        db.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
-
-                        //String cusIdString = "";
-                        //DatabaseReference db2 = fba.getReference("users").child(user.getUid()).child("strip_customer_id");
-*/
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         final DatabaseReference myRef = database.getReference("users");
 
                         myRef.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                String string = dataSnapshot.child(user.getUid()).child("stripe_customer_id").getValue().toString();
-
-                                //stripeFunction = new StripeFunction();//user2.getEmail(),"");
-                                //Toast.makeText(getContext(),"hello " + string,Toast.LENGTH_LONG).show();
-                                //stripeFunction.charge(string);
+                                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                                String string = dataSnapshot.child(user2.getUid()).child("stripe_customer_id").getValue().toString();
 
                                 myRef.removeEventListener(this);
-
                                 chargeStripeAccount();
+
+
+                                //FirebaseAppHelper fah = new FirebaseAppHelper();
+                                Random rand = new Random();
+                                purchaseConfirmation = rand.nextInt(10000000) + 1;
+                                desired_string5 = "" + purchaseConfirmation;
+
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                FirebaseDatabase fba = FirebaseDatabase.getInstance();
+                                DatabaseReference db = fba.getReference("users").child(user.getUid()).child("6buy_history");
+                                db.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
+                                db.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
+                                db.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
+
+                                // insert to seller
+                                FirebaseUser userseller = FirebaseAuth.getInstance().getCurrentUser();
+                                FirebaseDatabase fbaseller = FirebaseDatabase.getInstance();
+                                DatabaseReference dbseller = fbaseller.getReference("users").child(desired_string6).child("7sell_history");
+                                dbseller.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
+                                dbseller.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
+                                dbseller.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
                             }
 
                             @Override
                             public void onCancelled(DatabaseError error) {
                             }
                         });
-                        //FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-
-                        //FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-                        //DatabaseReference myRef = fba.getReference("users").child(user.toString()).child("strip_customer_id");
-                        //myRef .getValue().toString();
-                        //db = fba.getReference("users").child(user.toString()).child("strip_customer_id");
-                        //cusIdString = db.toString();
-
-                        //StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
-                        //stripeFunction.charge(cusIdString);
-                        //string = stripeFunction.createAccount(user2.getEmail(),"");
-
-                        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        //FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
-                        //DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-
-                        //db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
-
 
                         performTransition();
                         return null;
@@ -195,6 +220,7 @@ public class PurchaseStepOneFragment extends Fragment
         arguments.putString( "itemImage" , "" + desired_string3);
         arguments.putString( "Brand" , "" + desired_string4);
         arguments.putString( "confId" , "" + desired_string5);
+        arguments.putString( "seller" , "" + desired_string6);
         fragment.setArguments(arguments);
 
         // Take off to next fragment
@@ -207,6 +233,14 @@ public class PurchaseStepOneFragment extends Fragment
 
     public void chargeStripeAccount()
     {
+        Card cardToSave = mCardInputWidget.getCard();
+        if (cardToSave == null) {
+            //mErrorDialogHandler.showError("Invalid Card Data");
+            return;
+        }
+
+
+
         //try
         //{
             //Card
@@ -244,5 +278,36 @@ public class PurchaseStepOneFragment extends Fragment
         //{
           //  Log.d("card numberincorrectfix", e.getStackTrace().getClass().toString());
         //}
+/*
+        Card cardToSaveMulti = mCardMultilineWidget.getCard();
+        if (cardToSaveMulti == null) {
+            //mErrorDialogHandler.showError("Invalid Card Data");
+            //return;
+        }
+        Stripe stripeMulti = new Stripe(getContext(), "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
+        stripeMulti.createToken(
+                cardToSaveMulti,
+                new TokenCallback() {
+                    public void onSuccess(Token token) {
+                        // Send token to your server
+                        tokenn = token.getId();
+                        AsyncTask ast = new AsyncTask() {
+                            @Override
+                            protected Object doInBackground(Object[] objects) {
+                                StripeCool sc = new StripeCool();
+                                sc.chargeCreditCard(new Order(), tokenn);
+                                return null;
+                            }
+                        }.execute();
+                    }
+                    public void onError(Exception error) {
+                        // Show localized error message
+                        //Toast.makeText(getContext(),
+                        //error.getLocalizedString(getContext()),
+                        //Toast.LENGTH_LONG
+                        //).show();
+                    }
+                }
+        );*/
     }
 }
