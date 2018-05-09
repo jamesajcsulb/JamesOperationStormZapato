@@ -66,6 +66,17 @@ public class PurchaseStepOneFragment extends Fragment
     //private Card mCardMultilineWidget;
     ErrorHandler eh;
 
+    private String itemName;
+    private String itemSellerId;
+    private String itemShoeId;
+    private String itemBrand;
+    private String itemGender;
+    private String itemShoeType;
+    private String itemImageUrl;
+    private String itemShoeCondition;
+    private String itemSize;
+    private String itemPrice;
+
     public static PurchaseStepOneFragment newInstance(String param1, String param2) {
         PurchaseStepOneFragment fragment = new PurchaseStepOneFragment();
         Bundle args = new Bundle();
@@ -141,6 +152,17 @@ public class PurchaseStepOneFragment extends Fragment
         desired_string5 = arguments.getString("itemDescription3");
         desired_string6 = arguments.getString("itemSeller4");
 
+        itemName = arguments.getString("itemName");
+        itemSellerId = arguments.getString("itemSellerId");
+        itemShoeId = arguments.getString("itemShoeId");
+        itemBrand = arguments.getString("itemBrand");
+        itemGender = arguments.getString("itemGender");
+        itemShoeType = arguments.getString("itemShoeType");
+        itemImageUrl = arguments.getString("itemImageUrl");
+        itemShoeCondition = arguments.getString("itemShoeCondition");
+        itemSize = arguments.getString("itemSize");
+        itemPrice = arguments.getString("itemPrice");
+
         //Toast.makeText(getContext(), "" + desired_string4, Toast.LENGTH_LONG).show();
 
         // Record purchase to firebase and show user confirmation fragment
@@ -171,6 +193,7 @@ public class PurchaseStepOneFragment extends Fragment
                                 purchaseConfirmation = rand.nextInt(10000000) + 1;
                                 desired_string5 = "" + purchaseConfirmation;
 
+                                // Insert purchase confirmation to buyer
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 FirebaseDatabase fba = FirebaseDatabase.getInstance();
                                 DatabaseReference db = fba.getReference("users").child(user.getUid()).child("6buy_history");
@@ -178,7 +201,7 @@ public class PurchaseStepOneFragment extends Fragment
                                 db.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
                                 db.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
 
-                                // insert to seller
+                                // Insert purchase confirmation to seller
                                 FirebaseUser userseller = FirebaseAuth.getInstance().getCurrentUser();
                                 FirebaseDatabase fbaseller = FirebaseDatabase.getInstance();
                                 DatabaseReference dbseller = fbaseller.getReference("users").child(desired_string6).child("7sell_history");
@@ -221,6 +244,18 @@ public class PurchaseStepOneFragment extends Fragment
         arguments.putString( "Brand" , "" + desired_string4);
         arguments.putString( "confId" , "" + desired_string5);
         arguments.putString( "seller" , "" + desired_string6);
+
+        arguments.putString( "itemName", itemName);
+        arguments.putString( "itemSellerId", itemSellerId);
+        arguments.putString( "itemShoeId", itemShoeId);
+        arguments.putString( "itemBrand", itemBrand);
+        arguments.putString( "itemGender", itemGender);
+        arguments.putString( "itemShoeType", itemShoeType);
+        arguments.putString( "itemImageUrl", itemImageUrl);
+        arguments.putString( "itemShoeCondition" , itemShoeCondition);
+        arguments.putString( "itemSize", itemSize);
+        arguments.putString( "itemPrice", itemPrice);
+
         fragment.setArguments(arguments);
 
         // Take off to next fragment

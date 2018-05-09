@@ -56,15 +56,6 @@ public class Shoe implements Serializable {
         this.price = Double.valueOf(String.valueOf(snapshot.child("price").getValue()));
     }
 
-    public String getShoeImageUrl(){ return shoeImageUrl; }
-    public double getShoePrice()
-    {
-        return price;
-    }
-    public String getShoeBrand()
-    {
-        return brand;
-    }
     public String getName()
     {
         return name;
@@ -72,5 +63,34 @@ public class Shoe implements Serializable {
     public String getSellerId()
     {
         return sellerID;
+    }
+    public String getShoeId()
+    {
+        return shoeID;
+    }
+    public String getBrand()
+    {
+        return brand;
+    }
+    public String getGender()
+    {
+        return gender;
+    }
+    public String getShoeType()
+    {
+        return shoeType;
+    }
+    public String getShoeImageUrl(){ return shoeImageUrl; }
+    public String getShoeCondition()
+    {
+        return shoeCondition;
+    }
+    public double getSize()
+    {
+        return size;
+    }
+    public double getPrice()
+    {
+        return price;
     }
 }

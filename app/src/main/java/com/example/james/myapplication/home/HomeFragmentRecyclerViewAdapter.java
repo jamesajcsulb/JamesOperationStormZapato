@@ -72,15 +72,15 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
                 .load("" + arrayList.get(position).getShoeImageUrl())
                 .into(mImageView);
 
-        Double toBeTruncated = new Double(arrayList.get(position).getShoePrice());
+        Double toBeTruncated = new Double(arrayList.get(position).getPrice());
 
         Double truncatedDouble = BigDecimal.valueOf(toBeTruncated)
                 .setScale(3, RoundingMode.HALF_UP)
                 .doubleValue();
-        String formato = String.format("%.2f",arrayList.get(position).getShoePrice());
+        String formato = String.format("%.2f",arrayList.get(position).getPrice());
 
         myTextView.setText("$" + formato);//arrayList.get(position).getShoePrice());
-        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
+        myBrandTextView.setText("" + arrayList.get(position).getBrand());
     }
 
     // total number of cells
@@ -112,8 +112,24 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
             arguments.putString( "itemId" , "" + getAdapterPosition());
             arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
             arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
-                    + mShoe.get(getAdapterPosition()).getShoeBrand());
+                    + mShoe.get(getAdapterPosition()).getBrand());
             arguments.putString( "itemSeller" , "" + mShoe.get(getAdapterPosition()).getSellerId());
+
+            /////////////////////////////////////
+            arguments.putString( "itemName" , "" + mShoe.get(getAdapterPosition()).getName());
+            arguments.putString( "itemSellerId" , "" + mShoe.get(getAdapterPosition()).getSellerId());
+            arguments.putString( "itemShoeId" , "" + mShoe.get(getAdapterPosition()).getShoeId());
+            arguments.putString( "itemBrand" , "" + mShoe.get(getAdapterPosition()).getBrand());
+            arguments.putString( "itemGender" , "" + mShoe.get(getAdapterPosition()).getGender());
+            arguments.putString( "itemShoeType" , "" + mShoe.get(getAdapterPosition()).getShoeType());
+            arguments.putString( "itemImageUrl" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
+            arguments.putString( "itemShoeCondition" , "" + mShoe.get(getAdapterPosition()).getShoeCondition());
+            arguments.putString( "itemSize" , "" + mShoe.get(getAdapterPosition()).getSize());
+            arguments.putString( "itemPrice" , "" + mShoe.get(getAdapterPosition()).getPrice());
+            ///////////////////////////////////////////
+
+
+
             fragmentt.setArguments(arguments);//final
 
             FragmentTransaction ft = fragmentManagerssss.beginTransaction();

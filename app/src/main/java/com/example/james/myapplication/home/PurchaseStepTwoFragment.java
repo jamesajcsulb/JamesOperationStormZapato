@@ -31,6 +31,17 @@ public class PurchaseStepTwoFragment extends Fragment
     private Button button;
     private TextView textView;
 
+    private String itemName;
+    private String itemSellerId;
+    private String itemShoeId;
+    private String itemBrand;
+    private String itemGender;
+    private String itemShoeType;
+    private String itemImageUrl;
+    private String itemShoeCondition;
+    private String itemSize;
+    private String itemPrice;
+
     public static PurchaseStepTwoFragment newInstance(String param1, String param2) {
         PurchaseStepTwoFragment fragment = new PurchaseStepTwoFragment();
         Bundle args = new Bundle();
@@ -58,6 +69,17 @@ public class PurchaseStepTwoFragment extends Fragment
         desired_string4 = arguments.getString("Brand");
         desired_string5 = arguments.getString("confId");
         desired_string6 = arguments.getString("seller");
+
+        itemName = arguments.getString("itemName");
+        itemSellerId = arguments.getString("itemSellerId");
+        itemShoeId = arguments.getString("itemShoeId");
+        itemBrand = arguments.getString("itemBrand");
+        itemGender = arguments.getString("itemGender");
+        itemShoeType = arguments.getString("itemShoeType");
+        itemImageUrl = arguments.getString("itemImageUrl");
+        itemShoeCondition = arguments.getString("itemShoeCondition");
+        itemSize = arguments.getString("itemSize");
+        itemPrice = arguments.getString("itemPrice");
 
         //Toast.makeText(getContext(), "" + desired_string5, Toast.LENGTH_LONG).show();
 
