@@ -52,9 +52,10 @@ public class PurchaseStepOneFragment extends Fragment
     private StripeFunction stripeFunction;
     private StripeCool sc;
     private String tokenn;
-    CardInputWidget mCardInputWidget;
+    private CardInputWidget mCardInputWidget;
     //com.stripe.exception.StripeException;
-    StripeException mStripeExeption;
+    private StripeException mStripeExeption;
+    private Card cardToSave;
 
     public static PurchaseStepOneFragment newInstance(String param1, String param2) {
         PurchaseStepOneFragment fragment = new PurchaseStepOneFragment();
@@ -75,8 +76,11 @@ public class PurchaseStepOneFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_details_purchase_step_one, container, false);
 
-        CardInputWidget mCardInputWidget = (CardInputWidget) getActivity().findViewById(R.id.card_input_widget);
-        chargeStripeAccount();
+        //CardInputWidget mCardInputWidget = (CardInputWidget) getActivity().findViewById(R.id.card_input_widget);
+        //chargeStripeAccount();
+
+        mCardInputWidget = (CardInputWidget) v.findViewById(R.id.card_input_widget);
+
 
         // Get data for transaction
         Bundle arguments = getArguments();
@@ -136,7 +140,7 @@ public class PurchaseStepOneFragment extends Fragment
 
                                 myRef.removeEventListener(this);
 
-                                //chargeStripeAccount();
+                                chargeStripeAccount();
                             }
 
                             @Override
@@ -203,10 +207,10 @@ public class PurchaseStepOneFragment extends Fragment
 
     public void chargeStripeAccount()
     {
-        try
-        {
-            //CardInputWidget mCardInputWidget = (CardInputWidget) getActivity().findViewById(R.id.card_input_widget);
-            Card cardToSave = mCardInputWidget.getCard();
+        //try
+        //{
+            //Card
+            cardToSave = mCardInputWidget.getCard();
             if (cardToSave == null) {
                 //mErrorDialogHandler.showError("Invalid Card Data");
             }
@@ -235,10 +239,10 @@ public class PurchaseStepOneFragment extends Fragment
             if (!cardToSave.validateCard()) {
                 // Do not continue token creation.
             }
-        }
-        catch(Exception e)
-        {
-            Log.d("card numberincorrectfix", e.getStackTrace().getClass().toString());
-        }
+        //}
+        //catch(Exception e)
+        //{
+          //  Log.d("card numberincorrectfix", e.getStackTrace().getClass().toString());
+        //}
     }
 }
