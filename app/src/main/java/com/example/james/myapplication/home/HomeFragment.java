@@ -92,31 +92,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //chargeStripeAccount();
-
         return v;
     }
-/*
-    public void chargeStripeAccount()
-    {
-        sc = new StripeCool();
-
-        Card card = new Card("4242424242424242", 01, 2019, "123");
-        Stripe stripe = new Stripe(getContext(), "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
-        stripe.createToken(card, new TokenCallback() {
-            public void onSuccess(Token token) {
-                tokenn = token.getId();
-                AsyncTask ast = new AsyncTask() {
-                    @Override
-                    protected Object doInBackground(Object[] objects) {
-                        StripeCool sc = new StripeCool();
-                        sc.chargeCreditCard(new Order(), tokenn);
-                        return null;
-                    }
-                }.execute();
-            }
-            public void onError(Exception error) {
-            }
-        });
-    }*/
 }

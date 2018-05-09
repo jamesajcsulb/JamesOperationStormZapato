@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.stripe.android.Stripe;
 import com.stripe.android.TokenCallback;
+import com.stripe.android.exception.StripeException;
 import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
+import com.stripe.android.view.CardInputWidget;
+import com.stripe.model.Charge;
+import com.stripe.model.Customer;
 import com.stripe.model.Order;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class PurchaseStepOneFragment extends Fragment
@@ -45,6 +52,9 @@ public class PurchaseStepOneFragment extends Fragment
     private StripeFunction stripeFunction;
     private StripeCool sc;
     private String tokenn;
+    CardInputWidget mCardInputWidget;
+    //com.stripe.exception.StripeException;
+    StripeException mStripeExeption;
 
     public static PurchaseStepOneFragment newInstance(String param1, String param2) {
         PurchaseStepOneFragment fragment = new PurchaseStepOneFragment();
@@ -65,6 +75,8 @@ public class PurchaseStepOneFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_details_purchase_step_one, container, false);
 
+        CardInputWidget mCardInputWidget = (CardInputWidget) getActivity().findViewById(R.id.card_input_widget);
+        chargeStripeAccount();
 
         // Get data for transaction
         Bundle arguments = getArguments();
@@ -124,7 +136,7 @@ public class PurchaseStepOneFragment extends Fragment
 
                                 myRef.removeEventListener(this);
 
-                                chargeStripeAccount();
+                                //chargeStripeAccount();
                             }
 
                             @Override
@@ -151,7 +163,7 @@ public class PurchaseStepOneFragment extends Fragment
                         //db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
 
 
-                        //performTransition();
+                        performTransition();
                         return null;
                     }
                 };
@@ -191,24 +203,42 @@ public class PurchaseStepOneFragment extends Fragment
 
     public void chargeStripeAccount()
     {
-        sc = new StripeCool();
+        try
+        {
+            //CardInputWidget mCardInputWidget = (CardInputWidget) getActivity().findViewById(R.id.card_input_widget);
+            Card cardToSave = mCardInputWidget.getCard();
+            if (cardToSave == null) {
+                //mErrorDialogHandler.showError("Invalid Card Data");
+            }
+                cardToSave.setName("Customer Name");
+                cardToSave.setAddressZip("12345");
 
-        Card card = new Card("4242424242424242", 01, 2019, "123");
-        Stripe stripe = new Stripe(getContext(), "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
-        stripe.createToken(card, new TokenCallback() {
-            public void onSuccess(Token token) {
-                tokenn = token.getId();
-                AsyncTask ast = new AsyncTask() {
-                    @Override
-                    protected Object doInBackground(Object[] objects) {
-                        StripeCool sc = new StripeCool();
-                        sc.chargeCreditCard(new Order(), tokenn);
-                        return null;
+                sc = new StripeCool();
+                //Card card = new Card("4242424242424242", 01, 2019, "123");
+                Stripe stripe = new Stripe(getContext(), "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
+                stripe.createToken(cardToSave, new TokenCallback() {
+                    public void onSuccess(Token token) {
+                        tokenn = token.getId();
+                        AsyncTask ast = new AsyncTask() {
+                            @Override
+                            protected Object doInBackground(Object[] objects) {
+                                StripeCool sc = new StripeCool();
+                                sc.chargeCreditCard(new Order(), tokenn);
+                                return null;
+                            }
+                        }.execute();
                     }
-                }.execute();
+                    public void onError(Exception error) {
+                    }
+                });
+
+            if (!cardToSave.validateCard()) {
+                // Do not continue token creation.
             }
-            public void onError(Exception error) {
-            }
-        });
+        }
+        catch(Exception e)
+        {
+            Log.d("card number incorrect fix", e.getStackTrace().getClass().toString());
+        }
     }
 }

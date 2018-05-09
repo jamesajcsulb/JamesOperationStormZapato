@@ -101,7 +101,7 @@ class Login: AppCompatActivity() {
 
         val authCredential = GoogleAuthProvider.getCredential(googleSignInAccount!!.idToken, null)
 
-        Toast.makeText(this@Login, "" + authCredential.provider, Toast.LENGTH_LONG).show()
+        //Toast.makeText(this@Login, "" + authCredential.provider, Toast.LENGTH_LONG).show()
 
         this.firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener { task: Task<AuthResult> ->
             if (task.isSuccessful) {
