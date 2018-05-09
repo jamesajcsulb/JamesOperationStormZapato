@@ -110,10 +110,10 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
             Fragment fragmentt = new HomeItemDetailsFragment();
             Bundle arguments = new Bundle();
             arguments.putString( "itemId" , "" + getAdapterPosition());
-            arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
-            arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
-                    + mShoe.get(getAdapterPosition()).getBrand());
-            arguments.putString( "itemSeller" , "" + mShoe.get(getAdapterPosition()).getSellerId());
+            //arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
+            //arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
+            //        + mShoe.get(getAdapterPosition()).getBrand());
+            //arguments.putString( "itemSeller" , "" + mShoe.get(getAdapterPosition()).getSellerId());
 
             /////////////////////////////////////
             arguments.putString( "itemName" , "" + mShoe.get(getAdapterPosition()).getName());

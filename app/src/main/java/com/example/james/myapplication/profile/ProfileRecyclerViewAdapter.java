@@ -70,7 +70,7 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
         //        .load(""+arrayList.get(position).getShoeImageUrl())
         //        .into(myImageView);
         //myTextView.setText("" + arrayList.get(position).getShoePrice());
-        myBrandTextView.setText("" + arrayList.get(position).getShoeBrand());
+        myBrandTextView.setText("" + arrayList.get(position).getBrand());
     }
 
     // total number of cells
@@ -115,8 +115,8 @@ public class ProfileRecyclerViewAdapter extends RecyclerView.Adapter<ProfileRecy
             Bundle arguments = new Bundle();
             arguments.putString( "itemId" , "" + getAdapterPosition());
             arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
-            arguments.putString( "itemDescription" , "" + mShoe.get(getAdapterPosition()).getShoePrice()
-                    + " " + mShoe.get(getAdapterPosition()).getShoeBrand());
+            arguments.putString( "itemDescription" , "" + mShoe.get(getAdapterPosition()).getPrice()
+                    + " " + mShoe.get(getAdapterPosition()).getBrand());
             fragment.setArguments(arguments);
             final FragmentTransaction ft = fragmentManagerssss.beginTransaction();
             ft.replace(R.id.fragment_container, fragment);

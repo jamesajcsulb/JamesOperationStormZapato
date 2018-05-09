@@ -64,11 +64,11 @@ public class PurchaseStepTwoFragment extends Fragment
         // Get data for transaction
         Bundle arguments = getArguments();
         //desired_string = arguments.getString("itemId");
-        desired_string2 = arguments.getString("itemId");
-        desired_string3 = arguments.getString("itemImage");
-        desired_string4 = arguments.getString("Brand");
+        //desired_string2 = arguments.getString("itemId");
+        //desired_string3 = arguments.getString("itemImage");
+        //desired_string4 = arguments.getString("Brand");
         desired_string5 = arguments.getString("confId");
-        desired_string6 = arguments.getString("seller");
+        //desired_string6 = arguments.getString("seller");
 
         itemName = arguments.getString("itemName");
         itemSellerId = arguments.getString("itemSellerId");

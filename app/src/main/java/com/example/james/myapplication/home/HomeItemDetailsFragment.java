@@ -22,12 +22,25 @@ public class HomeItemDetailsFragment extends Fragment
     private Button btn;
     private ImageView myImageView;
     private TextView mTextView;
+    private TextView mTextViewSeller;
     private String desired_string;
     private String desired_string2;
     private String desired_string3;
     private String desired_string4;
     private String desired_string5;
     private Button button;
+    //private TextView mTextView;
+
+    private String itemName;
+    private String itemSellerId;
+    private String itemShoeId;
+    private String itemBrand;
+    private String itemGender;
+    private String itemShoeType;
+    private String itemImageUrl;
+    private String itemShoeCondition;
+    private String itemSize;
+    private String itemPrice;
 
     public static HomeItemDetailsFragment newInstance(String param1, String param2) {
         HomeItemDetailsFragment fragment = new HomeItemDetailsFragment();
@@ -55,9 +68,20 @@ public class HomeItemDetailsFragment extends Fragment
         desired_string4 = arguments.getString("itemDescription");
         desired_string5 = arguments.getString("itemDescription");
 
+        itemName = arguments.getString("itemName");
+        itemSellerId = arguments.getString("itemSellerId");
+        itemShoeId = arguments.getString("itemShoeId");
+        itemBrand = arguments.getString("itemBrand");
+        itemGender = arguments.getString("itemGender");
+        itemShoeType = arguments.getString("itemShoeType");
+        itemImageUrl = arguments.getString("itemImageUrl");
+        itemShoeCondition = arguments.getString("itemShoeCondition");
+        itemSize = arguments.getString("itemSize");
+        itemPrice = arguments.getString("itemPrice");
+
         myImageView=(ImageView)v.findViewById(R.id.imageView);
         Glide.with(myImageView.getContext())
-                .load(""+arguments.getString("itemSeller"))
+                .load(""+arguments.getString("itemImageUrl"))
                 .into(myImageView);
 
         button = (Button) v.findViewById(R.id.purchase_button);
@@ -66,7 +90,13 @@ public class HomeItemDetailsFragment extends Fragment
                 performTransition();
             }
         });
+        ImageView imageView = (ImageView) v.findViewById(R.id.purchase_button);
 
+        mTextView = (TextView) v.findViewById(R.id.completeDetailsText);
+        mTextView.setText(itemName+" "+itemSellerId+" "+itemShoeId+" "+itemBrand+" "+itemGender+" "+itemShoeType+" "+itemShoeCondition+" "+itemSize+" "+itemPrice);
+
+        mTextViewSeller = (TextView) v.findViewById(R.id.sellerInformation);
+        mTextViewSeller.setText("Seller Id: " + itemSellerId);
         return v;
     }
 
@@ -95,6 +125,18 @@ public class HomeItemDetailsFragment extends Fragment
         arguments.putString( "itemPicture2" , "" + desired_string3);
         arguments.putString( "itemDescription3" , "" + desired_string4);
         arguments.putString( "itemSeller4" , "" + desired_string5);
+
+        arguments.putString( "itemName", itemName);
+        arguments.putString( "itemSellerId", itemSellerId);
+        arguments.putString( "itemShoeId", itemShoeId);
+        arguments.putString( "itemBrand", itemBrand);
+        arguments.putString( "itemGender", itemGender);
+        arguments.putString( "itemShoeType", itemShoeType);
+        arguments.putString( "itemImageUrl", itemImageUrl);
+        arguments.putString( "itemShoeCondition" , itemShoeCondition);
+        arguments.putString( "itemSize", itemSize);
+        arguments.putString( "itemPrice", itemPrice);
+
         fragment.setArguments(arguments);
 
         // Take off to next fragment

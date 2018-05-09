@@ -170,8 +170,6 @@ public class PurchaseStepOneFragment extends Fragment
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
-
                 AsyncTask asyncTask = new AsyncTask() {
                     @Override
                     protected Object doInBackground(Object[] objects) {
@@ -187,7 +185,6 @@ public class PurchaseStepOneFragment extends Fragment
                                 myRef.removeEventListener(this);
                                 chargeStripeAccount();
 
-
                                 //FirebaseAppHelper fah = new FirebaseAppHelper();
                                 Random rand = new Random();
                                 purchaseConfirmation = rand.nextInt(10000000) + 1;
@@ -197,17 +194,40 @@ public class PurchaseStepOneFragment extends Fragment
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 FirebaseDatabase fba = FirebaseDatabase.getInstance();
                                 DatabaseReference db = fba.getReference("users").child(user.getUid()).child("6buy_history");
-                                db.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
-                                db.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
-                                db.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
+                                //db.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
+                                //db.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
+                                //db.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
+                                //////////////////////////////////////////////////////////////////
+                                db.child("" + purchaseConfirmation).child("itemName").setValue("" + itemName);
+                                db.child("" + purchaseConfirmation).child("itemSellerId").setValue("" + itemSellerId);
+                                db.child("" + purchaseConfirmation).child("itemShoeId").setValue("" + itemShoeId);
+                                db.child("" + purchaseConfirmation).child("itemBrand").setValue("" + itemBrand);
+                                db.child("" + purchaseConfirmation).child("itemGender").setValue("" + itemGender);
+                                db.child("" + purchaseConfirmation).child("itemShoeType").setValue("" + itemShoeType);
+                                db.child("" + purchaseConfirmation).child("itemImageUrl").setValue("" + itemImageUrl);
+                                db.child("" + purchaseConfirmation).child("itemShoeCondition").setValue("" + itemShoeCondition);
+                                db.child("" + purchaseConfirmation).child("itemSize").setValue("" + itemSize);
+                                db.child("" + purchaseConfirmation).child("itemPrice").setValue("" + itemPrice);
+                                //////////////////////////////////////////////////////////////////
 
                                 // Insert purchase confirmation to seller
                                 FirebaseUser userseller = FirebaseAuth.getInstance().getCurrentUser();
                                 FirebaseDatabase fbaseller = FirebaseDatabase.getInstance();
                                 DatabaseReference dbseller = fbaseller.getReference("users").child(desired_string6).child("7sell_history");
-                                dbseller.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
-                                dbseller.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
-                                dbseller.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
+                                //dbseller.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
+                                //dbseller.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
+                                //dbseller.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
+
+                                dbseller.child("" + purchaseConfirmation).child("itemName").setValue("" + itemName);
+                                dbseller.child("" + purchaseConfirmation).child("itemSellerId").setValue("" + itemSellerId);
+                                dbseller.child("" + purchaseConfirmation).child("itemShoeId").setValue("" + itemShoeId);
+                                dbseller.child("" + purchaseConfirmation).child("itemBrand").setValue("" + itemBrand);
+                                dbseller.child("" + purchaseConfirmation).child("itemGender").setValue("" + itemGender);
+                                dbseller.child("" + purchaseConfirmation).child("itemShoeType").setValue("" + itemShoeType);
+                                dbseller.child("" + purchaseConfirmation).child("itemImageUrl").setValue("" + itemImageUrl);
+                                dbseller.child("" + purchaseConfirmation).child("itemShoeCondition").setValue("" + itemShoeCondition);
+                                dbseller.child("" + purchaseConfirmation).child("itemSize").setValue("" + itemSize);
+                                dbseller.child("" + purchaseConfirmation).child("itemPrice").setValue("" + itemPrice);
                             }
 
                             @Override
@@ -222,8 +242,6 @@ public class PurchaseStepOneFragment extends Fragment
                 asyncTask.execute();
             }
         });
-
-
 
         return v;
     }
