@@ -24,8 +24,10 @@
             android:id="@+id/purchase_button"
             android:layout_width="56dp"
             android:layout_height="55dp"
-            android:layout_below="@+id/imageView"
-            android:layout_toEndOf="@+id/completeDetailsText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="186dp"
             android:background="@drawable/addtocartsnapshot" />
 
         <TextView

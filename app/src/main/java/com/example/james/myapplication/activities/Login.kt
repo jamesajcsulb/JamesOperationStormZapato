@@ -50,11 +50,11 @@ class Login: AppCompatActivity() {
 
         signInButton = findViewById<View>(R.id.sign_in_button) as com.google.android.gms.common.SignInButton
 
-        signInButtonStripe = findViewById(R.id.button) as Button
+        signInButtonStripe = findViewById(R.id.buttonRegister) as Button
         val clickListener = View.OnClickListener {view ->
 
             when (view.getId()) {
-                R.id.button -> {
+                R.id.buttonRegister -> {
                     var lq: LoginQuick  = LoginQuick()
                     val intent = Intent(this, LoginQuick::class.java)
                     startActivity(intent)

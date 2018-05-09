@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.james.myapplication.add.ShareFragment;
+//import com.example.james.myapplication.stripe.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
 import com.example.james.myapplication.profile.ProfileFragment;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import android.os.AsyncTask;
 
 import java.util.Locale;
 
@@ -117,6 +120,26 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private void restoreAccountDatabaseStructure()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        // Stripe register account
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
+
+                string = stripeFunction.createAccount(user2.getEmail(),"");
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+                db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
+
+
+                return null;
+            }
+        };
+        asyncTask.execute();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         db.child("users").child(user.getUid()).child("1_0name").setValue("myvalue");
         db.child("users").child(user.getUid()).child("1_1birthday").setValue("myvalue");

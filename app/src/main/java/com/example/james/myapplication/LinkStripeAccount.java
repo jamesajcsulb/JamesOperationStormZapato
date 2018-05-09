@@ -43,7 +43,7 @@ public class LinkStripeAccount {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //Toast.makeText(getContext(), "" + user.getUid(), Toast.LENGTH_LONG).show();
 
-
+/*
         // Stripe register account
         AsyncTask asyncTask = new AsyncTask() {
             @Override
@@ -63,7 +63,7 @@ public class LinkStripeAccount {
             }
         };
         asyncTask.execute();
-
+*/
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         db.child("users").child(user.getUid()).child("1_0name").setValue("myvalue");

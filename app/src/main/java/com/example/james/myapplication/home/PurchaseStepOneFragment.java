@@ -146,11 +146,11 @@ public class PurchaseStepOneFragment extends Fragment
         // Get data for transaction
         Bundle arguments = getArguments();
         //desired_string = arguments.getString("itemId");
-        desired_string2 = arguments.getString("itemId1");
-        desired_string3 = arguments.getString("itemPicture2");
-        desired_string4 = arguments.getString("itemDescription3");
-        desired_string5 = arguments.getString("itemDescription3");
-        desired_string6 = arguments.getString("itemSeller4");
+        //desired_string2 = arguments.getString("itemId1");
+        //desired_string3 = arguments.getString("itemPicture2");
+        //desired_string4 = arguments.getString("itemDescription3");
+        //desired_string5 = arguments.getString("itemDescription3");
+        //desired_string6 = arguments.getString("itemSeller4");
 
         itemName = arguments.getString("itemName");
         itemSellerId = arguments.getString("itemSellerId");
@@ -210,10 +210,12 @@ public class PurchaseStepOneFragment extends Fragment
                                 db.child("" + purchaseConfirmation).child("itemPrice").setValue("" + itemPrice);
                                 //////////////////////////////////////////////////////////////////
 
+                                //myRef.removeEventListener(this);
+
                                 // Insert purchase confirmation to seller
                                 FirebaseUser userseller = FirebaseAuth.getInstance().getCurrentUser();
                                 FirebaseDatabase fbaseller = FirebaseDatabase.getInstance();
-                                DatabaseReference dbseller = fbaseller.getReference("users").child(desired_string6).child("7sell_history");
+                                DatabaseReference dbseller = fbaseller.getReference("users").child(itemSellerId).child("7sell_history");
                                 //dbseller.child("" + purchaseConfirmation).child("itemId").setValue("" + desired_string2);
                                 //dbseller.child("" + purchaseConfirmation).child("itemImage").setValue("" + desired_string3);
                                 //dbseller.child("" + purchaseConfirmation).child("Brand").setValue("" + desired_string4);
@@ -228,6 +230,7 @@ public class PurchaseStepOneFragment extends Fragment
                                 dbseller.child("" + purchaseConfirmation).child("itemShoeCondition").setValue("" + itemShoeCondition);
                                 dbseller.child("" + purchaseConfirmation).child("itemSize").setValue("" + itemSize);
                                 dbseller.child("" + purchaseConfirmation).child("itemPrice").setValue("" + itemPrice);
+
                             }
 
                             @Override
@@ -257,11 +260,11 @@ public class PurchaseStepOneFragment extends Fragment
 
         // Bundle data to pass
         Bundle arguments = new Bundle();
-        arguments.putString( "itemId" , "" + desired_string2);
-        arguments.putString( "itemImage" , "" + desired_string3);
-        arguments.putString( "Brand" , "" + desired_string4);
-        arguments.putString( "confId" , "" + desired_string5);
-        arguments.putString( "seller" , "" + desired_string6);
+        //arguments.putString( "itemId" , "" + desired_string2);
+        //arguments.putString( "itemImage" , "" + desired_string3);
+        //arguments.putString( "Brand" , "" + desired_string4);
+        //arguments.putString( "confId" , "" + desired_string5);
+        //arguments.putString( "seller" , "" + desired_string6);
 
         arguments.putString( "itemName", itemName);
         arguments.putString( "itemSellerId", itemSellerId);
@@ -273,6 +276,8 @@ public class PurchaseStepOneFragment extends Fragment
         arguments.putString( "itemShoeCondition" , itemShoeCondition);
         arguments.putString( "itemSize", itemSize);
         arguments.putString( "itemPrice", itemPrice);
+
+        arguments.putString( "confirmationCode", "" + purchaseConfirmation);
 
         fragment.setArguments(arguments);
 

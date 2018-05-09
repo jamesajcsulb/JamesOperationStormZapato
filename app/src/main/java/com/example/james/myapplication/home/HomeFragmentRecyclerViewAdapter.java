@@ -58,8 +58,8 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
 
         myRecView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mImageView = (ImageView) view.findViewById(R.id.imageButton);
-        myTextView = (TextView) view.findViewById(R.id.price);;
-        myBrandTextView = (TextView) view.findViewById(R.id.title);;
+        myTextView = (TextView) view.findViewById(R.id.price);
+        myBrandTextView = (TextView) view.findViewById(R.id.title);
 
         return new ViewHolder(mImageView.getContext(), view);
     }
@@ -109,7 +109,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
 
             Fragment fragmentt = new HomeItemDetailsFragment();
             Bundle arguments = new Bundle();
-            arguments.putString( "itemId" , "" + getAdapterPosition());
+            //arguments.putString( "itemId" , "" + getAdapterPosition());
             //arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
             //arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
             //        + mShoe.get(getAdapterPosition()).getBrand());

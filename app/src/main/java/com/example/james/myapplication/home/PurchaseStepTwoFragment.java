@@ -42,6 +42,8 @@ public class PurchaseStepTwoFragment extends Fragment
     private String itemSize;
     private String itemPrice;
 
+    private String mConfirmationCode;
+
     public static PurchaseStepTwoFragment newInstance(String param1, String param2) {
         PurchaseStepTwoFragment fragment = new PurchaseStepTwoFragment();
         Bundle args = new Bundle();
@@ -67,7 +69,7 @@ public class PurchaseStepTwoFragment extends Fragment
         //desired_string2 = arguments.getString("itemId");
         //desired_string3 = arguments.getString("itemImage");
         //desired_string4 = arguments.getString("Brand");
-        desired_string5 = arguments.getString("confId");
+        //desired_string5 = arguments.getString("confId");
         //desired_string6 = arguments.getString("seller");
 
         itemName = arguments.getString("itemName");
@@ -81,10 +83,12 @@ public class PurchaseStepTwoFragment extends Fragment
         itemSize = arguments.getString("itemSize");
         itemPrice = arguments.getString("itemPrice");
 
+        mConfirmationCode = arguments.getString("confirmationCode");
+
         //Toast.makeText(getContext(), "" + desired_string5, Toast.LENGTH_LONG).show();
 
         textView = (TextView) v.findViewById(R.id.confirmationCodeHold);
-        textView.setText(desired_string5);
+        textView.setText(mConfirmationCode);
 
         // Transaction
         //button = (Button) v.findViewById(R.id.confirm_purchase);

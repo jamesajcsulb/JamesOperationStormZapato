@@ -62,11 +62,11 @@ public class HomeItemDetailsFragment extends Fragment
         View v = inflater.inflate(R.layout.fragment_details_item_home, container, false);
 
         Bundle arguments = getArguments();
-        desired_string = arguments.getString("welcome");
-        desired_string2 = arguments.getString("itemId");
-        desired_string3 = arguments.getString("itemPicture");
-        desired_string4 = arguments.getString("itemDescription");
-        desired_string5 = arguments.getString("itemDescription");
+        //desired_string = arguments.getString("welcome");
+        //desired_string2 = arguments.getString("itemId");
+        //desired_string3 = arguments.getString("itemPicture");
+        //desired_string4 = arguments.getString("itemDescription");
+        //desired_string5 = arguments.getString("itemDescription");
 
         itemName = arguments.getString("itemName");
         itemSellerId = arguments.getString("itemSellerId");
@@ -90,8 +90,9 @@ public class HomeItemDetailsFragment extends Fragment
                 performTransition();
             }
         });
+        /*
         ImageView imageView = (ImageView) v.findViewById(R.id.purchase_button);
-
+*/
         mTextView = (TextView) v.findViewById(R.id.completeDetailsText);
         mTextView.setText(itemName+" "+itemSellerId+" "+itemShoeId+" "+itemBrand+" "+itemGender+" "+itemShoeType+" "+itemShoeCondition+" "+itemSize+" "+itemPrice);
 
@@ -121,10 +122,10 @@ public class HomeItemDetailsFragment extends Fragment
 
         // Bundle data to pass
         Bundle arguments = new Bundle();
-        arguments.putString( "itemId1" , "" + desired_string2);
-        arguments.putString( "itemPicture2" , "" + desired_string3);
-        arguments.putString( "itemDescription3" , "" + desired_string4);
-        arguments.putString( "itemSeller4" , "" + desired_string5);
+        //arguments.putString( "itemId1" , "" + desired_string2);
+        //arguments.putString( "itemPicture2" , "" + desired_string3);
+        //arguments.putString( "itemDescription3" , "" + desired_string4);
+        //arguments.putString( "itemSeller4" , "" + desired_string5);
 
         arguments.putString( "itemName", itemName);
         arguments.putString( "itemSellerId", itemSellerId);
