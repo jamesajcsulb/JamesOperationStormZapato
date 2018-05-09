@@ -12,6 +12,8 @@ import android.widget.ImageView;
 @SuppressLint("AppCompatCustomView")
 public class SquareImageView extends ImageView {
 
+   int picNum;
+
    public SquareImageView(Context context) {
       super(context);
    }
@@ -23,6 +25,9 @@ public class SquareImageView extends ImageView {
    public SquareImageView(Context context, AttributeSet attrs, int defStyle) {
       super(context, attrs, defStyle);
    }
+
+   public void setPicNum(int x){picNum=x;}
+   public int getPicNum(){return picNum;}
 
    @Override
    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

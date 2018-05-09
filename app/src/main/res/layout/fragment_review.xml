@@ -10,12 +10,12 @@
 
     <LinearLayout
         android:id="@+id/review_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -29,14 +29,14 @@
             android:layout_height="wrap_content"
             android:text="Review"
             android:textColor="@color/black"
-            android:textSize="40sp"
+            android:textSize="35sp"
             />
 
         <HorizontalScrollView
             android:id="@+id/image_scroller"
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical|center">
 
             <LinearLayout
                 android:id="@+id/image_grid"
@@ -59,6 +59,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
                     android:backgroundTint="@color/darkGray"
+                    android:cropToPadding="true"
                     app:srcCompat="@drawable/empty_image_icon"
                     />
 
@@ -67,8 +68,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
+                    android:cropToPadding="true"
                     app:srcCompat="@drawable/empty_image_icon"
-
                     />
 
                 <com.example.james.myapplication.Model.SquareImageView
@@ -76,94 +77,164 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
+                    android:cropToPadding="true"
                     app:srcCompat="@drawable/empty_image_icon"
-
                     />
 
                 <com.example.james.myapplication.Model.SquareImageView
                     android:id="@+id/revImage4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:cropToPadding="true"
                     app:srcCompat="@drawable/empty_image_icon"
                     />
             </LinearLayout>
         </HorizontalScrollView>
 
-        <TextView
-            android:id="@+id/review_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium_italic"
-            android:gravity="center"
-            android:text="Title: "
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/price_cond_layout"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
-                android:id="@+id/review_price"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:fontFamily="@font/roboto_medium"
+                android:id="@+id/review_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium_italic"
                 android:gravity="center"
-                android:text="Price: "
+                android:text="Title: "
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text=" | "
-                android:textSize="20sp"
-                android:textColor="@color/black"/>
+                android:textSize="28sp"/>
+
+            <LinearLayout
+                android:id="@+id/price_cond_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/review_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="center"
+                    android:text="Price: "
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text=" | "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/review_condition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="center"
+                    android:text="Condition:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/review_condition"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:fontFamily="@font/roboto_medium"
+                android:id="@+id/review_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
                 android:gravity="center"
-                android:text="Condition:"
+                android:text="Description:"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/review_description"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/user_post_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:fontFamily="@font/roboto_light"
+            android:layout_gravity="start"
             android:gravity="center"
-            android:text="Description:"
-            android:maxLines="3"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:id="@+id/userinfo_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/postButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/profile_pic_agustin"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="1dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/username_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="top"
+                        android:text="username"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/email_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="top"
+                        android:text="email"
+                        android:textSize="10sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/postButton"
+                style="@android:style/Widget.Material.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="Post"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/userinfo_layout"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
 
-    <!--This button will be changed to "POST"-->
-    <Button
-        android:id="@+id/updateButton"
-        style="@android:style/Widget.Material.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="update"
-        android:textSize="20sp"
-        android:fontFamily="@font/roboto_medium"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/review_layout"/>
 
 </android.support.constraint.ConstraintLayout>
