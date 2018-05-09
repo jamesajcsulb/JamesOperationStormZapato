@@ -42,12 +42,28 @@ class Login: AppCompatActivity() {
 
     // Google Sign In button .
     private lateinit var signInButton: com.google.android.gms.common.SignInButton
+    private lateinit var signInButtonStripe: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         signInButton = findViewById<View>(R.id.sign_in_button) as com.google.android.gms.common.SignInButton
+
+        signInButtonStripe = findViewById(R.id.button) as Button
+        val clickListener = View.OnClickListener {view ->
+
+            when (view.getId()) {
+                R.id.button -> {
+                    var lq: LoginQuick  = LoginQuick()
+                    val intent = Intent(this, LoginQuick::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+        signInButtonStripe.setOnClickListener(clickListener)
+
+
 
         createGoogleSignInOption()
 

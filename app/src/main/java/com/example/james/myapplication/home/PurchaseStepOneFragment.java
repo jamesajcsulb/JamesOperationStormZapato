@@ -326,41 +326,5 @@ public class PurchaseStepOneFragment extends Fragment
             if (!cardToSave.validateCard()) {
                 // Do not continue token creation.
             }
-        //}
-        //catch(Exception e)
-        //{
-          //  Log.d("card numberincorrectfix", e.getStackTrace().getClass().toString());
-        //}
-/*
-        Card cardToSaveMulti = mCardMultilineWidget.getCard();
-        if (cardToSaveMulti == null) {
-            //mErrorDialogHandler.showError("Invalid Card Data");
-            //return;
-        }
-        Stripe stripeMulti = new Stripe(getContext(), "pk_test_yFM3zfqa8WXhKLP8hfP8P5cW");
-        stripeMulti.createToken(
-                cardToSaveMulti,
-                new TokenCallback() {
-                    public void onSuccess(Token token) {
-                        // Send token to your server
-                        tokenn = token.getId();
-                        AsyncTask ast = new AsyncTask() {
-                            @Override
-                            protected Object doInBackground(Object[] objects) {
-                                StripeCool sc = new StripeCool();
-                                sc.chargeCreditCard(new Order(), tokenn);
-                                return null;
-                            }
-                        }.execute();
-                    }
-                    public void onError(Exception error) {
-                        // Show localized error message
-                        //Toast.makeText(getContext(),
-                        //error.getLocalizedString(getContext()),
-                        //Toast.LENGTH_LONG
-                        //).show();
-                    }
-                }
-        );*/
     }
 }

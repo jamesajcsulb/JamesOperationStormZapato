@@ -3,6 +3,7 @@ package com.example.james.myapplication.activities
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v4.content.ContextCompat
@@ -12,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import com.example.james.myapplication.LinkStripeAccount
 import com.example.james.myapplication.MainActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -27,6 +29,8 @@ import com.google.firebase.database.*
 import com.example.james.myapplication.Model.User
 import com.example.james.myapplication.Network.FirebaseManager
 import com.example.james.myapplication.R
+import com.example.james.myapplication.unused.StripeFunction
+import com.google.firebase.auth.FirebaseUser
 
 /**
  * Created by adrian on 4/2/18.
@@ -45,7 +49,7 @@ class LoginQuick: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_login_quick)
 
         signInButton = findViewById<View>(R.id.sign_in_button) as com.google.android.gms.common.SignInButton
 
@@ -107,6 +111,9 @@ class LoginQuick: AppCompatActivity() {
             if (task.isSuccessful) {
                 //Registration OK
 
+                var link: LinkStripeAccount = LinkStripeAccount()
+                link.linkInit()
+
                 //println("isSuccessful")
                 val myRef = FirebaseManager().my_users_Ref.child(FirebaseManager().CurrenUser()!!.uid.toString())
                 //println(myRef.toString())
@@ -134,10 +141,6 @@ class LoginQuick: AppCompatActivity() {
         // Request sing in code. Could be anything as you required.
         val RequestSignInCode = 7
     }
-
-
-
-
 }
 
 
