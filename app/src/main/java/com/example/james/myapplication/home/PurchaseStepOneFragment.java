@@ -238,7 +238,7 @@ public class PurchaseStepOneFragment extends Fragment
         }
         catch(Exception e)
         {
-            Log.d("card number incorrect fix", e.getStackTrace().getClass().toString());
+            Log.d("card numberincorrectfix", e.getStackTrace().getClass().toString());
         }
     }
 }
