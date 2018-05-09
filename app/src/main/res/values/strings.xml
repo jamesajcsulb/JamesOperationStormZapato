@@ -31,6 +31,4 @@
     <string name="nextbutton2">Next ></string>
     <string name="backbutton1"><![CDATA[< Back]]></string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

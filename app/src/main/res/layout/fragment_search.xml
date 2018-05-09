@@ -53,8 +53,9 @@
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/searchBox"
-        android:layout_toEndOf="@+id/recycler_view"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/searchBox"
         android:background="@drawable/ic_search_black_24dp" />
 </RelativeLayout>
 

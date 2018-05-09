@@ -1,10 +1,10 @@
 package com.example.james.myapplication.models;
 
 import com.google.firebase.database.DataSnapshot;
-//import com.zapato.zapato.Network.FirebaseManager;
 
 import java.io.Serializable;
-import java.net.URL;
+
+//import com.zapato.zapato.Network.FirebaseManager;
 
 /**
  * Created by agustincards on 3/21/18.
@@ -23,6 +23,7 @@ public class Shoe implements Serializable {
     public String sellerID;     // sellerID is used for fetching seller's info later
     public String shoeID;       // each shoe has its own unique ID
     public String shoeImageUrl; //url to Firebase storage
+    public String description;
 
     //constructor with basic shoe info input
     public Shoe(String shoeName, double shoeSize, double shoePrice){
@@ -36,6 +37,7 @@ public class Shoe implements Serializable {
         this.gender = "Unisex";
         this.shoeColor = "Red";
         this.shoeCondition = "New";
+        this.description = "Only worn a couple times!";
     }
 
     //constructor with firebase's returned DataSnapshot input

@@ -73,10 +73,10 @@ public class ShareFragment extends Fragment {
         editTitle = view.findViewById(R.id.edit_title);
         uploadPicButton = view. findViewById(R.id.uploadphoto_button);
         takePicButton = view.findViewById(R.id.takephoto_button);
-        photo1= view.findViewById(R.id.imageView);
-        photo2= view.findViewById(R.id.imageView2);
-        photo3= view.findViewById(R.id.imageView3);
-        photo4= view.findViewById(R.id.imageView4);
+        photo1= view.findViewById(R.id.imageView); photo1.setPicNum(1);
+        photo2= view.findViewById(R.id.imageView2);photo2.setPicNum(2);
+        photo3= view.findViewById(R.id.imageView3);photo3.setPicNum(3);
+        photo4= view.findViewById(R.id.imageView4);photo4.setPicNum(4);
         bitmaps = new ArrayList<>();
         // TODO : Make ImageViews of taken pictures deletable when clicked
         // TODO : Save full-size taken pictures into Zapato DB, then access them from Product Detail page
@@ -192,17 +192,18 @@ public class ShareFragment extends Fragment {
                 .setNegativeButton("No", dialogClickListener).show();
 
         dialogClickListener = new DialogInterface.OnClickListener() {
+
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
                         //Yes button clicked
                         pictureCount--;
-                        image.setImageResource(R.drawable.empty_image_icon);
+                        image.setImageBitmap(null); image.setRotation(0);
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
-                        //No button clicked
+                        //No button clicked -- Do nothing "Cancel"
                         break;
                 }
             }
