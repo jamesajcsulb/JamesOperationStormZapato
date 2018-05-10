@@ -54,7 +54,7 @@ public class PurchaseStepOneFragment extends Fragment
     private String desired_string5;
     private String desired_string6;
     private Button button;
-    private int purchaseConfirmation;
+    private String purchaseConfirmation;
     private StripeFunction stripeFunction;
     private StripeCool sc;
     private String tokenn;
@@ -100,6 +100,7 @@ public class PurchaseStepOneFragment extends Fragment
         //chargeStripeAccount();
 
         mCardInputWidget = (CardInputWidget) v.findViewById(R.id.card_input_widget);
+        //purchaseConfirmation = 7;
 
 
 
@@ -187,8 +188,8 @@ public class PurchaseStepOneFragment extends Fragment
 
                                 //FirebaseAppHelper fah = new FirebaseAppHelper();
                                 Random rand = new Random();
-                                purchaseConfirmation = rand.nextInt(10000000) + 1;
-                                desired_string5 = "" + purchaseConfirmation;
+                                purchaseConfirmation = "" + rand.nextInt(10000000) + 1;
+                                //desired_string5 = "" + purchaseConfirmation;
 
                                 // Insert purchase confirmation to buyer
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -231,6 +232,7 @@ public class PurchaseStepOneFragment extends Fragment
                                 dbseller.child("" + purchaseConfirmation).child("itemSize").setValue("" + itemSize);
                                 dbseller.child("" + purchaseConfirmation).child("itemPrice").setValue("" + itemPrice);
 
+                                performTransition();
                             }
 
                             @Override
@@ -238,13 +240,15 @@ public class PurchaseStepOneFragment extends Fragment
                             }
                         });
 
-                        performTransition();
+                        //performTransition();
                         return null;
                     }
                 };
                 asyncTask.execute();
             }
         });
+
+        Toast.makeText(v.getContext(),""+purchaseConfirmation,Toast.LENGTH_LONG).show();
 
         return v;
     }
@@ -277,6 +281,7 @@ public class PurchaseStepOneFragment extends Fragment
         arguments.putString( "itemSize", itemSize);
         arguments.putString( "itemPrice", itemPrice);
 
+        //Toast.makeText(getContext(),purchaseConfirmation,Toast.LENGTH_LONG).show();
         arguments.putString( "confirmationCode", "" + purchaseConfirmation);
 
         fragment.setArguments(arguments);
