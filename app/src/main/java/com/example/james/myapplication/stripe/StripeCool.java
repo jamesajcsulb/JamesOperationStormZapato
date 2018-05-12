@@ -1,5 +1,6 @@
 package com.example.james.myapplication.stripe;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import java.util.HashMap;
@@ -8,6 +9,13 @@ import java.util.Map;
 //import org.springframework.stereotype.Service;
 
 import com.example.james.myapplication.Model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.stripe.exception.APIConnectionException;
 import com.stripe.exception.AuthenticationException;
 import com.stripe.exception.CardException;
@@ -32,8 +40,8 @@ public class StripeCool implements PaymentService {
     public String createCustomer(User user) {
 
         Map<String, Object> customerParams = new HashMap<String, Object>();
-        customerParams.put("description", "jam"+" "+"g");
-                //user.getFirstName() + " " + user.getLastName());
+        customerParams.put("description", "jam" + " " + "g");
+        //user.getFirstName() + " " + user.getLastName());
         customerParams.put("email", user.getEmail());
 
         String id = null;
@@ -66,49 +74,53 @@ public class StripeCool implements PaymentService {
     @Override
     public void chargeCreditCard(Order order) {
     }
+
     //@Override
-    public void chargeCreditCard(Order order, String token) {
+    public void chargeCreditCard(Order order, String token, String cus) {
 
-        Map<String, Object> chargeParams = new HashMap<String, Object>();
 
-        // Stripe requires the charge amount to be in cents
-        int chargeAmountCents = 1000;//(int) order.getChargeAmountDollars() * 100;
-        //User user = order.getUser();
+                        Map<String, Object> chargeParams = new HashMap<String, Object>();
 
-        chargeParams.put("amount", chargeAmountCents);
-        chargeParams.put("currency", "usd");
-        chargeParams.put("description", "cus_CosxmqGw8AyvPK");
-        //chargeParams.put("customer", "cus_CosxmqGw8AyvPK");//user.getStripeCustomerId());
-        chargeParams.put("source", token);
+                        // Stripe requires the charge amount to be in cents
+                        int chargeAmountCents = 1000;//(int) order.getChargeAmountDollars() * 100;
+                        //User user = order.getUser();
 
-        try {
-            // Submit charge to credit card
-            Charge charge = Charge.create(chargeParams);
-            System.out.println("WOW");//
-        } catch (CardException e) {
-            // Transaction was declined
-            //System.out.println("Status is: " + e.getCode());
-            //System.out.println("Message is: " + e.getMessage());
-        } catch (RateLimitException e) {
-            // Too many requests made to the API too quickly
-            Log.d("aasaaaaaaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbbbb");
-        } catch (InvalidRequestException e) {
-            // Invalid parameters were supplied to Stripe's API
-            Log.d("aadaaaaaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbbbb");
-        } catch (AuthenticationException e) {
-            // Authentication with Stripe's API failed (wrong API key?)
-            Log.d("aaafaaaaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbbbb");
-        } catch (APIConnectionException e) {
-            // Network communication with Stripe failed
-            Log.d("aaabaaaaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbbbb");
-        } catch (StripeException e) {
-            // Display a very generic error to the user, and maybe send
-            // yourself an email
-            Log.d("aaanaaaaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbbbb");
-        } catch (Exception e) {
-            // Something else happened unrelated to Stripe
-            Log.d("aaaaaaaaaaaaaaaaaa","bbbbbbbbbbbbbbbbbbbb" + e.toString() + e.getStackTrace());
-        }
+                        chargeParams.put("amount", chargeAmountCents);
+                        chargeParams.put("currency", "usd");
+                        chargeParams.put("description", cus);//"cus_CosxmqGw8AyvPK");
+                        //chargeParams.put("customer", cus);//"cus_CosxmqGw8AyvPK");
+                        chargeParams.put("customer", cus.toString());//"cus_CosxmqGw8AyvPK");//user.getStripeCustomerId());
+                        //chargeParams.put("source", token);
+
+                        try {
+                            // Submit charge to credit card
+                            Charge charge = Charge.create(chargeParams);
+                            System.out.println("WOW");//
+                        } catch (CardException e) {
+                            // Transaction was declined
+                            //System.out.println("Status is: " + e.getCode());
+                            //System.out.println("Message is: " + e.getMessage());
+                        } catch (RateLimitException e) {
+                            // Too many requests made to the API too quickly
+                            Log.d("aasaaaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbb");
+                        } catch (InvalidRequestException e) {
+                            // Invalid parameters were supplied to Stripe's API
+                            Log.d("aadaaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbb");
+                        } catch (AuthenticationException e) {
+                            // Authentication with Stripe's API failed (wrong API key?)
+                            Log.d("aaafaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbb");
+                        } catch (APIConnectionException e) {
+                            // Network communication with Stripe failed
+                            Log.d("aaabaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbb");
+                        } catch (StripeException e) {
+                            // Display a very generic error to the user, and maybe send
+                            // yourself an email
+                            Log.d("aaanaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbb");
+                        } catch (Exception e) {
+                            // Something else happened unrelated to Stripe
+                            Log.d("aaaaaaaaaaaaaaaaaa", "bbbbbbbbbbbbbbbbbbbb" + e.toString() + e.getStackTrace());
+                        }
+
 
     }
 }

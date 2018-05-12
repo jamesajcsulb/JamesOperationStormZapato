@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,16 +21,25 @@ import com.example.james.myapplication.add.ShareFragment;
 //import com.example.james.myapplication.stripe.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
+import com.example.james.myapplication.home.HomeFragmentRecyclerViewAdapter;
+import com.example.james.myapplication.models.Shoe;
 import com.example.james.myapplication.profile.ProfileFragment;
 import com.example.james.myapplication.search.SearchFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Locale;
+
+import static java.sql.DriverManager.println;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
     private TextView mTextMessage;
@@ -120,26 +131,50 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private void restoreAccountDatabaseStructure()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        // Stripe register account
-        AsyncTask asyncTask = new AsyncTask() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("users");
+        myRef.addValueEventListener(new ValueEventListener() {
+            FirebaseUser userIn = FirebaseAuth.getInstance().getCurrentUser();
+
             @Override
-            protected Object doInBackground(Object[] objects) {
-                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-                StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snaparray : dataSnapshot.getChildren()) {
+                    if(snaparray.child(userIn.getUid()).child("stripe_customer_id") == null)
+                    {
+                        Log.d("MyLog", "New user");
+                        // Stripe register account
+                        AsyncTask asyncTask = new AsyncTask() {
+                            @Override
+                            protected Object doInBackground(Object[] objects) {
+                                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                                StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
 
-                string = stripeFunction.createAccount(user2.getEmail(),"");
+                                string = stripeFunction.createAccount(user2.getEmail(),"");
 
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
-                DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
+                                DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-                db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
+                                db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
 
-
-                return null;
+                                return null;
+                            }
+                        };
+                        asyncTask.execute();
+                    }
+                    else
+                    {
+                        Log.d("MyLog", "Already exists");
+                    }
+                }
+                myRef.removeEventListener(this);
             }
-        };
-        asyncTask.execute();
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         db.child("users").child(user.getUid()).child("1_0name").setValue("myvalue");
         db.child("users").child(user.getUid()).child("1_1birthday").setValue("myvalue");
@@ -231,12 +266,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         db.child("users").child(user.getUid()).child("8conversation").child("2chattype-probablyFirebaseCloudMessagingbutforconceptputtingplaceholderhere").child("toreceipient2").child("sent2").setValue("s");
         db.child("users").child(user.getUid()).child("8conversation").child("2chattype-probablyFirebaseCloudMessagingbutforconceptputtingplaceholderhere").child("toreceipient3").child("received3").setValue("r");
         db.child("users").child(user.getUid()).child("8conversation").child("2chattype-probablyFirebaseCloudMessagingbutforconceptputtingplaceholderhere").child("toreceipient3").child("sent3").setValue("s");
-        //Shoe myShoe = new Shoe("Nike Tiempo", 11.5, 130.0);
-        //db.child("shoes").child(user.getUid()).child(db.push().getKey()).setValue(myShoe);
-        //db.child("shoes") = database reference -> mkdir child "shoes" ->
-        //user.getUid() = "unique user id" from "FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser()"
-        //db.push().getKey() = create ref to auto-generated child location, then getKey() in String format
-        //setValue(myShoe) = upload Shoe object onto DB at that location. All Shoe values will be separate attributes
     }
 
     private void speechTest()

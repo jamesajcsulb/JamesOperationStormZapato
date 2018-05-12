@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide;
 import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.R;
 import com.example.james.myapplication.models.Shoe;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -28,14 +27,13 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
     private String[] mData = new String[0];
     private ArrayList<Shoe> mShoe = new ArrayList<Shoe>();
     private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
     private Context context;
     private ImageView myImageView;
     private TextView myTextView;
     private TextView myBrandTextView;
     public ImageView recyclerimageView;
-    private Activity ac;
-    private Fragment fra;
+    //IMPREF//private Activity ac;
+    //IMPREF//private Fragment fra;
     private FragmentManager frasss;
     private RecyclerView myRecView;
     private LinearLayout myLinLay;
@@ -46,8 +44,8 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
     public HomeFragmentRecyclerViewAdapter(Context context, ArrayList<Shoe> shoeshoe, Context con, Activity a, Fragment fragm) {
         this.mInflater = LayoutInflater.from(context);
         this.context = con;
-        this.ac = a;
-        this.fra = fragm;
+        //IMPREF//this.ac = a;
+        //IMPREF//this.fra = fragm;
         this.mShoe = shoeshoe;
     }
 
@@ -73,13 +71,12 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
                 .into(mImageView);
 
         Double toBeTruncated = new Double(arrayList.get(position).getPrice());
-
         Double truncatedDouble = BigDecimal.valueOf(toBeTruncated)
                 .setScale(3, RoundingMode.HALF_UP)
                 .doubleValue();
         String formato = String.format("%.2f",arrayList.get(position).getPrice());
 
-        myTextView.setText("$" + formato);//arrayList.get(position).getShoePrice());
+        myTextView.setText("$" + formato);
         myBrandTextView.setText("" + arrayList.get(position).getBrand());
     }
 
@@ -91,7 +88,6 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -103,19 +99,14 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
             mImageView.setOnClickListener(this);
         }
 
+        // Convenience method for getting data at click position
+        String getItem(int id) {
+            return mShoe.get(id).toString();
+        }
+
         @Override
         public void onClick(View view) {
-            FragmentManager fragmentManagerssss = ((MainActivity)context).getSupportFragmentManager();
-
-            Fragment fragmentt = new HomeItemDetailsFragment();
             Bundle arguments = new Bundle();
-            //arguments.putString( "itemId" , "" + getAdapterPosition());
-            //arguments.putString( "itemPicture" , "" + mShoe.get(getAdapterPosition()).getShoeImageUrl());
-            //arguments.putString( "itemDescription" , "" //+ mShoe.get(getAdapterPosition()).getShoePrice()
-            //        + mShoe.get(getAdapterPosition()).getBrand());
-            //arguments.putString( "itemSeller" , "" + mShoe.get(getAdapterPosition()).getSellerId());
-
-            /////////////////////////////////////
             arguments.putString( "itemName" , "" + mShoe.get(getAdapterPosition()).getName());
             arguments.putString( "itemSellerId" , "" + mShoe.get(getAdapterPosition()).getSellerId());
             arguments.putString( "itemShoeId" , "" + mShoe.get(getAdapterPosition()).getShoeId());
@@ -126,31 +117,14 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HomeFr
             arguments.putString( "itemShoeCondition" , "" + mShoe.get(getAdapterPosition()).getShoeCondition());
             arguments.putString( "itemSize" , "" + mShoe.get(getAdapterPosition()).getSize());
             arguments.putString( "itemPrice" , "" + mShoe.get(getAdapterPosition()).getPrice());
-            ///////////////////////////////////////////
 
-
-
-            fragmentt.setArguments(arguments);//final
-
+            FragmentManager fragmentManagerssss = ((MainActivity)context).getSupportFragmentManager();
+            Fragment fragmentt = new HomeItemDetailsFragment();
+            fragmentt.setArguments(arguments);
             FragmentTransaction ft = fragmentManagerssss.beginTransaction();
             ft.addToBackStack(null);
             ft.replace(R.id.fragment_container, fragmentt);
             ft.commit();
         }
-    }
-
-    // convenience method for getting data at click position
-    String getItem(int id) {
-            return mShoe.get(id).toString(); //mData[id];
-        }
-
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    //parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        //void onItemClick(View view, int position);
     }
 }

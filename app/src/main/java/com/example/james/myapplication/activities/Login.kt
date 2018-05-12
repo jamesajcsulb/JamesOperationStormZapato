@@ -28,10 +28,6 @@ import com.example.james.myapplication.Model.User
 import com.example.james.myapplication.Network.FirebaseManager
 import com.example.james.myapplication.R
 
-/**
- * Created by adrian on 4/2/18.
- */
-
 class Login: AppCompatActivity() {
 
     // Firebase Auth Object.
@@ -63,8 +59,6 @@ class Login: AppCompatActivity() {
         }
         signInButtonStripe.setOnClickListener(clickListener)
 
-
-
         createGoogleSignInOption()
 
         // Adding Click listener to User Sign in Google button.
@@ -84,7 +78,6 @@ class Login: AppCompatActivity() {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build()
     }
-
 
     // Sign In function Starts From Here.
     fun UserSignInMethod() {
@@ -107,10 +100,8 @@ class Login: AppCompatActivity() {
             } else {
                 Log.d("myTag", "This is my message: googleSignInResult failed");
             }
-
         }
     }
-
 
     // sign user into Zapato's firebase with google's credential
     fun FirebaseUserAuth(googleSignInAccount: GoogleSignInAccount?) {
@@ -141,7 +132,6 @@ class Login: AppCompatActivity() {
         }
     }
 
-
     // default method
     companion object {
         // TAG is for show some tag logs in LOG screen.
@@ -150,10 +140,6 @@ class Login: AppCompatActivity() {
         // Request sing in code. Could be anything as you required.
         val RequestSignInCode = 7
     }
-
-
-
-
 }
 
 

@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
-        android:text="Zapato"
+        android:text="ZAPATO"
         android:textAllCaps="true"
         android:textSize="36sp"
         android:textStyle="bold"

@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-import com.example.james.myapplication.MainActivity;
 import com.example.james.myapplication.models.MyRecyclerViewAdapterShoes;
 import com.example.james.myapplication.R;
 
@@ -23,14 +21,7 @@ public class HomeItemDetailsFragment extends Fragment
     private ImageView myImageView;
     private TextView mTextView;
     private TextView mTextViewSeller;
-    private String desired_string;
-    private String desired_string2;
-    private String desired_string3;
-    private String desired_string4;
-    private String desired_string5;
     private Button button;
-    //private TextView mTextView;
-
     private String itemName;
     private String itemSellerId;
     private String itemShoeId;
@@ -62,12 +53,6 @@ public class HomeItemDetailsFragment extends Fragment
         View v = inflater.inflate(R.layout.fragment_details_item_home, container, false);
 
         Bundle arguments = getArguments();
-        //desired_string = arguments.getString("welcome");
-        //desired_string2 = arguments.getString("itemId");
-        //desired_string3 = arguments.getString("itemPicture");
-        //desired_string4 = arguments.getString("itemDescription");
-        //desired_string5 = arguments.getString("itemDescription");
-
         itemName = arguments.getString("itemName");
         itemSellerId = arguments.getString("itemSellerId");
         itemShoeId = arguments.getString("itemShoeId");
@@ -90,9 +75,7 @@ public class HomeItemDetailsFragment extends Fragment
                 performTransition();
             }
         });
-        /*
-        ImageView imageView = (ImageView) v.findViewById(R.id.purchase_button);
-*/
+
         mTextView = (TextView) v.findViewById(R.id.completeDetailsText);
         mTextView.setText(itemName+" "+itemSellerId+" "+itemShoeId+" "+itemBrand+" "+itemGender+" "+itemShoeType+" "+itemShoeCondition+" "+itemSize+" "+itemPrice);
 
@@ -104,29 +87,11 @@ public class HomeItemDetailsFragment extends Fragment
     //@Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-/*
-        Bundle arguments = getArguments();
-        desired_string = arguments.getString("welcome");
-        desired_string2 = arguments.getString("itemId");
-        desired_string3 = arguments.getString("itemPicture");
-        desired_string4 = arguments.getString("itemDescription");
-
-        mTextView = (TextView) getActivity().findViewById(R.id.completeDetailsText);
-        mTextView.setText("Item ID:" + desired_string2 + " \nDescription: " + desired_string4);
-    */
     }
 
     private void performTransition()
     {
-        Fragment fragment = new PurchaseStepOneFragment();
-
-        // Bundle data to pass
         Bundle arguments = new Bundle();
-        //arguments.putString( "itemId1" , "" + desired_string2);
-        //arguments.putString( "itemPicture2" , "" + desired_string3);
-        //arguments.putString( "itemDescription3" , "" + desired_string4);
-        //arguments.putString( "itemSeller4" , "" + desired_string5);
-
         arguments.putString( "itemName", itemName);
         arguments.putString( "itemSellerId", itemSellerId);
         arguments.putString( "itemShoeId", itemShoeId);
@@ -138,9 +103,8 @@ public class HomeItemDetailsFragment extends Fragment
         arguments.putString( "itemSize", itemSize);
         arguments.putString( "itemPrice", itemPrice);
 
+        Fragment fragment = new PurchaseStepOneFragment();
         fragment.setArguments(arguments);
-
-        // Take off to next fragment
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
