@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                             FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
                             StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
 
-                            // string = stripeFunction.createAccount(user2.getEmail(), "");
+                            string = stripeFunction.createAccount(user2.getEmail(), "");
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
                             DatabaseReference db = FirebaseDatabase.getInstance().getReference();
