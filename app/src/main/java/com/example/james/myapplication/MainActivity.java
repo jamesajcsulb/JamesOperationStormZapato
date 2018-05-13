@@ -128,45 +128,54 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         ft.commit();
     }
 
+    interface MyCallback{
+        void onSuccess();
+    }
+
     private void restoreAccountDatabaseStructure()
     {
+        //IMPREF//https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference("users");
+        final DatabaseReference myRef = database.getReference("users/"+user.getUid());
         myRef.addValueEventListener(new ValueEventListener() {
             FirebaseUser userIn = FirebaseAuth.getInstance().getCurrentUser();
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snaparray : dataSnapshot.getChildren()) {
-                    if(snaparray.child(userIn.getUid()).child("stripe_customer_id") == null)
-                    {
-                        Log.d("MyLog", "New user");
-                        // Stripe register account
-                        AsyncTask asyncTask = new AsyncTask() {
-                            @Override
-                            protected Object doInBackground(Object[] objects) {
-                                FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-                                StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
+                Log.d("MyLog", "" + dataSnapshot.child("stripe_customer_id").getValue());
+                if(dataSnapshot.child("stripe_customer_id").getValue() == null)
+                {
+                //for (DataSnapshot snaparray : dataSnapshot.getChildren()) {
+                    //Log.d("MyLog", "" + userIn.getUid() + snaparray.child(userIn.getUid()).child("stripe_customer_id").toString());
+                    //if(snaparray.getKey() == userIn.getUid()){//if (!snaparray.child(userIn.getUid()).child("stripe_customer_id").exists()) {
+                        //if (snaparray.child(userIn.getUid()).child("stripe_customer_id").getValue() == null) {
+                            Log.d("MyLogggggg", "New user");
+                            // Stripe register account
+                            AsyncTask asyncTask = new AsyncTask() {
+                                @Override
+                                protected Object doInBackground(Object[] objects) {
+                                    FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                                    StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
 
-                                string = stripeFunction.createAccount(user2.getEmail(),"");
+                                    string = stripeFunction.createAccount(user2.getEmail(), "");
 
-                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
-                                DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
+                                    DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-                                db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
+                                    db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
 
-                                return null;
-                            }
-                        };
-                        asyncTask.execute();
-                    }
-                    else
-                    {
-                        Log.d("MyLog", "Already exists");
-                    }
-                }
+                                    return null;
+                                }
+                            };
+                            asyncTask.execute();
+                        }
+                        else {
+                            Log.d("MyLog", "Already exists");
+                        }
+                    //}
+                //}
                 myRef.removeEventListener(this);
             }
 
