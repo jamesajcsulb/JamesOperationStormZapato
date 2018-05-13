@@ -61,6 +61,17 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+        //RecyclerView recyclerView2 = (RecyclerView) getActivity().findViewById(R.id.recycler_view);
+        //int numberOfColumns2 = 2;
+        //recyclerView2.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns2));
+        //adaptershoe = new HomeFragmentRecyclerViewAdapter(getContext(), null, getContext(), getActivity(), new HomeFragment());
+        //recyclerView2.setAdapter(adaptershoe);
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 

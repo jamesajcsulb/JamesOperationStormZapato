@@ -143,14 +143,14 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("MyLog", "" + dataSnapshot.child("stripe_customer_id").getValue());
+                //IMPREF//Log.d("MyLog", "" + dataSnapshot.child("stripe_customer_id").getValue());
                 if(dataSnapshot.child("stripe_customer_id").getValue() == null)
                 {
                 //for (DataSnapshot snaparray : dataSnapshot.getChildren()) {
                     //Log.d("MyLog", "" + userIn.getUid() + snaparray.child(userIn.getUid()).child("stripe_customer_id").toString());
                     //if(snaparray.getKey() == userIn.getUid()){//if (!snaparray.child(userIn.getUid()).child("stripe_customer_id").exists()) {
                         //if (snaparray.child(userIn.getUid()).child("stripe_customer_id").getValue() == null) {
-                            Log.d("MyLogggggg", "New user");
+                    //IMPREF//Log.d("MyLogggggg", "New user");
                             // Stripe register account
                             AsyncTask asyncTask = new AsyncTask() {
                                 @Override
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                             asyncTask.execute();
                         }
                         else {
-                            Log.d("MyLog", "Already exists");
+                    //IMPREF//Log.d("MyLog", "Already exists");
                         }
                     //}
                 //}
