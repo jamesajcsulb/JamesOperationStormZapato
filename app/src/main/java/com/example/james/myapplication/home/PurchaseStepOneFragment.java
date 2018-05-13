@@ -252,7 +252,7 @@ public class PurchaseStepOneFragment extends Fragment
         });
 
         if (!cardToSave.validateCard()) {
-            // Do not continue token creation.
+            // Do not continue token creation.aaa
         }
     }
 }
