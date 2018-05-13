@@ -2,27 +2,19 @@ package com.example.james.myapplication;
 
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.james.myapplication.add.ShareFragment;
-//import com.example.james.myapplication.stripe.ShareFragment;
 import com.example.james.myapplication.favorite.FavoriteFragment;
 import com.example.james.myapplication.home.HomeFragment;
-import com.example.james.myapplication.home.HomeFragmentRecyclerViewAdapter;
-import com.example.james.myapplication.models.Shoe;
 import com.example.james.myapplication.profile.ProfileFragment;
 import com.example.james.myapplication.search.SearchFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,14 +24,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import android.os.AsyncTask;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.Locale;
-
-import static java.sql.DriverManager.println;
+import android.util.Log;
+import android.support.annotation.NonNull;
+//import android.widget.Toast;
+//import java.util.ArrayList;
+//import com.example.james.myapplication.home.HomeFragmentRecyclerViewAdapter;
+//import com.example.james.myapplication.models.Shoe;
+//import android.support.v7.widget.GridLayoutManager;
+//import android.support.v7.widget.RecyclerView;
+//import com.example.james.myapplication.stripe.ShareFragment;
+//import static java.sql.DriverManager.println;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
     private TextView mTextMessage;
@@ -146,36 +142,28 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 //IMPREF//Log.d("MyLog", "" + dataSnapshot.child("stripe_customer_id").getValue());
                 if(dataSnapshot.child("stripe_customer_id").getValue() == null)
                 {
-                //for (DataSnapshot snaparray : dataSnapshot.getChildren()) {
-                    //Log.d("MyLog", "" + userIn.getUid() + snaparray.child(userIn.getUid()).child("stripe_customer_id").toString());
-                    //if(snaparray.getKey() == userIn.getUid()){//if (!snaparray.child(userIn.getUid()).child("stripe_customer_id").exists()) {
-                        //if (snaparray.child(userIn.getUid()).child("stripe_customer_id").getValue() == null) {
                     //IMPREF//Log.d("MyLogggggg", "New user");
-                            // Stripe register account
-                            AsyncTask asyncTask = new AsyncTask() {
-                                @Override
-                                protected Object doInBackground(Object[] objects) {
-                                    FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
-                                    StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
+                    AsyncTask asyncTask = new AsyncTask() {
+                        @Override
+                        protected Object doInBackground(Object[] objects) {
+                            FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+                            StripeFunction stripeFunction = new StripeFunction();//user2.getEmail(),"");
 
-                                    string = stripeFunction.createAccount(user2.getEmail(), "");
+                            // string = stripeFunction.createAccount(user2.getEmail(), "");
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
+                            DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    FirebaseUser fba = FirebaseAuth.getInstance().getCurrentUser();
-                                    DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+                            db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
 
-                                    db.child("users").child(user.getUid()).child("stripe_customer_id").setValue(string);
-
-                                    return null;
-                                }
-                            };
-                            asyncTask.execute();
+                            return null;
                         }
-                        else {
+                    };
+                    asyncTask.execute();
+                }
+                else {
                     //IMPREF//Log.d("MyLog", "Already exists");
-                        }
-                    //}
-                //}
+                }
                 myRef.removeEventListener(this);
             }
 
